@@ -1,0 +1,35 @@
+{
+  "user_id": "demo_user",
+  "hard_constraints": ["gluten-free"],
+  "soft_preferences": {
+    "max_prep_time_min": 45,
+    "max_cost_tier": 3,
+    "preferred_cuisines": ["Mexican", "Asian", "Mediterranean"],
+    "goals": ["high_protein", "low_cost"]
+  },
+  "rating_history": [
+    {"recipe_id": "r001", "rating": 5, "timestamp": "2026-01-10T18:30:00"},
+    {"recipe_id": "r002", "rating": 4, "timestamp": "2026-01-14T19:00:00"},
+    {"recipe_id": "r003", "rating": 2, "timestamp": "2026-01-20T12:15:00"},
+    {"recipe_id": "r004", "rating": 5, "timestamp": "2026-01-25T20:00:00"},
+    {"recipe_id": "r005", "rating": 3, "timestamp": "2026-02-01T13:45:00"},
+    {"recipe_id": "r006", "rating": 4, "timestamp": "2026-02-08T18:00:00"},
+    {"recipe_id": "r007", "rating": 1, "timestamp": "2026-02-15T19:30:00"},
+    {"recipe_id": "r008", "rating": 5, "timestamp": "2026-02-22T17:00:00"}
+  ],
+  "pantry": [
+    "chicken breast",
+    "eggs",
+    "black beans",
+    "brown rice",
+    "olive oil",
+    "garlic",
+    "onion",
+    "cumin",
+    "paprika",
+    "lime",
+    "avocado",
+    "cherry tomatoes",
+    "spinach"
+  ]
+}

@@ -109,13 +109,14 @@ Scored keyword matching against 8 cuisine keyword lists: Italian, Mexican, Asian
 
 ## Current Status
 
-**Phase 1 complete** — Pydantic schemas (`Ingredient`, `Recipe`), `data_loader.py` (load/save JSON), `scripts/build_dataset.py` (Food.com cleaner), `data/recipes_sample.json` (10 hand-crafted recipes), 33 passing tests.
+**Phase 2 complete** — `profile.py` with `UserProfile`, `SoftPreferences`, `RatingEntry` Pydantic models; `load_profile`, `save_profile`, `add_rating`, `update_pantry` functions; `data/profiles/demo_user.json`; 20 passing tests.
 
 ### Completed Phases
 | Phase | Summary |
 |---|---|
 | 0 | Scaffold: directory layout, packaging config, empty stubs, documentation. |
 | 1 | Data layer: `schemas.py` Pydantic models, `data_loader.py`, `build_dataset.py`, `recipes_sample.json`, full test suite. |
+| 2 | User profiles: `profile.py` with `UserProfile` (hard constraints, soft preferences, rating history, pantry), load/save JSON, immutable update helpers, `demo_user.json`, 20 tests. |
 
 ### Schema / Interface Changes in Phase 1
 - `ingredients` changed from `list[str]` → `list[Ingredient]` (structured model with `name`, `quantity`, `unit`, `category`).
@@ -125,5 +126,12 @@ Scored keyword matching against 8 cuisine keyword lists: Italian, Mexican, Asian
 - `nutritional_estimates` renamed → `nutrition`.
 - `dietary_tags` and `flavor_profile` are now validated against fixed vocabularies.
 
-### Next: Phase 2
+### Schema / Interface Changes in Phase 2
+- `UserProfile` uses `hard_constraints: list[str]` (validated against `DietaryTag` vocabulary) instead of `dietary_restrictions`.
+- `soft_preferences` is a nested `SoftPreferences` model (replaces flat `goals`, `cuisine_preferences`, `max_prep_time_min` fields).
+- `rating_history: list[RatingEntry]` replaces `ratings: dict[str, int]` — each entry carries `recipe_id`, `rating`, and `timestamp`.
+- `goals` validated against `VALID_GOALS` vocabulary in `SoftPreferences`.
+- Profiles stored in `data/profiles/{user_id}.json`.
+
+### Next: Phase 3
 Implement `matching.py`: ingredient overlap scoring, rule engine (hard + soft constraints), decision log.
