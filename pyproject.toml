@@ -15,6 +15,7 @@ dependencies = [
     "ipywidgets>=8.0",
     "jupyter>=1.0",
     "pydantic>=2.0",
+    "rapidfuzz>=3.0",
 ]
 
 [project.optional-dependencies]

@@ -109,7 +109,20 @@ Scored keyword matching against 8 cuisine keyword lists: Italian, Mexican, Asian
 
 ## Current Status
 
-**Phase 2 complete** — `profile.py` with `UserProfile`, `SoftPreferences`, `RatingEntry` Pydantic models; `load_profile`, `save_profile`, `add_rating`, `update_pantry` functions; `data/profiles/demo_user.json`; 20 passing tests.
+**Phase 3 complete** — `matching.py` with `IngredientScorer`, `Rule` protocol, 6 built-in rules, `FilterEngine`, `FilterResult`/`DecisionEntry` log; 40 passing tests.
+
+### Rule Defaults
+| Rule | Type | Default Weight | Default Threshold |
+|---|---|---|---|
+| `AllergyRule` | Hard | 1.0 | — |
+| `DietaryRule` | Hard | 1.0 | — |
+| `PantryCoverageRule` | Hard | 1.0 | `coverage ≥ 0.50` |
+| `PrepTimeRule` | Soft | 0.4 | `prep_time_min ≤ profile.max_prep_time_min` |
+| `CuisinePreferenceRule` | Soft | 0.3 | — |
+| `GoalAlignmentRule` | Soft | 0.3 | — |
+
+Fuzzy match threshold: `FUZZY_THRESHOLD = 75` (rapidfuzz `partial_ratio`).
+Pantry coverage threshold: `COVERAGE_THRESHOLD = 0.50`.
 
 ### Completed Phases
 | Phase | Summary |
@@ -117,6 +130,7 @@ Scored keyword matching against 8 cuisine keyword lists: Italian, Mexican, Asian
 | 0 | Scaffold: directory layout, packaging config, empty stubs, documentation. |
 | 1 | Data layer: `schemas.py` Pydantic models, `data_loader.py`, `build_dataset.py`, `recipes_sample.json`, full test suite. |
 | 2 | User profiles: `profile.py` with `UserProfile` (hard constraints, soft preferences, rating history, pantry), load/save JSON, immutable update helpers, `demo_user.json`, 20 tests. |
+| 3 | Stage 1 matching: `matching.py` with `IngredientScorer` (rapidfuzz fuzzy matching), `Rule` protocol, 3 hard rules + 3 soft rules, `FilterEngine` producing `FilterResult` + `DecisionEntry` log, 40 tests. |
 
 ### Schema / Interface Changes in Phase 1
 - `ingredients` changed from `list[str]` → `list[Ingredient]` (structured model with `name`, `quantity`, `unit`, `category`).
@@ -133,5 +147,5 @@ Scored keyword matching against 8 cuisine keyword lists: Italian, Mexican, Asian
 - `goals` validated against `VALID_GOALS` vocabulary in `SoftPreferences`.
 - Profiles stored in `data/profiles/{user_id}.json`.
 
-### Next: Phase 3
-Implement `matching.py`: ingredient overlap scoring, rule engine (hard + soft constraints), decision log.
+### Next: Phase 4
+Implement `cbr.py`: Case-Based Reasoning (Retrieve–Reuse–Revise–Retain cycle).
