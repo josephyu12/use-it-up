@@ -36,24 +36,30 @@ Compiles the decision log from Stages 1–2 into four explanation types:
 
 ---
 
-## Data Schema (planned)
+## Data Schema (Phase 1 — implemented)
+
+### Ingredient
+| Field | Type | Description |
+|---|---|---|
+| `name` | `str` | Normalized ingredient name (stripped, lowercase) |
+| `quantity` | `float \| None` | Amount |
+| `unit` | `str \| None` | Unit of measure |
+| `category` | `IngredientCategory` | One of: `protein`, `vegetable`, `grain`, `dairy`, `spice`, `fat`, `condiment`, `other` |
 
 ### Recipe
 | Field | Type | Description |
 |---|---|---|
 | `id` | `str` | Unique identifier |
 | `name` | `str` | Display name |
-| `ingredients` | `list[str]` | Normalized ingredient names |
-| `cuisine_type` | `str` | e.g. `"Italian"`, `"Mexican"` |
-| `dietary_tags` | `list[str]` | e.g. `["vegan", "gluten-free"]` |
+| `ingredients` | `list[Ingredient]` | Structured ingredient list (≥1 required) |
+| `cuisine` | `str` | e.g. `"Italian"`, `"Mexican"` |
+| `dietary_tags` | `list[DietaryTag]` | Subset of `{vegan, vegetarian, gluten-free, dairy-free, nut-free, low-carb, high-protein, low-cost, quick}` |
 | `prep_time_min` | `int` | Preparation time in minutes |
 | `cook_time_min` | `int` | Cook time in minutes |
-| `difficulty` | `str` | `"easy"` / `"medium"` / `"hard"` |
-| `protein_source` | `str` | e.g. `"chicken"`, `"tofu"`, `"lentils"` |
-| `cooking_method` | `str` | e.g. `"stovetop"`, `"baked"`, `"raw"` |
-| `flavor_profile` | `list[str]` | e.g. `["savory", "spicy"]` |
-| `nutritional_estimates` | `dict[str, float]` | `{calories, protein_g, carbs_g, fat_g}` |
-| `cost_tier` | `str` | `"low"` / `"medium"` / `"high"` |
+| `difficulty` | `Literal[1..5]` | Integer 1 (easiest) to 5 (hardest) |
+| `nutrition` | `dict[str, float]` | e.g. `{calories, protein_g, carbs_g, fat_g}` |
+| `flavor_profile` | `list[FlavorTag]` | Subset of `{spicy, savory, sweet, sour, umami, smoky, fresh, rich}` |
+| `instructions` | `list[str]` | Step-by-step cooking instructions |
 
 ### UserProfile
 | Field | Type | Description |
@@ -76,14 +82,48 @@ Compiles the decision log from Stages 1–2 into four explanation types:
 
 ---
 
+## Tagging Rulebooks (Phase 1)
+
+### Ingredient Category Assignment (`classify_category`)
+Keywords matched (substring) in priority order: protein → grain → dairy → spice → fat → vegetable → condiment → other.
+
+### Dietary Tag Inference (`infer_dietary_tags`)
+| Tag | Rule |
+|---|---|
+| `vegan` | No meat/fish/dairy keyword in any ingredient |
+| `vegetarian` | No meat/fish keyword in any ingredient |
+| `dairy-free` | No dairy keyword |
+| `gluten-free` | No gluten keyword (flour, wheat, barley, rye, pasta variants…) |
+| `nut-free` | No nut keyword |
+| `quick` | `prep_time + cook_time ≤ 30 min` |
+| `high-protein` | ≥2 distinct protein-category ingredients |
+| `low-carb` | No gluten ingredient AND no rice or potato |
+
+### Flavor Profile Inference (`infer_flavor_profile`)
+Keyword scan of all ingredient names: spicy (chili/jalapeño/cayenne…), umami (soy/miso/parmesan/anchovy…), savory (salt/garlic/herb…), sweet (sugar/honey/maple…), sour (lemon/vinegar/tamarind…), smoky (smoked/bbq/chipotle…), fresh (mint/cilantro/cucumber…), rich (cream/butter/cheese/avocado…).
+
+### Cuisine Assignment (`guess_cuisine`)
+Scored keyword matching against 8 cuisine keyword lists: Italian, Mexican, Asian, Indian, American, Mediterranean, French, Middle Eastern. Highest score wins; ties default to American.
+
+---
+
 ## Current Status
 
-**Phase 0 complete** — project scaffold created (directory structure, `pyproject.toml`, stub source modules, empty test suite, `CLAUDE.md`, `PROJECT.md`, `README.md`, skeleton notebook).
+**Phase 1 complete** — Pydantic schemas (`Ingredient`, `Recipe`), `data_loader.py` (load/save JSON), `scripts/build_dataset.py` (Food.com cleaner), `data/recipes_sample.json` (10 hand-crafted recipes), 33 passing tests.
 
 ### Completed Phases
 | Phase | Summary |
 |---|---|
 | 0 | Scaffold: directory layout, packaging config, empty stubs, documentation. |
+| 1 | Data layer: `schemas.py` Pydantic models, `data_loader.py`, `build_dataset.py`, `recipes_sample.json`, full test suite. |
 
-### Next: Phase 1
-Implement `schemas.py` (Pydantic models), load/validate a small sample recipe dataset in `data/`, and write tests for all models.
+### Schema / Interface Changes in Phase 1
+- `ingredients` changed from `list[str]` → `list[Ingredient]` (structured model with `name`, `quantity`, `unit`, `category`).
+- `difficulty` changed from `str` (`easy/medium/hard`) → `Literal[1..5]`.
+- `cuisine_type` renamed → `cuisine`.
+- `protein_source`, `cooking_method`, `cost_tier` removed (derivable from ingredients).
+- `nutritional_estimates` renamed → `nutrition`.
+- `dietary_tags` and `flavor_profile` are now validated against fixed vocabularies.
+
+### Next: Phase 2
+Implement `matching.py`: ingredient overlap scoring, rule engine (hard + soft constraints), decision log.

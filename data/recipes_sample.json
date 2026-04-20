@@ -1,0 +1,268 @@
+[
+  {
+    "id": "sample-001",
+    "name": "Spaghetti Aglio e Olio",
+    "ingredients": [
+      {"name": "spaghetti", "quantity": 400.0, "unit": "g", "category": "grain"},
+      {"name": "garlic", "quantity": 6.0, "unit": "cloves", "category": "vegetable"},
+      {"name": "olive oil", "quantity": 4.0, "unit": "tbsp", "category": "fat"},
+      {"name": "red pepper flakes", "quantity": 1.0, "unit": "tsp", "category": "spice"},
+      {"name": "parsley", "quantity": null, "unit": null, "category": "vegetable"}
+    ],
+    "cuisine": "Italian",
+    "dietary_tags": ["vegan", "vegetarian", "dairy-free", "nut-free"],
+    "prep_time_min": 5,
+    "cook_time_min": 15,
+    "difficulty": 1,
+    "nutrition": {"calories": 520.0, "protein_g": 14.0, "carbs_g": 72.0, "fat_g": 18.0},
+    "flavor_profile": ["spicy", "savory", "fresh"],
+    "instructions": [
+      "Boil spaghetti in salted water until al dente.",
+      "While pasta cooks, gently fry garlic slices in olive oil.",
+      "Add red pepper flakes; toss drained pasta in the oil.",
+      "Finish with chopped parsley and serve immediately."
+    ]
+  },
+  {
+    "id": "sample-002",
+    "name": "Chicken Tikka Masala",
+    "ingredients": [
+      {"name": "chicken breast", "quantity": 600.0, "unit": "g", "category": "protein"},
+      {"name": "tomato sauce", "quantity": 400.0, "unit": "g", "category": "condiment"},
+      {"name": "heavy cream", "quantity": 200.0, "unit": "ml", "category": "dairy"},
+      {"name": "garam masala", "quantity": 2.0, "unit": "tsp", "category": "spice"},
+      {"name": "turmeric", "quantity": 1.0, "unit": "tsp", "category": "spice"},
+      {"name": "garlic", "quantity": 4.0, "unit": "cloves", "category": "vegetable"},
+      {"name": "ginger", "quantity": 1.0, "unit": "tbsp", "category": "spice"},
+      {"name": "onion", "quantity": 1.0, "unit": null, "category": "vegetable"},
+      {"name": "butter", "quantity": 2.0, "unit": "tbsp", "category": "dairy"}
+    ],
+    "cuisine": "Indian",
+    "dietary_tags": ["nut-free", "high-protein"],
+    "prep_time_min": 20,
+    "cook_time_min": 30,
+    "difficulty": 3,
+    "nutrition": {"calories": 680.0, "protein_g": 45.0, "carbs_g": 22.0, "fat_g": 42.0},
+    "flavor_profile": ["spicy", "savory", "rich", "umami"],
+    "instructions": [
+      "Marinate chicken in yogurt, garlic, ginger, and spices for 30 minutes.",
+      "Grill or pan-sear the chicken until cooked through.",
+      "Sauté onion in butter, add tomato sauce and spices, simmer 10 minutes.",
+      "Stir in cream and add chicken; simmer 5 more minutes."
+    ]
+  },
+  {
+    "id": "sample-003",
+    "name": "Black Bean Tacos",
+    "ingredients": [
+      {"name": "black beans", "quantity": 400.0, "unit": "g", "category": "protein"},
+      {"name": "corn tortillas", "quantity": 8.0, "unit": "pieces", "category": "grain"},
+      {"name": "avocado", "quantity": 2.0, "unit": null, "category": "fat"},
+      {"name": "salsa", "quantity": 200.0, "unit": "g", "category": "condiment"},
+      {"name": "cumin", "quantity": 1.0, "unit": "tsp", "category": "spice"},
+      {"name": "lime", "quantity": 1.0, "unit": null, "category": "vegetable"},
+      {"name": "cilantro", "quantity": null, "unit": null, "category": "vegetable"}
+    ],
+    "cuisine": "Mexican",
+    "dietary_tags": ["vegan", "vegetarian", "dairy-free", "gluten-free", "nut-free", "quick", "low-cost"],
+    "prep_time_min": 5,
+    "cook_time_min": 10,
+    "difficulty": 1,
+    "nutrition": {"calories": 410.0, "protein_g": 16.0, "carbs_g": 60.0, "fat_g": 12.0},
+    "flavor_profile": ["savory", "fresh", "smoky"],
+    "instructions": [
+      "Heat black beans with cumin, salt, and a splash of water.",
+      "Warm tortillas in a dry skillet.",
+      "Fill tortillas with beans, avocado slices, salsa, and cilantro.",
+      "Squeeze lime over each taco."
+    ]
+  },
+  {
+    "id": "sample-004",
+    "name": "Miso Ramen",
+    "ingredients": [
+      {"name": "ramen noodles", "quantity": 200.0, "unit": "g", "category": "grain"},
+      {"name": "miso paste", "quantity": 3.0, "unit": "tbsp", "category": "condiment"},
+      {"name": "soy sauce", "quantity": 2.0, "unit": "tbsp", "category": "condiment"},
+      {"name": "soft-boiled egg", "quantity": 2.0, "unit": null, "category": "protein"},
+      {"name": "tofu", "quantity": 150.0, "unit": "g", "category": "protein"},
+      {"name": "bok choy", "quantity": 200.0, "unit": "g", "category": "vegetable"},
+      {"name": "sesame oil", "quantity": 1.0, "unit": "tsp", "category": "fat"},
+      {"name": "green onion", "quantity": null, "unit": null, "category": "vegetable"}
+    ],
+    "cuisine": "Asian",
+    "dietary_tags": ["vegetarian", "dairy-free", "nut-free"],
+    "prep_time_min": 10,
+    "cook_time_min": 20,
+    "difficulty": 2,
+    "nutrition": {"calories": 490.0, "protein_g": 28.0, "carbs_g": 55.0, "fat_g": 16.0},
+    "flavor_profile": ["umami", "savory", "rich"],
+    "instructions": [
+      "Dissolve miso paste in hot broth; add soy sauce and sesame oil.",
+      "Cook ramen noodles; drain and place in bowls.",
+      "Blanch bok choy and pan-fry tofu until golden.",
+      "Ladle broth over noodles; top with bok choy, tofu, halved egg, and green onion."
+    ]
+  },
+  {
+    "id": "sample-005",
+    "name": "Greek Salad",
+    "ingredients": [
+      {"name": "cucumber", "quantity": 1.0, "unit": null, "category": "vegetable"},
+      {"name": "tomato", "quantity": 3.0, "unit": null, "category": "vegetable"},
+      {"name": "red onion", "quantity": 0.5, "unit": null, "category": "vegetable"},
+      {"name": "feta cheese", "quantity": 150.0, "unit": "g", "category": "dairy"},
+      {"name": "kalamata olives", "quantity": 80.0, "unit": "g", "category": "vegetable"},
+      {"name": "olive oil", "quantity": 3.0, "unit": "tbsp", "category": "fat"},
+      {"name": "oregano", "quantity": 1.0, "unit": "tsp", "category": "spice"},
+      {"name": "lemon juice", "quantity": 2.0, "unit": "tbsp", "category": "condiment"}
+    ],
+    "cuisine": "Mediterranean",
+    "dietary_tags": ["vegetarian", "gluten-free", "nut-free", "low-carb", "quick"],
+    "prep_time_min": 10,
+    "cook_time_min": 0,
+    "difficulty": 1,
+    "nutrition": {"calories": 310.0, "protein_g": 9.0, "carbs_g": 14.0, "fat_g": 24.0},
+    "flavor_profile": ["sour", "fresh", "savory", "rich"],
+    "instructions": [
+      "Chop cucumber, tomatoes, and red onion; toss in a bowl.",
+      "Add olives and crumble feta on top.",
+      "Drizzle with olive oil and lemon juice; sprinkle oregano.",
+      "Serve immediately."
+    ]
+  },
+  {
+    "id": "sample-006",
+    "name": "BBQ Pulled Pork Sandwiches",
+    "ingredients": [
+      {"name": "pork shoulder", "quantity": 1.5, "unit": "lbs", "category": "protein"},
+      {"name": "bbq sauce", "quantity": 300.0, "unit": "g", "category": "condiment"},
+      {"name": "brioche buns", "quantity": 4.0, "unit": "pieces", "category": "grain"},
+      {"name": "coleslaw mix", "quantity": 200.0, "unit": "g", "category": "vegetable"},
+      {"name": "apple cider vinegar", "quantity": 2.0, "unit": "tbsp", "category": "condiment"},
+      {"name": "brown sugar", "quantity": 2.0, "unit": "tbsp", "category": "condiment"},
+      {"name": "paprika", "quantity": 1.0, "unit": "tbsp", "category": "spice"}
+    ],
+    "cuisine": "American",
+    "dietary_tags": ["dairy-free", "nut-free"],
+    "prep_time_min": 15,
+    "cook_time_min": 240,
+    "difficulty": 3,
+    "nutrition": {"calories": 720.0, "protein_g": 48.0, "carbs_g": 62.0, "fat_g": 28.0},
+    "flavor_profile": ["smoky", "sweet", "savory", "rich"],
+    "instructions": [
+      "Rub pork with paprika, brown sugar, salt, and pepper.",
+      "Slow-cook pork for 4 hours at 300°F until shreddable.",
+      "Shred pork and toss with BBQ sauce and vinegar.",
+      "Serve on buns topped with coleslaw."
+    ]
+  },
+  {
+    "id": "sample-007",
+    "name": "Lentil Dal",
+    "ingredients": [
+      {"name": "red lentils", "quantity": 300.0, "unit": "g", "category": "protein"},
+      {"name": "onion", "quantity": 1.0, "unit": null, "category": "vegetable"},
+      {"name": "tomato", "quantity": 2.0, "unit": null, "category": "vegetable"},
+      {"name": "turmeric", "quantity": 1.0, "unit": "tsp", "category": "spice"},
+      {"name": "cumin", "quantity": 1.0, "unit": "tsp", "category": "spice"},
+      {"name": "coriander", "quantity": 1.0, "unit": "tsp", "category": "spice"},
+      {"name": "ghee", "quantity": 2.0, "unit": "tbsp", "category": "fat"},
+      {"name": "garlic", "quantity": 3.0, "unit": "cloves", "category": "vegetable"},
+      {"name": "ginger", "quantity": 1.0, "unit": "tsp", "category": "spice"}
+    ],
+    "cuisine": "Indian",
+    "dietary_tags": ["vegetarian", "vegan", "gluten-free", "dairy-free", "nut-free", "low-cost", "high-protein"],
+    "prep_time_min": 10,
+    "cook_time_min": 25,
+    "difficulty": 2,
+    "nutrition": {"calories": 390.0, "protein_g": 22.0, "carbs_g": 54.0, "fat_g": 10.0},
+    "flavor_profile": ["savory", "spicy", "umami"],
+    "instructions": [
+      "Sauté onion, garlic, and ginger in ghee until soft.",
+      "Add spices and cook 1 minute.",
+      "Add lentils, diced tomato, and water; simmer 20 minutes until thick.",
+      "Season and serve with rice or naan."
+    ]
+  },
+  {
+    "id": "sample-008",
+    "name": "Classic Omelette",
+    "ingredients": [
+      {"name": "eggs", "quantity": 3.0, "unit": null, "category": "protein"},
+      {"name": "butter", "quantity": 1.0, "unit": "tbsp", "category": "dairy"},
+      {"name": "cheddar cheese", "quantity": 40.0, "unit": "g", "category": "dairy"},
+      {"name": "chives", "quantity": null, "unit": null, "category": "vegetable"},
+      {"name": "salt", "quantity": null, "unit": null, "category": "spice"},
+      {"name": "pepper", "quantity": null, "unit": null, "category": "spice"}
+    ],
+    "cuisine": "French",
+    "dietary_tags": ["vegetarian", "gluten-free", "nut-free", "low-carb", "quick"],
+    "prep_time_min": 5,
+    "cook_time_min": 5,
+    "difficulty": 2,
+    "nutrition": {"calories": 320.0, "protein_g": 20.0, "carbs_g": 2.0, "fat_g": 25.0},
+    "flavor_profile": ["savory", "rich"],
+    "instructions": [
+      "Beat eggs with salt and pepper.",
+      "Melt butter in a non-stick pan over medium heat.",
+      "Pour in eggs; fold edges toward center as they set.",
+      "Add cheese, fold omelette in half, and serve with chives."
+    ]
+  },
+  {
+    "id": "sample-009",
+    "name": "Shakshuka",
+    "ingredients": [
+      {"name": "eggs", "quantity": 4.0, "unit": null, "category": "protein"},
+      {"name": "canned tomatoes", "quantity": 400.0, "unit": "g", "category": "condiment"},
+      {"name": "red bell pepper", "quantity": 1.0, "unit": null, "category": "vegetable"},
+      {"name": "onion", "quantity": 1.0, "unit": null, "category": "vegetable"},
+      {"name": "garlic", "quantity": 3.0, "unit": "cloves", "category": "vegetable"},
+      {"name": "cumin", "quantity": 1.0, "unit": "tsp", "category": "spice"},
+      {"name": "paprika", "quantity": 1.0, "unit": "tsp", "category": "spice"},
+      {"name": "olive oil", "quantity": 2.0, "unit": "tbsp", "category": "fat"},
+      {"name": "feta cheese", "quantity": 60.0, "unit": "g", "category": "dairy"}
+    ],
+    "cuisine": "Middle Eastern",
+    "dietary_tags": ["vegetarian", "gluten-free", "nut-free"],
+    "prep_time_min": 10,
+    "cook_time_min": 20,
+    "difficulty": 2,
+    "nutrition": {"calories": 340.0, "protein_g": 18.0, "carbs_g": 20.0, "fat_g": 20.0},
+    "flavor_profile": ["savory", "spicy", "smoky", "umami"],
+    "instructions": [
+      "Sauté onion and pepper in olive oil until soft.",
+      "Add garlic and spices; cook 1 minute.",
+      "Pour in canned tomatoes; simmer 10 minutes.",
+      "Make wells and crack in eggs; cover and cook until set.",
+      "Top with crumbled feta and serve with bread."
+    ]
+  },
+  {
+    "id": "sample-010",
+    "name": "Caprese Salad",
+    "ingredients": [
+      {"name": "fresh mozzarella", "quantity": 250.0, "unit": "g", "category": "dairy"},
+      {"name": "tomato", "quantity": 3.0, "unit": null, "category": "vegetable"},
+      {"name": "fresh basil", "quantity": null, "unit": null, "category": "vegetable"},
+      {"name": "olive oil", "quantity": 3.0, "unit": "tbsp", "category": "fat"},
+      {"name": "balsamic vinegar", "quantity": 1.0, "unit": "tbsp", "category": "condiment"},
+      {"name": "salt", "quantity": null, "unit": null, "category": "spice"},
+      {"name": "black pepper", "quantity": null, "unit": null, "category": "spice"}
+    ],
+    "cuisine": "Italian",
+    "dietary_tags": ["vegetarian", "gluten-free", "nut-free", "low-carb", "quick"],
+    "prep_time_min": 10,
+    "cook_time_min": 0,
+    "difficulty": 1,
+    "nutrition": {"calories": 350.0, "protein_g": 18.0, "carbs_g": 8.0, "fat_g": 26.0},
+    "flavor_profile": ["fresh", "rich", "sour", "savory"],
+    "instructions": [
+      "Slice mozzarella and tomatoes into rounds.",
+      "Alternate slices on a plate with basil leaves.",
+      "Drizzle with olive oil and balsamic vinegar.",
+      "Season with salt and pepper; serve immediately."
+    ]
+  }
+]
