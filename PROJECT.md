@@ -109,7 +109,7 @@ Scored keyword matching against 8 cuisine keyword lists: Italian, Mexican, Asian
 
 ## Current Status
 
-**Phase 4 complete** — `cbr.py` with `recipe_feature_vector`, `CBRRetriever`, `CBRAdapter`, `record_success`; `data/substitutions.json` with 20 entries; 30 passing tests.
+**Phase 5 complete** — `explain.py` with `Explanation` dataclass, four builder functions (`_build_goal_trace`, `_build_counterfactual`, `_build_cbr_trace`, `_build_ingredient_utilization_report`), `generate_explanation`, and `render_explanation`; `pipeline.py` orchestrator wiring all three stages; 22 new tests including snapshot regression guard in `tests/fixtures/expected_explanation.md`.
 
 ### Rule Defaults
 | Rule | Type | Default Weight | Default Threshold |
@@ -132,6 +132,7 @@ Pantry coverage threshold: `COVERAGE_THRESHOLD = 0.50`.
 | 2 | User profiles: `profile.py` with `UserProfile` (hard constraints, soft preferences, rating history, pantry), load/save JSON, immutable update helpers, `demo_user.json`, 20 tests. |
 | 3 | Stage 1 matching: `matching.py` with `IngredientScorer` (rapidfuzz fuzzy matching), `Rule` protocol, 3 hard rules + 3 soft rules, `FilterEngine` producing `FilterResult` + `DecisionEntry` log, 40 tests. |
 | 4 | Stage 2 CBR: `cbr.py` with `recipe_feature_vector` (cuisine/protein/method/flavor/difficulty/prep_time encoding), `CBRRetriever` (weighted centroid + cosine similarity + cold-start fallback), `CBRAdapter` (goal-based substitution from `data/substitutions.json`), `record_success`; 30 tests. |
+| 5 | Explanation engine: `explain.py` with `Explanation` dataclass + four template-driven builders; `pipeline.py` orchestrator wiring all three stages; 22 tests + snapshot fixture in `tests/fixtures/expected_explanation.md`. |
 
 ### Schema / Interface Changes in Phase 1
 - `ingredients` changed from `list[str]` → `list[Ingredient]` (structured model with `name`, `quantity`, `unit`, `category`).
@@ -148,5 +149,8 @@ Pantry coverage threshold: `COVERAGE_THRESHOLD = 0.50`.
 - `goals` validated against `VALID_GOALS` vocabulary in `SoftPreferences`.
 - Profiles stored in `data/profiles/{user_id}.json`.
 
-### Next: Phase 5
-Implement `explain.py`: Explanation Generation (Goal Trace, Counterfactual, CBR Trace, Ingredient Utilization Report).
+### Schema / Interface Changes in Phase 5
+- New `Explanation` dataclass in `explain.py`: four `str` fields (`goal_trace`, `counterfactual`, `cbr_trace`, `ingredient_utilization_report`), each a markdown string.
+- `generate_explanation(adapted, filter_result, cbr_matches, profile, all_recipes)` → `Explanation` is the primary Stage 3 entry point.
+- `render_explanation(explanation)` → `str` concatenates all four sections with `---` separators for Jupyter display.
+- `pipeline.run_pipeline(recipes, profile, cbr_k)` → `tuple[AdaptedRecipe, Explanation]` wires all three stages end-to-end.
