@@ -109,7 +109,7 @@ Scored keyword matching against 8 cuisine keyword lists: Italian, Mexican, Asian
 
 ## Current Status
 
-**Phase 6 complete** — `pipeline.py` extended with `Recommendation` dataclass and `recommend(profile, recipes, top_k) → list[Recommendation]` entry point; `notebooks/UseItUp.ipynb` rebuilt with 6 idempotent cells (intro, setup, interactive widgets, output, decision-trace visualisation, alternative-scenario counterfactuals); 12 new unit tests + `test_notebook_executes` smoke test via `jupyter nbconvert --execute`.
+**Phase 8 complete** — `docs/writeup.md` (~6 pages, Mermaid architecture diagram, four real explanation examples, evaluation table); `docs/qa_report.md` (31/31 scenarios pass, 5 known edge cases documented).
 
 ### Rule Defaults
 | Rule | Type | Default Weight | Default Threshold |
@@ -134,6 +134,8 @@ Pantry coverage threshold: `COVERAGE_THRESHOLD = 0.50`.
 | 4 | Stage 2 CBR: `cbr.py` with `recipe_feature_vector` (cuisine/protein/method/flavor/difficulty/prep_time encoding), `CBRRetriever` (weighted centroid + cosine similarity + cold-start fallback), `CBRAdapter` (goal-based substitution from `data/substitutions.json`), `record_success`; 30 tests. |
 | 5 | Explanation engine: `explain.py` with `Explanation` dataclass + four template-driven builders; `pipeline.py` orchestrator wiring all three stages; 22 tests + snapshot fixture in `tests/fixtures/expected_explanation.md`. |
 | 6 | Pipeline integration + Jupyter notebook: `Recommendation` dataclass + `recommend()` in `pipeline.py`; `notebooks/UseItUp.ipynb` with 6 idempotent cells (ipywidgets interactive input, decision-trace bar chart, alt-scenario counterfactual buttons); 13 new tests including notebook smoke test. |
+| 7 | QA pass: `tests/test_scenarios.py` (5 end-to-end scenarios, 18 tests), `tests/test_explanation_quality.py` (4 rule-based quality checks, 13 tests); 31/31 pass; 98% line coverage overall. `docs/qa_report.md` with scenario results and 5 known edge cases. |
+| 8 | Write-up + presentation: `docs/writeup.md` (~6 pages, Mermaid architecture diagram, 4 real explanation examples captured from the pipeline, evaluation table, division of labor, future work). |
 
 ### Schema / Interface Changes in Phase 1
 - `ingredients` changed from `list[str]` → `list[Ingredient]` (structured model with `name`, `quantity`, `unit`, `category`).
