@@ -2,20 +2,32 @@
 
 from __future__ import annotations
 
+from dataclasses import dataclass
+
 from useitup.cbr import AdaptedRecipe, CBRAdapter, CBRMatch, CBRRetriever
 from useitup.explain import Explanation, generate_explanation
-from useitup.matching import FilterEngine, FilterResult
+from useitup.matching import DecisionEntry, FilterEngine, FilterResult
 from useitup.profile import UserProfile
 from useitup.schemas import Recipe
 
 
-def run_pipeline(
-    recipes: list[Recipe],
+@dataclass
+class Recommendation:
+    """A single recommendation bundling the adapted recipe, explanation, and debug data."""
+
+    adapted_recipe: AdaptedRecipe
+    explanation: Explanation
+    decision_log: list[DecisionEntry]
+    cbr_matches: list[CBRMatch]
+    filter_result: FilterResult
+
+
+def recommend(
     profile: UserProfile,
-    cbr_k: int = 5,
-) -> tuple[AdaptedRecipe, Explanation]:
-    """Run the full 3-stage recommendation pipeline and return the top adapted recipe + explanation."""
-    # Stage 1: Rule-based filtering
+    recipes: list[Recipe],
+    top_k: int = 1,
+) -> list[Recommendation]:
+    """Run the full 3-stage pipeline; return top_k Recommendation objects."""
     filter_engine = FilterEngine()
     filter_result: FilterResult = filter_engine.run(recipes, profile)
 
@@ -25,21 +37,36 @@ def run_pipeline(
             "Try relaxing hard constraints or expanding the pantry."
         )
 
-    # Stage 2: CBR retrieve + adapt
     survivor_recipes = [sr.recipe for sr in filter_result.survivors]
     retriever = CBRRetriever(recipes, profile)
-    cbr_matches: list[CBRMatch] = retriever.retrieve(survivor_recipes, k=cbr_k)
+    cbr_matches: list[CBRMatch] = retriever.retrieve(survivor_recipes, k=max(top_k, 5))
 
     adapter = CBRAdapter()
-    adapted: AdaptedRecipe = adapter.adapt(cbr_matches[0], profile)
+    results: list[Recommendation] = []
+    for match in cbr_matches[:top_k]:
+        adapted = adapter.adapt(match, profile)
+        explanation = generate_explanation(
+            adapted=adapted,
+            filter_result=filter_result,
+            cbr_matches=cbr_matches,
+            profile=profile,
+            all_recipes=recipes,
+        )
+        results.append(Recommendation(
+            adapted_recipe=adapted,
+            explanation=explanation,
+            decision_log=filter_result.decision_log,
+            cbr_matches=cbr_matches,
+            filter_result=filter_result,
+        ))
+    return results
 
-    # Stage 3: Explanation generation
-    explanation: Explanation = generate_explanation(
-        adapted=adapted,
-        filter_result=filter_result,
-        cbr_matches=cbr_matches,
-        profile=profile,
-        all_recipes=recipes,
-    )
 
-    return adapted, explanation
+def run_pipeline(
+    recipes: list[Recipe],
+    profile: UserProfile,
+    cbr_k: int = 5,
+) -> tuple[AdaptedRecipe, Explanation]:
+    """Legacy entry point kept for backward compatibility."""
+    results = recommend(profile, recipes, top_k=1)
+    return results[0].adapted_recipe, results[0].explanation

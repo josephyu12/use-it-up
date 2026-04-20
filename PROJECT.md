@@ -109,7 +109,7 @@ Scored keyword matching against 8 cuisine keyword lists: Italian, Mexican, Asian
 
 ## Current Status
 
-**Phase 5 complete** — `explain.py` with `Explanation` dataclass, four builder functions (`_build_goal_trace`, `_build_counterfactual`, `_build_cbr_trace`, `_build_ingredient_utilization_report`), `generate_explanation`, and `render_explanation`; `pipeline.py` orchestrator wiring all three stages; 22 new tests including snapshot regression guard in `tests/fixtures/expected_explanation.md`.
+**Phase 6 complete** — `pipeline.py` extended with `Recommendation` dataclass and `recommend(profile, recipes, top_k) → list[Recommendation]` entry point; `notebooks/UseItUp.ipynb` rebuilt with 6 idempotent cells (intro, setup, interactive widgets, output, decision-trace visualisation, alternative-scenario counterfactuals); 12 new unit tests + `test_notebook_executes` smoke test via `jupyter nbconvert --execute`.
 
 ### Rule Defaults
 | Rule | Type | Default Weight | Default Threshold |
@@ -133,6 +133,7 @@ Pantry coverage threshold: `COVERAGE_THRESHOLD = 0.50`.
 | 3 | Stage 1 matching: `matching.py` with `IngredientScorer` (rapidfuzz fuzzy matching), `Rule` protocol, 3 hard rules + 3 soft rules, `FilterEngine` producing `FilterResult` + `DecisionEntry` log, 40 tests. |
 | 4 | Stage 2 CBR: `cbr.py` with `recipe_feature_vector` (cuisine/protein/method/flavor/difficulty/prep_time encoding), `CBRRetriever` (weighted centroid + cosine similarity + cold-start fallback), `CBRAdapter` (goal-based substitution from `data/substitutions.json`), `record_success`; 30 tests. |
 | 5 | Explanation engine: `explain.py` with `Explanation` dataclass + four template-driven builders; `pipeline.py` orchestrator wiring all three stages; 22 tests + snapshot fixture in `tests/fixtures/expected_explanation.md`. |
+| 6 | Pipeline integration + Jupyter notebook: `Recommendation` dataclass + `recommend()` in `pipeline.py`; `notebooks/UseItUp.ipynb` with 6 idempotent cells (ipywidgets interactive input, decision-trace bar chart, alt-scenario counterfactual buttons); 13 new tests including notebook smoke test. |
 
 ### Schema / Interface Changes in Phase 1
 - `ingredients` changed from `list[str]` → `list[Ingredient]` (structured model with `name`, `quantity`, `unit`, `category`).
@@ -148,6 +149,11 @@ Pantry coverage threshold: `COVERAGE_THRESHOLD = 0.50`.
 - `rating_history: list[RatingEntry]` replaces `ratings: dict[str, int]` — each entry carries `recipe_id`, `rating`, and `timestamp`.
 - `goals` validated against `VALID_GOALS` vocabulary in `SoftPreferences`.
 - Profiles stored in `data/profiles/{user_id}.json`.
+
+### Schema / Interface Changes in Phase 6
+- New `Recommendation` dataclass in `pipeline.py`: `adapted_recipe`, `explanation`, `decision_log`, `cbr_matches`, `filter_result`.
+- `recommend(profile, recipes, top_k=1) → list[Recommendation]` is now the primary public API.
+- `run_pipeline(recipes, profile, cbr_k)` is retained as a thin shim over `recommend()` for backward compatibility.
 
 ### Schema / Interface Changes in Phase 5
 - New `Explanation` dataclass in `explain.py`: four `str` fields (`goal_trace`, `counterfactual`, `cbr_trace`, `ingredient_utilization_report`), each a markdown string.
