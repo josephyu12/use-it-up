@@ -109,7 +109,7 @@ Scored keyword matching against 8 cuisine keyword lists: Italian, Mexican, Asian
 
 ## Current Status
 
-**Phase 3 complete** — `matching.py` with `IngredientScorer`, `Rule` protocol, 6 built-in rules, `FilterEngine`, `FilterResult`/`DecisionEntry` log; 40 passing tests.
+**Phase 4 complete** — `cbr.py` with `recipe_feature_vector`, `CBRRetriever`, `CBRAdapter`, `record_success`; `data/substitutions.json` with 20 entries; 30 passing tests.
 
 ### Rule Defaults
 | Rule | Type | Default Weight | Default Threshold |
@@ -131,6 +131,7 @@ Pantry coverage threshold: `COVERAGE_THRESHOLD = 0.50`.
 | 1 | Data layer: `schemas.py` Pydantic models, `data_loader.py`, `build_dataset.py`, `recipes_sample.json`, full test suite. |
 | 2 | User profiles: `profile.py` with `UserProfile` (hard constraints, soft preferences, rating history, pantry), load/save JSON, immutable update helpers, `demo_user.json`, 20 tests. |
 | 3 | Stage 1 matching: `matching.py` with `IngredientScorer` (rapidfuzz fuzzy matching), `Rule` protocol, 3 hard rules + 3 soft rules, `FilterEngine` producing `FilterResult` + `DecisionEntry` log, 40 tests. |
+| 4 | Stage 2 CBR: `cbr.py` with `recipe_feature_vector` (cuisine/protein/method/flavor/difficulty/prep_time encoding), `CBRRetriever` (weighted centroid + cosine similarity + cold-start fallback), `CBRAdapter` (goal-based substitution from `data/substitutions.json`), `record_success`; 30 tests. |
 
 ### Schema / Interface Changes in Phase 1
 - `ingredients` changed from `list[str]` → `list[Ingredient]` (structured model with `name`, `quantity`, `unit`, `category`).
@@ -147,5 +148,5 @@ Pantry coverage threshold: `COVERAGE_THRESHOLD = 0.50`.
 - `goals` validated against `VALID_GOALS` vocabulary in `SoftPreferences`.
 - Profiles stored in `data/profiles/{user_id}.json`.
 
-### Next: Phase 4
-Implement `cbr.py`: Case-Based Reasoning (Retrieve–Reuse–Revise–Retain cycle).
+### Next: Phase 5
+Implement `explain.py`: Explanation Generation (Goal Trace, Counterfactual, CBR Trace, Ingredient Utilization Report).

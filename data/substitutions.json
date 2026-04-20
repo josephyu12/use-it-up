@@ -1,0 +1,22 @@
+[
+  {"original": "chicken", "replacement": "tofu", "reason": "firm tofu provides plant-based protein in place of chicken", "goals": ["vegetarian", "vegan"]},
+  {"original": "beef", "replacement": "lentils", "reason": "lentils are a hearty plant-based substitute for ground or stewed beef", "goals": ["vegetarian", "vegan"]},
+  {"original": "pork", "replacement": "tempeh", "reason": "tempeh offers a chewy texture similar to pork", "goals": ["vegetarian", "vegan"]},
+  {"original": "shrimp", "replacement": "king oyster mushroom", "reason": "king oyster mushrooms mimic the texture of shrimp", "goals": ["vegetarian", "vegan"]},
+  {"original": "fish", "replacement": "jackfruit", "reason": "young jackfruit has a flaky texture suitable for fish-style dishes", "goals": ["vegetarian", "vegan"]},
+  {"original": "lamb", "replacement": "chickpeas", "reason": "chickpeas add protein and bulk similar to lamb in stews", "goals": ["vegetarian", "vegan"]},
+  {"original": "turkey", "replacement": "seitan", "reason": "seitan provides a meaty texture as a turkey substitute", "goals": ["vegetarian", "vegan"]},
+  {"original": "bacon", "replacement": "smoked paprika tofu strips", "reason": "smoked paprika tofu strips replicate smoky flavor of bacon", "goals": ["vegetarian", "vegan"]},
+  {"original": "ham", "replacement": "smoked tofu", "reason": "smoked tofu provides a savory, smoky flavor similar to ham", "goals": ["vegetarian", "vegan"]},
+  {"original": "heavy cream", "replacement": "coconut cream", "reason": "coconut cream is a rich, dairy-free cream substitute", "goals": ["vegan", "dairy_free"]},
+  {"original": "milk", "replacement": "oat milk", "reason": "oat milk is a neutral, dairy-free milk substitute", "goals": ["vegan", "dairy_free"]},
+  {"original": "butter", "replacement": "coconut oil", "reason": "coconut oil provides fat and richness without dairy", "goals": ["vegan", "dairy_free"]},
+  {"original": "cheese", "replacement": "nutritional yeast", "reason": "nutritional yeast adds umami and cheesy flavor without dairy", "goals": ["vegan", "dairy_free"]},
+  {"original": "yogurt", "replacement": "coconut yogurt", "reason": "coconut yogurt is a creamy, dairy-free alternative", "goals": ["vegan", "dairy_free"]},
+  {"original": "feta", "replacement": "marinated tofu crumbles", "reason": "marinated tofu crumbles mimic the salty, tangy quality of feta", "goals": ["vegan", "dairy_free"]},
+  {"original": "ghee", "replacement": "vegan butter", "reason": "vegan butter provides the same fat function as ghee", "goals": ["vegan", "dairy_free"]},
+  {"original": "parmesan", "replacement": "cashew parmesan", "reason": "blended cashews with nutritional yeast replicate parmesan flavor", "goals": ["vegan", "dairy_free"]},
+  {"original": "egg", "replacement": "flax egg", "reason": "ground flaxseed mixed with water binds like an egg in baking", "goals": ["vegan"]},
+  {"original": "honey", "replacement": "maple syrup", "reason": "maple syrup is a plant-based sweetener that replaces honey", "goals": ["vegan"]},
+  {"original": "sour cream", "replacement": "cashew cream", "reason": "blended cashews create a tangy, creamy dairy-free sour cream", "goals": ["vegan", "dairy_free"]}
+]
