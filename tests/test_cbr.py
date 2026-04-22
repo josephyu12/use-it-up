@@ -422,6 +422,23 @@ class TestAdaptation:
         replaced = [a.replacement for a in result.adaptations]
         assert any("coconut yogurt" in r for r in replaced)
 
+    def test_adaptation_updates_category_and_dietary_tags(self, substitutions_file: Path) -> None:
+        adapter = CBRAdapter(substitutions_path=substitutions_file)
+        profile = _base_profile(
+            soft_preferences=SoftPreferences(goals=["dairy_free"])
+        )
+        match = CBRMatch(
+            recipe=_indian_recipe(),
+            similarity_score=0.7,
+            nearest_past_recipe=None,
+            similarity_breakdown=FeatureBreakdown(0, 0, 0, 0, 0, 0),
+        )
+        result = adapter.adapt(match, profile)
+        ingredients = {ing.name.lower(): ing.category for ing in result.recipe.ingredients}
+        assert "coconut yogurt" in ingredients
+        assert ingredients["coconut yogurt"] != "dairy"
+        assert "dairy-free" in result.recipe.dietary_tags
+
 
 # ---------------------------------------------------------------------------
 # record_success (Retain step)

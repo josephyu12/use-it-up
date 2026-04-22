@@ -2,13 +2,15 @@
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
+from functools import lru_cache
 from typing import Protocol, runtime_checkable
 
 from rapidfuzz import fuzz
 
 from useitup.profile import UserProfile
-from useitup.schemas import Recipe
+from useitup.schemas import Ingredient, Recipe
 
 FUZZY_THRESHOLD: int = 75
 COVERAGE_THRESHOLD: float = 0.5
@@ -33,6 +35,8 @@ _CONSTRAINT_KEYWORDS: dict[str, frozenset[str]] = {
     "dairy-free": _DAIRY_KEYWORDS,
 }
 
+_PLANT_BASED_DAIRY_PREFIXES = ("coconut ", "oat ", "vegan ", "cashew ", "almond ", "soy ")
+
 # Maps profile goals → recipe dietary_tags
 GOAL_TO_TAG: dict[str, str] = {
     "high_protein": "high-protein",
@@ -51,6 +55,35 @@ class IngredientScore:
     missing_count: int
     coverage: float
     missing_ingredients: list[str]
+    matched_ingredients: list[str]
+    essential_overlap_count: int = 0
+    essential_total: int = 0
+    essential_coverage: float = 0.0
+    essential_missing_ingredients: list[str] | None = None
+    weighted_coverage: float = 0.0
+
+
+_STOPWORDS = frozenset({
+    "fresh", "dried", "ground", "crushed", "chopped", "minced", "large", "small",
+    "extra", "virgin", "boneless", "skinless", "whole", "plain", "low", "fat",
+    "optional", "for", "serving",
+})
+_GARNISH_KEYWORDS = frozenset({
+    "salt", "pepper", "parsley", "cilantro", "chives", "scallion", "green onion",
+    "sesame seeds", "red pepper flakes", "lemon wedges", "lime wedges",
+})
+_TOKEN_ALIASES: dict[str, str] = {
+    "scallions": "green onion",
+    "scallion": "green onion",
+    "spring onion": "green onion",
+    "garbanzo": "chickpea",
+    "garbanzos": "chickpea",
+    "chickpeas": "chickpea",
+    "tomatoes": "tomato",
+    "eggs": "egg",
+    "tortillas": "tortilla",
+    "noodles": "noodle",
+}
 
 
 @dataclass
@@ -86,38 +119,179 @@ class Rule(Protocol):
 
 
 def _fuzzy_match(a: str, b: str) -> bool:
-    return fuzz.partial_ratio(a.lower(), b.lower()) >= FUZZY_THRESHOLD
+    return _ingredient_match(a, b)
+
+
+@lru_cache(maxsize=None)
+def _normalize_token(token: str) -> str:
+    token = token.strip().lower()
+    token = re.sub(r"[^a-z0-9]+", "", token)
+    if not token:
+        return ""
+    if token in _TOKEN_ALIASES:
+        return _TOKEN_ALIASES[token]
+    if len(token) > 4 and token.endswith("ies"):
+        token = token[:-3] + "y"
+    elif len(token) > 3 and token.endswith("es"):
+        token = token[:-2]
+    elif len(token) > 3 and token.endswith("s"):
+        token = token[:-1]
+    return _TOKEN_ALIASES.get(token, token)
+
+
+@lru_cache(maxsize=None)
+def _ingredient_tokens(text: str) -> frozenset[str]:
+    tokens = {
+        _normalize_token(token)
+        for token in re.split(r"[^a-z0-9]+", text.lower())
+    }
+    return frozenset(token for token in tokens if token and token not in _STOPWORDS)
+
+
+def _ingredient_match(a: str, b: str) -> bool:
+    a_tokens = _ingredient_tokens(a)
+    b_tokens = _ingredient_tokens(b)
+    if not a_tokens or not b_tokens:
+        return False
+    if a_tokens == b_tokens or a_tokens.issubset(b_tokens) or b_tokens.issubset(a_tokens):
+        return True
+    if a_tokens & b_tokens:
+        return True
+
+    normalized_a = " ".join(sorted(a_tokens))
+    normalized_b = " ".join(sorted(b_tokens))
+    return (
+        fuzz.token_set_ratio(normalized_a, normalized_b) >= 92
+        or fuzz.ratio(normalized_a, normalized_b) >= 88
+    )
 
 
 def _ingredient_contains_keyword(recipe: Recipe, keywords: frozenset[str]) -> bool:
     for ing in recipe.ingredients:
         name = ing.name.lower()
-        if any(kw in name for kw in keywords):
+        if _name_matches_constraint_keywords(name, keywords):
             return True
     return False
 
 
-class IngredientScorer:
-    def score(self, recipe: Recipe, pantry: list[str]) -> IngredientScore:
-        recipe_ings = [ing.name.lower() for ing in recipe.ingredients]
-        matched: set[str] = set()
+def _name_matches_constraint_keywords(name: str, keywords: frozenset[str]) -> bool:
+    if keywords is _NUT_KEYWORDS and "coconut" in name:
+        return False
+    if keywords is _DAIRY_KEYWORDS and any(name.startswith(prefix) for prefix in _PLANT_BASED_DAIRY_PREFIXES):
+        return False
+    return any(kw in name for kw in keywords)
 
-        for pantry_item in pantry:
-            for recipe_ing in recipe_ings:
-                if _fuzzy_match(pantry_item, recipe_ing):
-                    matched.add(recipe_ing)
+
+def _is_garnish(name: str) -> bool:
+    low = name.lower()
+    return any(keyword in low for keyword in _GARNISH_KEYWORDS)
+
+
+class IngredientScorer:
+    def __init__(self) -> None:
+        # Scorer is created fresh per request; cache memoizes repeat calls
+        # within one request (e.g. Rule.applies → Rule.fail_reason re-scoring
+        # the same recipe under the same pantry).
+        self._cache: dict[tuple[str, tuple[str, ...], tuple[str, ...]], IngredientScore] = {}
+
+    def score(self, recipe: Recipe, pantry: list[str]) -> IngredientScore:
+        ingredient_signature = tuple(ingredient.name.lower() for ingredient in recipe.ingredients)
+        cache_key = (recipe.id, ingredient_signature, tuple(pantry))
+        cached = self._cache.get(cache_key)
+        if cached is not None:
+            return cached
+        recipe_name_tokens = _ingredient_tokens(recipe.name)
+        recipe_ings = recipe.ingredients
+        matched: list[str] = []
+        essential: list[str] = []
+        essential_missing: list[str] = []
+        total_weight = 0.0
+        matched_weight = 0.0
+
+        for idx, ingredient in enumerate(recipe_ings):
+            ing_name = ingredient.name.lower()
+            weight = self._ingredient_weight(ingredient, idx, recipe_name_tokens)
+            total_weight += weight
+            is_match = any(_fuzzy_match(pantry_item, ing_name) for pantry_item in pantry)
+            if is_match:
+                matched.append(ing_name)
+                matched_weight += weight
+            if self._is_essential(ingredient, idx, recipe_name_tokens):
+                essential.append(ing_name)
+                if not is_match:
+                    essential_missing.append(ing_name)
 
         total = len(recipe_ings)
         overlap = len(matched)
-        missing = [ing for ing in recipe_ings if ing not in matched]
+        missing = [ing.name.lower() for ing in recipe_ings if ing.name.lower() not in matched]
+        essential_overlap = len(essential) - len(essential_missing)
+        essential_total = len(essential)
         coverage = overlap / total if total > 0 else 0.0
+        essential_coverage = essential_overlap / essential_total if essential_total > 0 else coverage
+        weighted_coverage = matched_weight / total_weight if total_weight > 0 else 0.0
 
-        return IngredientScore(
+        result = IngredientScore(
             overlap_count=overlap,
             missing_count=len(missing),
             coverage=coverage,
             missing_ingredients=missing,
+            matched_ingredients=matched,
+            essential_overlap_count=essential_overlap,
+            essential_total=essential_total,
+            essential_coverage=essential_coverage,
+            essential_missing_ingredients=essential_missing,
+            weighted_coverage=weighted_coverage,
         )
+        self._cache[cache_key] = result
+        return result
+
+    def _ingredient_weight(
+        self,
+        ingredient: Ingredient,
+        idx: int,
+        recipe_name_tokens: set[str],
+    ) -> float:
+        category_weights = {
+            "protein": 1.0,
+            "grain": 1.0,
+            "vegetable": 0.75,
+            "dairy": 0.7,
+            "fat": 0.65,
+            "condiment": 0.45,
+            "spice": 0.25,
+            "other": 0.55,
+        }
+        weight = category_weights.get(ingredient.category, 0.5)
+        ing_tokens = _ingredient_tokens(ingredient.name)
+        if idx < 2 and ingredient.category in {"protein", "grain", "vegetable", "dairy", "fat"}:
+            weight += 0.2
+        if idx < 3 and ingredient.category in {"fat", "dairy"}:
+            weight += 0.15
+        if ing_tokens & recipe_name_tokens:
+            weight += 0.35
+        if _is_garnish(ingredient.name):
+            weight = min(weight, 0.2)
+        return weight
+
+    def _is_essential(
+        self,
+        ingredient: Ingredient,
+        idx: int,
+        recipe_name_tokens: set[str],
+    ) -> bool:
+        if ingredient.is_core is not None:
+            return ingredient.is_core
+        ing_name = ingredient.name.lower()
+        ing_tokens = _ingredient_tokens(ing_name)
+        if _is_garnish(ing_name):
+            return False
+        if ing_tokens & recipe_name_tokens:
+            return True
+        if ingredient.category in {"protein", "grain"}:
+            return True
+        if idx < 2 and ingredient.category in {"protein", "grain", "vegetable", "dairy", "fat"}:
+            return True
+        return idx < 3 and ingredient.category in {"fat", "dairy", "vegetable"}
 
 
 class AllergyRule:
@@ -177,25 +351,48 @@ class DietaryRule:
 
 
 class PantryCoverageRule:
-    """Hard rule: reject if ingredient coverage is below the threshold."""
+    """Hard rule: reject if coverage is too low or any core ingredient is missing."""
 
     is_hard = True
     weight = 1.0
 
-    def __init__(self, threshold: float = COVERAGE_THRESHOLD) -> None:
+    def __init__(
+        self,
+        threshold: float = COVERAGE_THRESHOLD,
+        require_all_essentials: bool | None = None,
+    ) -> None:
         self.threshold = threshold
+        # Auto-relax essential check at low thresholds (sparse pantry / adaptation).
+        if require_all_essentials is None:
+            self.require_all_essentials = threshold > 0.35
+        else:
+            self.require_all_essentials = require_all_essentials
         self.reason = f"Ingredient coverage below threshold ({threshold:.0%})"
         self._scorer = IngredientScorer()
 
     def applies(self, recipe: Recipe, profile: UserProfile) -> bool:
+        if self.threshold <= 0.0:
+            return True
         score = self._scorer.score(recipe, profile.pantry)
-        return score.coverage >= self.threshold
+        passes_raw = score.coverage >= self.threshold
+        if not passes_raw:
+            return False
+        if self.require_all_essentials:
+            return not (score.essential_missing_ingredients or [])
+        return True
 
     def fail_reason(self, recipe: Recipe, profile: UserProfile) -> str:
+        if self.threshold <= 0.0:
+            return f"Passed PantryCoverageRule: {self.reason}"
         score = self._scorer.score(recipe, profile.pantry)
+        missing_essential = score.essential_missing_ingredients or []
         return (
-            f"Recipe '{recipe.name}' eliminated: coverage {score.coverage:.0%} "
-            f"< {self.threshold:.0%}"
+            f"Recipe '{recipe.name}' eliminated: raw coverage {score.coverage:.0%}, "
+            f"weighted coverage {score.weighted_coverage:.0%}, "
+            f"essential coverage {score.essential_coverage:.0%} "
+            f"(need {self.threshold:.0%} raw"
+            + (" and all core ingredients present" if self.require_all_essentials else "")
+            + f"); missing essentials: {missing_essential or ['none']}"
         )
 
 

@@ -25,6 +25,7 @@ class Ingredient(BaseModel):
     quantity: float | None = None
     unit: str | None = None
     category: IngredientCategory
+    is_core: bool | None = None
 
     @field_validator("name")
     @classmethod

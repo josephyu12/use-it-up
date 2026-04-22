@@ -4,8 +4,6 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from rapidfuzz import fuzz
-
 from useitup.cbr import AdaptedRecipe, CBRMatch
 from useitup.matching import (
     CuisinePreferenceRule,
@@ -16,28 +14,45 @@ from useitup.matching import (
     IngredientScorer,
     PrepTimeRule,
     ScoredRecipe,
+    _ingredient_match,
+    _ingredient_tokens,
 )
 from useitup.profile import UserProfile
 from useitup.schemas import Recipe
 
 _HARD_RULE_NAMES = frozenset({"AllergyRule", "DietaryRule", "PantryCoverageRule"})
-_FUZZY_THRESHOLD: int = 75
+_GENERIC_MATCH_TOKENS = frozenset({
+    "sauce", "cheese", "tortilla", "oil", "bread", "rice", "bean", "noodle", "pasta",
+})
 
 
-def _fuzz(a: str, b: str) -> bool:
-    return fuzz.partial_ratio(a.lower(), b.lower()) >= _FUZZY_THRESHOLD
+def _is_meaningful_pair(pantry_item: str, ingredient_name: str) -> bool:
+    pantry_tokens = set(_ingredient_tokens(pantry_item))
+    ingredient_tokens = set(_ingredient_tokens(ingredient_name))
+    shared = pantry_tokens & ingredient_tokens
+    if not shared:
+        return False
+    if shared - _GENERIC_MATCH_TOKENS:
+        return True
+    return pantry_tokens == ingredient_tokens
 
 
 def _pantry_used(recipe: Recipe, pantry: list[str]) -> list[str]:
-    """Pantry items that fuzzy-match at least one recipe ingredient."""
+    """Pantry items that meaningfully match at least one recipe ingredient."""
     ing_names = [i.name.lower() for i in recipe.ingredients]
-    return [item for item in pantry if any(_fuzz(item, n) for n in ing_names)]
+    return [
+        item for item in pantry
+        if any(_ingredient_match(item, n) and _is_meaningful_pair(item, n) for n in ing_names)
+    ]
 
 
 def _pantry_unused(recipe: Recipe, pantry: list[str]) -> list[str]:
-    """Pantry items that match NO recipe ingredient."""
+    """Pantry items that match no recipe ingredient."""
     ing_names = [i.name.lower() for i in recipe.ingredients]
-    return [item for item in pantry if not any(_fuzz(item, n) for n in ing_names)]
+    return [
+        item for item in pantry
+        if not any(_ingredient_match(item, n) and _is_meaningful_pair(item, n) for n in ing_names)
+    ]
 
 
 def _soft_score(recipe: Recipe, profile: UserProfile) -> float:
@@ -46,6 +61,11 @@ def _soft_score(recipe: Recipe, profile: UserProfile) -> float:
     total = sum(r.weight for r in rules)
     earned = sum(r.weight for r in rules if r.applies(recipe, profile))
     return earned / total if total > 0.0 else 1.0
+
+
+def _failed_soft_rules(recipe: Recipe, profile: UserProfile) -> list[str]:
+    rules = [PrepTimeRule(), CuisinePreferenceRule(), GoalAlignmentRule()]
+    return [type(rule).__name__ for rule in rules if not rule.applies(recipe, profile)]
 
 
 @dataclass
@@ -66,22 +86,27 @@ def _build_goal_trace(
     ing_score = scorer.score(recipe, profile.pantry)
     total = ing_score.overlap_count + ing_score.missing_count
     pct = int(ing_score.coverage * 100)
-    used = _pantry_used(recipe, profile.pantry)
+    matched_recipe_ingredients = ing_score.matched_ingredients
 
     recipe_tags = set(recipe.dietary_tags)
     matched_goals = [g for g in profile.soft_preferences.goals if GOAL_TO_TAG.get(g, "") in recipe_tags]
 
-    # Pull soft rule outcomes for this recipe from the decision log
-    recipe_log = [e for e in decision_log if e.recipe_id == recipe.id]
-    soft_failed = [e for e in recipe_log if not e.passed and e.rule_name not in _HARD_RULE_NAMES]
+    soft_failed = _failed_soft_rules(recipe, profile)
 
     lines = [f"## Goal Trace: Why **{recipe.name}**?", ""]
     lines.append(
         f"I recommend **{recipe.name}** because you have "
-        f"**{ing_score.overlap_count} of {total} ingredients** ({pct}%) on hand."
+        f"**{ing_score.overlap_count} of {total} ingredients** ({pct}%) on hand, "
+        f"including **{ing_score.essential_overlap_count} of "
+        f"{ing_score.essential_total or total} core ingredients**."
     )
-    if used:
-        lines.append(f"\n**Pantry items used:** {', '.join(used)}.")
+    if matched_recipe_ingredients:
+        lines.append(f"\n**Matched recipe ingredients:** {', '.join(matched_recipe_ingredients)}.")
+    if ing_score.essential_missing_ingredients:
+        lines.append(
+            "\n**Still missing core ingredients:** "
+            f"{', '.join(ing_score.essential_missing_ingredients)}."
+        )
     if matched_goals:
         goal_labels = [g.replace("_", " ") for g in matched_goals]
         lines.append(f"\n**Goals satisfied:** {', '.join(goal_labels)}.")
@@ -94,7 +119,7 @@ def _build_goal_trace(
         for a in adapted.adaptations:
             lines.append(f"- Replaced **{a.original}** → **{a.replacement}**: {a.reason}")
     if soft_failed:
-        names = ", ".join(e.rule_name for e in soft_failed)
+        names = ", ".join(soft_failed)
         lines.append(
             f"\n*Note: {len(soft_failed)} soft preference(s) not fully met ({names}), "
             "but this was the best available match.*"
@@ -125,17 +150,20 @@ def _build_counterfactual(
         return (
             "## Counterfactual\n\n"
             "All candidate recipes passed hard constraints. "
-            "The top recommendation was chosen based on the highest combined "
-            "ingredient coverage and soft preference score."
+            "The final recommendation was chosen by the retrieval, adaptation, "
+            "and pantry-fit ranking pipeline rather than by hard-rule elimination."
         )
 
-    # Rank rejected recipes by ingredient coverage, then by hypothetical soft score
+    # Rank rejected recipes by ingredient coverage, then by hypothetical soft score.
+    # Cap the search pool so counterfactual cost doesn't scale with corpus size —
+    # any one of the top-scoring rejects is an equally informative example.
+    _COUNTERFACTUAL_POOL = 500
     scorer = IngredientScorer()
     best_recipe: Recipe | None = None
     best_coverage = -1.0
     best_reason = ""
 
-    for rid, reason in truly_rejected.items():
+    for rid, reason in list(truly_rejected.items())[:_COUNTERFACTUAL_POOL]:
         recipe = recipe_index.get(rid)
         if recipe is None:
             continue
@@ -154,11 +182,6 @@ def _build_counterfactual(
     # Determine which constraint(s) blocked it
     violated = [c for c in profile.hard_constraints if c not in set(best_recipe.dietary_tags)]
 
-    # Hypothetical position: where would it rank among survivors by soft score?
-    hyp_score = _soft_score(best_recipe, profile)
-    survivors_sorted = sorted(filter_result.survivors, key=lambda s: s.soft_score, reverse=True)
-    position = sum(1 for s in survivors_sorted if s.soft_score >= hyp_score) + 1
-
     # Identify its strongest soft dimension
     recipe_tags = set(best_recipe.dietary_tags)
     strong_tags = [t for t in ("high-protein", "low-cost", "quick") if t in recipe_tags]
@@ -173,32 +196,36 @@ def _build_counterfactual(
     if violated:
         lines.append(
             f"If you removed your **{', '.join(violated)}** constraint(s), "
-            f"it would have ranked **#{position}** in the candidate pool "
-            f"due to its **{top_soft_label}** profile."
+            f"it would have remained a competitive candidate because of its "
+            f"**{top_soft_label}** profile."
         )
     return "\n".join(lines)
 
 
 def _build_cbr_trace(
     adapted: AdaptedRecipe,
-    cbr_matches: list[CBRMatch],
+    cbr_match: CBRMatch | None,
     profile: UserProfile,
 ) -> str:
-    if not cbr_matches:
+    if cbr_match is None:
         return "## CBR Trace\n\nNo candidates were available for case-based reasoning."
 
-    best = cbr_matches[0]
     recipe = adapted.recipe
 
-    if best.fallback_reason is not None:
+    if cbr_match.fallback_reason is not None:
+        ranking_reason = (
+            "using pantry fit, your active preferences, and prep-time ranking"
+            if profile.soft_preferences.preferred_cuisines or profile.soft_preferences.goals
+            or profile.soft_preferences.max_prep_time_min is not None
+            else "using pantry fit and prep-time ranking"
+        )
         lines = [
             "## CBR Trace",
             "",
-            f"**Cold-start mode:** {best.fallback_reason}.",
+            f"**Cold-start mode:** {cbr_match.fallback_reason}.",
             "",
-            f"**{recipe.name}** was selected as the top candidate using cuisine preference "
-            "and prep-time ranking, because no past recipe ratings are available "
-            "to guide similarity matching.",
+            f"**{recipe.name}** was selected in cold-start mode {ranking_reason} "
+            "because no past recipe ratings are available to guide similarity matching.",
         ]
         if adapted.adaptations:
             lines.append("\n**Adaptations applied:**")
@@ -206,12 +233,12 @@ def _build_cbr_trace(
                 lines.append(f"- {a.original} → {a.replacement}: {a.reason}")
         return "\n".join(lines)
 
-    past = best.nearest_past_recipe
+    past = cbr_match.nearest_past_recipe
     if past is None:
         return (
             "## CBR Trace\n\n"
             f"**{recipe.name}** was retrieved via CBR "
-            f"(similarity: {best.similarity_score:.2f}) but no nearest past recipe was identified."
+            f"(similarity: {cbr_match.similarity_score:.2f}) but no nearest past recipe was identified."
         )
 
     # Look up rating and date from profile history
@@ -222,7 +249,7 @@ def _build_cbr_trace(
     date_str = rating_entry.timestamp[:10] if rating_entry else "unknown date"
 
     # Identify matched feature dimensions (similarity ≥ 0.7)
-    bd = best.similarity_breakdown
+    bd = cbr_match.similarity_breakdown
     feature_scores = {
         "cuisine": bd.cuisine,
         "protein": bd.protein,
@@ -238,7 +265,7 @@ def _build_cbr_trace(
         "",
         f"**{recipe.name}** is based on **{past.name}**, "
         f"which you rated **{rating_str}** on {date_str}.",
-        f"\n**CBR similarity score:** {best.similarity_score:.2f} "
+        f"\n**CBR similarity score:** {cbr_match.similarity_score:.2f} "
         f"(cuisine: {bd.cuisine:.2f}, flavor: {bd.flavor:.2f}, protein: {bd.protein:.2f})",
         "",
     ]
@@ -293,6 +320,12 @@ def _build_ingredient_utilization_report(
         for item in missing:
             lines.append(f"- {item}")
         lines.append("")
+    essential_missing = ing_score.essential_missing_ingredients or []
+    if essential_missing:
+        lines.append("### 🔑 Core Ingredients Still Missing")
+        for item in essential_missing:
+            lines.append(f"- {item}")
+        lines.append("")
     lines.append("### 💡 Follow-Up Recipe Suggestions")
     if top_follow_ups:
         for r, items in top_follow_ups:
@@ -305,7 +338,7 @@ def _build_ingredient_utilization_report(
 def generate_explanation(
     adapted: AdaptedRecipe,
     filter_result: FilterResult,
-    cbr_matches: list[CBRMatch],
+    cbr_match: CBRMatch | None,
     profile: UserProfile,
     all_recipes: list[Recipe],
 ) -> Explanation:
@@ -314,7 +347,7 @@ def generate_explanation(
         counterfactual=_build_counterfactual(
             adapted, filter_result.decision_log, filter_result, all_recipes, profile
         ),
-        cbr_trace=_build_cbr_trace(adapted, cbr_matches, profile),
+        cbr_trace=_build_cbr_trace(adapted, cbr_match, profile),
         ingredient_utilization_report=_build_ingredient_utilization_report(
             adapted, filter_result, profile
         ),
@@ -329,4 +362,4 @@ def render_explanation(explanation: Explanation) -> str:
         explanation.cbr_trace,
         explanation.ingredient_utilization_report,
     ]
-    return "\n\n---\n\n".join(parts)
+    return "\n\n---\n\n".join(parts) + "\n"

@@ -8,28 +8,43 @@
     "goals": ["high_protein", "low_cost"]
   },
   "rating_history": [
-    {"recipe_id": "r001", "rating": 5, "timestamp": "2026-01-10T18:30:00"},
-    {"recipe_id": "r002", "rating": 4, "timestamp": "2026-01-14T19:00:00"},
-    {"recipe_id": "r003", "rating": 2, "timestamp": "2026-01-20T12:15:00"},
-    {"recipe_id": "r004", "rating": 5, "timestamp": "2026-01-25T20:00:00"},
-    {"recipe_id": "r005", "rating": 3, "timestamp": "2026-02-01T13:45:00"},
-    {"recipe_id": "r006", "rating": 4, "timestamp": "2026-02-08T18:00:00"},
-    {"recipe_id": "r007", "rating": 1, "timestamp": "2026-02-15T19:30:00"},
-    {"recipe_id": "r008", "rating": 5, "timestamp": "2026-02-22T17:00:00"}
+    {"recipe_id": "d001234-pork-tenderloin-with-chipotle-marinade", "rating": 5, "timestamp": "2026-01-10T18:30:00"},
+    {"recipe_id": "d000205-garlic-shrimp", "rating": 5, "timestamp": "2026-01-14T19:00:00"},
+    {"recipe_id": "d001307-tandoori-spiced-chicken-with-tomato-ginger-chutney", "rating": 4, "timestamp": "2026-01-20T12:15:00"},
+    {"recipe_id": "d000360-chicken-zucchini-and-prosciutto", "rating": 4, "timestamp": "2026-01-25T20:00:00"},
+    {"recipe_id": "d015193-bcd-soon-tofu-soup-starter-with-mussels-in-white-wine-recipe", "rating": 5, "timestamp": "2026-02-01T13:45:00"},
+    {"recipe_id": "d000028-grilled-lamb-and-potato-brochettes", "rating": 4, "timestamp": "2026-02-08T18:00:00"},
+    {"recipe_id": "d000031-georgian-grilled-tomato-sauce", "rating": 2, "timestamp": "2026-02-15T19:30:00"},
+    {"recipe_id": "d000086-tomato-rhubarb-chutney", "rating": 5, "timestamp": "2026-02-22T17:00:00"}
   ],
   "pantry": [
     "chicken breast",
+    "chicken thighs",
     "eggs",
     "black beans",
+    "chickpeas",
     "brown rice",
+    "quinoa",
     "olive oil",
+    "sesame oil",
     "garlic",
     "onion",
+    "red onion",
+    "ginger",
     "cumin",
     "paprika",
+    "turmeric",
+    "cinnamon",
     "lime",
+    "lemon",
     "avocado",
     "cherry tomatoes",
-    "spinach"
+    "spinach",
+    "cilantro",
+    "parsley",
+    "greek yogurt",
+    "feta cheese",
+    "canned tomatoes",
+    "coconut milk"
   ]
 }

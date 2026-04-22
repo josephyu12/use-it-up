@@ -1,0 +1,9108 @@
+[
+  {
+    "id": "r001",
+    "name": "Spaghetti Aglio e Olio",
+    "ingredients": [
+      {
+        "name": "spaghetti",
+        "quantity": 400,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "garlic",
+        "quantity": 6,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "olive oil",
+        "quantity": 4,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": true
+      },
+      {
+        "name": "red pepper flakes",
+        "quantity": 1,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "parsley",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "salt",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Italian",
+    "dietary_tags": [
+      "vegan",
+      "vegetarian",
+      "dairy-free",
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 5,
+    "cook_time_min": 15,
+    "difficulty": 1,
+    "nutrition": {
+      "calories": 520,
+      "protein_g": 14,
+      "carbs_g": 72,
+      "fat_g": 18
+    },
+    "flavor_profile": [
+      "spicy",
+      "savory",
+      "fresh",
+      "rich"
+    ],
+    "instructions": [
+      "Boil spaghetti in salted water until al dente.",
+      "Gently fry sliced garlic in olive oil until golden.",
+      "Add red pepper flakes; toss drained pasta in the oil.",
+      "Finish with chopped parsley and serve."
+    ]
+  },
+  {
+    "id": "r002",
+    "name": "Spaghetti Carbonara",
+    "ingredients": [
+      {
+        "name": "spaghetti",
+        "quantity": 400,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "pancetta",
+        "quantity": 150,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "eggs",
+        "quantity": 3,
+        "unit": null,
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "parmesan",
+        "quantity": 80,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "black pepper",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "salt",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Italian",
+    "dietary_tags": [
+      "nut-free",
+      "quick",
+      "high-protein"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 15,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 680,
+      "protein_g": 32,
+      "carbs_g": 72,
+      "fat_g": 28
+    },
+    "flavor_profile": [
+      "umami",
+      "savory"
+    ],
+    "instructions": [
+      "Boil spaghetti until al dente; reserve 1 cup pasta water.",
+      "Crisp pancetta in a wide pan, then remove from heat.",
+      "Whisk eggs with grated parmesan and pepper.",
+      "Toss hot pasta with pancetta, then off-heat egg mix, loosening with pasta water."
+    ]
+  },
+  {
+    "id": "r003",
+    "name": "Fettuccine Alfredo",
+    "ingredients": [
+      {
+        "name": "fettuccine",
+        "quantity": 400,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "butter",
+        "quantity": 80,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "heavy cream",
+        "quantity": 250,
+        "unit": "ml",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "parmesan",
+        "quantity": 100,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "black pepper",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "salt",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Italian",
+    "dietary_tags": [
+      "vegetarian",
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 5,
+    "cook_time_min": 15,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 760,
+      "protein_g": 22,
+      "carbs_g": 68,
+      "fat_g": 44
+    },
+    "flavor_profile": [
+      "umami",
+      "savory",
+      "rich"
+    ],
+    "instructions": [
+      "Cook fettuccine until al dente.",
+      "Melt butter with cream over low heat.",
+      "Toss pasta with sauce and grated parmesan off heat.",
+      "Season with black pepper; serve immediately."
+    ]
+  },
+  {
+    "id": "r004",
+    "name": "Penne Arrabbiata",
+    "ingredients": [
+      {
+        "name": "penne",
+        "quantity": 400,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "canned tomatoes",
+        "quantity": 400,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "garlic",
+        "quantity": 4,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "red pepper flakes",
+        "quantity": 2,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 3,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "parsley",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "salt",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Italian",
+    "dietary_tags": [
+      "vegan",
+      "vegetarian",
+      "dairy-free",
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 5,
+    "cook_time_min": 20,
+    "difficulty": 1,
+    "nutrition": {
+      "calories": 490,
+      "protein_g": 14,
+      "carbs_g": 78,
+      "fat_g": 13
+    },
+    "flavor_profile": [
+      "spicy",
+      "savory",
+      "fresh",
+      "rich"
+    ],
+    "instructions": [
+      "Sauté garlic and chilli flakes in olive oil.",
+      "Add canned tomatoes; simmer 15 minutes.",
+      "Cook penne until al dente.",
+      "Toss pasta in sauce; top with parsley."
+    ]
+  },
+  {
+    "id": "r005",
+    "name": "Cacio e Pepe",
+    "ingredients": [
+      {
+        "name": "spaghetti",
+        "quantity": 400,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "pecorino",
+        "quantity": 120,
+        "unit": "g",
+        "category": "other",
+        "is_core": false
+      },
+      {
+        "name": "black pepper",
+        "quantity": 2,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "salt",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Italian",
+    "dietary_tags": [
+      "vegan",
+      "vegetarian",
+      "dairy-free",
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 5,
+    "cook_time_min": 12,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 560,
+      "protein_g": 24,
+      "carbs_g": 72,
+      "fat_g": 18
+    },
+    "flavor_profile": [
+      "savory"
+    ],
+    "instructions": [
+      "Cook spaghetti in minimal salted water.",
+      "Toast cracked pepper in a dry pan.",
+      "Add pasta water to the pan, then pasta.",
+      "Remove from heat, stir in pecorino until creamy."
+    ]
+  },
+  {
+    "id": "r006",
+    "name": "Classic Lasagna",
+    "ingredients": [
+      {
+        "name": "lasagna noodles",
+        "quantity": 12,
+        "unit": null,
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "ground beef",
+        "quantity": 500,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "tomato sauce",
+        "quantity": 600,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "ricotta",
+        "quantity": 400,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "mozzarella",
+        "quantity": 300,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "parmesan",
+        "quantity": 80,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "oregano",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "salt",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Italian",
+    "dietary_tags": [
+      "nut-free"
+    ],
+    "prep_time_min": 30,
+    "cook_time_min": 60,
+    "difficulty": 4,
+    "nutrition": {
+      "calories": 780,
+      "protein_g": 44,
+      "carbs_g": 52,
+      "fat_g": 42
+    },
+    "flavor_profile": [
+      "umami",
+      "savory"
+    ],
+    "instructions": [
+      "Brown beef with onion and garlic; add tomato sauce, simmer 20 min.",
+      "Layer noodles, meat sauce, ricotta, mozzarella in a dish.",
+      "Top with parmesan; bake 40 min at 375°F.",
+      "Rest 10 minutes before slicing."
+    ]
+  },
+  {
+    "id": "r007",
+    "name": "Margherita Pizza",
+    "ingredients": [
+      {
+        "name": "pizza dough",
+        "quantity": 500,
+        "unit": "g",
+        "category": "other",
+        "is_core": true
+      },
+      {
+        "name": "tomato sauce",
+        "quantity": 200,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "fresh mozzarella",
+        "quantity": 250,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "fresh basil",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "salt",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Italian",
+    "dietary_tags": [
+      "vegetarian",
+      "gluten-free",
+      "nut-free",
+      "low-carb"
+    ],
+    "prep_time_min": 20,
+    "cook_time_min": 12,
+    "difficulty": 3,
+    "nutrition": {
+      "calories": 620,
+      "protein_g": 22,
+      "carbs_g": 78,
+      "fat_g": 22
+    },
+    "flavor_profile": [
+      "savory",
+      "fresh",
+      "rich"
+    ],
+    "instructions": [
+      "Stretch dough on a floured surface.",
+      "Spread tomato sauce and torn mozzarella.",
+      "Bake at 500°F for 10–12 minutes.",
+      "Finish with basil and olive oil."
+    ]
+  },
+  {
+    "id": "r008",
+    "name": "Caprese Salad",
+    "ingredients": [
+      {
+        "name": "fresh mozzarella",
+        "quantity": 250,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "tomato",
+        "quantity": 3,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "fresh basil",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 3,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "balsamic vinegar",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "salt",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "black pepper",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Italian",
+    "dietary_tags": [
+      "vegetarian",
+      "gluten-free",
+      "nut-free",
+      "quick",
+      "low-carb"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 0,
+    "difficulty": 1,
+    "nutrition": {
+      "calories": 350,
+      "protein_g": 18,
+      "carbs_g": 8,
+      "fat_g": 26
+    },
+    "flavor_profile": [
+      "savory",
+      "sour",
+      "fresh",
+      "rich"
+    ],
+    "instructions": [
+      "Slice mozzarella and tomatoes into rounds.",
+      "Alternate slices with basil leaves.",
+      "Drizzle with oil and balsamic.",
+      "Season and serve immediately."
+    ]
+  },
+  {
+    "id": "r009",
+    "name": "Mushroom Risotto",
+    "ingredients": [
+      {
+        "name": "arborio rice",
+        "quantity": 300,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "mushroom",
+        "quantity": 400,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "garlic",
+        "quantity": 2,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "vegetable broth",
+        "quantity": 1,
+        "unit": "l",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "white wine",
+        "quantity": 120,
+        "unit": "ml",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "parmesan",
+        "quantity": 60,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "butter",
+        "quantity": 40,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Italian",
+    "dietary_tags": [
+      "vegetarian",
+      "gluten-free",
+      "nut-free"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 30,
+    "difficulty": 3,
+    "nutrition": {
+      "calories": 560,
+      "protein_g": 18,
+      "carbs_g": 82,
+      "fat_g": 16
+    },
+    "flavor_profile": [
+      "umami",
+      "savory",
+      "rich"
+    ],
+    "instructions": [
+      "Sauté mushrooms in olive oil until browned; set aside.",
+      "Cook onion and garlic in butter; toast rice 2 min.",
+      "Deglaze with wine; add broth a ladle at a time, stirring, for 20 min.",
+      "Fold in mushrooms and parmesan."
+    ]
+  },
+  {
+    "id": "r010",
+    "name": "Minestrone Soup",
+    "ingredients": [
+      {
+        "name": "white beans",
+        "quantity": 400,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "carrot",
+        "quantity": 2,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "celery",
+        "quantity": 2,
+        "unit": "stalks",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 2,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "canned tomatoes",
+        "quantity": 400,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "zucchini",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "small pasta",
+        "quantity": 100,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "vegetable broth",
+        "quantity": 1,
+        "unit": "l",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "parmesan",
+        "quantity": null,
+        "unit": null,
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "oregano",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Italian",
+    "dietary_tags": [
+      "vegetarian",
+      "nut-free"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 35,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 360,
+      "protein_g": 16,
+      "carbs_g": 58,
+      "fat_g": 8
+    },
+    "flavor_profile": [
+      "umami",
+      "savory",
+      "rich"
+    ],
+    "instructions": [
+      "Sauté onion, carrot, celery, garlic in olive oil.",
+      "Add tomatoes and broth; simmer 20 min.",
+      "Add zucchini, beans, pasta; cook 10 more min.",
+      "Top with parmesan."
+    ]
+  },
+  {
+    "id": "r011",
+    "name": "Chicken Parmesan",
+    "ingredients": [
+      {
+        "name": "chicken breast",
+        "quantity": 600,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "breadcrumbs",
+        "quantity": 120,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "eggs",
+        "quantity": 2,
+        "unit": null,
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "flour",
+        "quantity": 80,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "tomato sauce",
+        "quantity": 400,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "mozzarella",
+        "quantity": 200,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "parmesan",
+        "quantity": 60,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "olive oil",
+        "quantity": 3,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "salt",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Italian",
+    "dietary_tags": [
+      "nut-free",
+      "high-protein"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 25,
+    "difficulty": 3,
+    "nutrition": {
+      "calories": 720,
+      "protein_g": 58,
+      "carbs_g": 42,
+      "fat_g": 34
+    },
+    "flavor_profile": [
+      "umami",
+      "savory",
+      "rich"
+    ],
+    "instructions": [
+      "Pound chicken thin; dredge in flour, egg, breadcrumbs.",
+      "Pan-fry until golden on both sides.",
+      "Top with tomato sauce and cheeses; bake 10 min at 400°F.",
+      "Serve over pasta."
+    ]
+  },
+  {
+    "id": "r012",
+    "name": "Pesto Gnocchi",
+    "ingredients": [
+      {
+        "name": "potato gnocchi",
+        "quantity": 500,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "pesto",
+        "quantity": 120,
+        "unit": "g",
+        "category": "condiment",
+        "is_core": true
+      },
+      {
+        "name": "parmesan",
+        "quantity": 40,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "pine nuts",
+        "quantity": 30,
+        "unit": "g",
+        "category": "other",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "salt",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Italian",
+    "dietary_tags": [
+      "vegetarian",
+      "gluten-free",
+      "quick"
+    ],
+    "prep_time_min": 5,
+    "cook_time_min": 10,
+    "difficulty": 1,
+    "nutrition": {
+      "calories": 540,
+      "protein_g": 16,
+      "carbs_g": 82,
+      "fat_g": 18
+    },
+    "flavor_profile": [
+      "umami",
+      "savory",
+      "rich"
+    ],
+    "instructions": [
+      "Boil gnocchi until they float.",
+      "Drain, reserving a splash of water.",
+      "Toss with pesto, olive oil, and a bit of pasta water.",
+      "Top with parmesan and pine nuts."
+    ]
+  },
+  {
+    "id": "r013",
+    "name": "Black Bean Tacos",
+    "ingredients": [
+      {
+        "name": "black beans",
+        "quantity": 400,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "corn tortillas",
+        "quantity": 8,
+        "unit": null,
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "avocado",
+        "quantity": 2,
+        "unit": null,
+        "category": "fat",
+        "is_core": true
+      },
+      {
+        "name": "salsa",
+        "quantity": 200,
+        "unit": "g",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "cumin",
+        "quantity": 1,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "lime",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "cilantro",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Mexican",
+    "dietary_tags": [
+      "vegan",
+      "vegetarian",
+      "dairy-free",
+      "gluten-free",
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 5,
+    "cook_time_min": 10,
+    "difficulty": 1,
+    "nutrition": {
+      "calories": 410,
+      "protein_g": 16,
+      "carbs_g": 60,
+      "fat_g": 12
+    },
+    "flavor_profile": [
+      "sour",
+      "fresh",
+      "rich"
+    ],
+    "instructions": [
+      "Heat black beans with cumin and salt.",
+      "Warm tortillas in a dry skillet.",
+      "Fill with beans, avocado, salsa, cilantro.",
+      "Squeeze lime on top."
+    ]
+  },
+  {
+    "id": "r014",
+    "name": "Chicken Quesadillas",
+    "ingredients": [
+      {
+        "name": "chicken breast",
+        "quantity": 400,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "flour tortillas",
+        "quantity": 4,
+        "unit": null,
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "cheddar cheese",
+        "quantity": 200,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "bell pepper",
+        "quantity": 1,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "cumin",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "salsa",
+        "quantity": null,
+        "unit": null,
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "sour cream",
+        "quantity": null,
+        "unit": null,
+        "category": "dairy",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Mexican",
+    "dietary_tags": [
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 10,
+    "difficulty": 1,
+    "nutrition": {
+      "calories": 650,
+      "protein_g": 42,
+      "carbs_g": 48,
+      "fat_g": 32
+    },
+    "flavor_profile": [
+      "savory",
+      "sour",
+      "rich"
+    ],
+    "instructions": [
+      "Sauté chicken with onion, pepper, cumin until cooked.",
+      "Layer filling and cheese between tortillas.",
+      "Griddle 2 min per side until cheese melts.",
+      "Slice and serve with salsa and sour cream."
+    ]
+  },
+  {
+    "id": "r015",
+    "name": "Beef Burritos",
+    "ingredients": [
+      {
+        "name": "ground beef",
+        "quantity": 500,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "flour tortillas",
+        "quantity": 4,
+        "unit": null,
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "rice",
+        "quantity": 150,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "black beans",
+        "quantity": 300,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "cheddar cheese",
+        "quantity": 120,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "salsa",
+        "quantity": null,
+        "unit": null,
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "cumin",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "paprika",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Mexican",
+    "dietary_tags": [
+      "nut-free",
+      "high-protein"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 20,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 780,
+      "protein_g": 42,
+      "carbs_g": 78,
+      "fat_g": 28
+    },
+    "flavor_profile": [
+      "savory",
+      "smoky",
+      "rich"
+    ],
+    "instructions": [
+      "Brown beef with onion, cumin, paprika.",
+      "Cook rice separately.",
+      "Fill tortillas with rice, beans, beef, cheese, salsa.",
+      "Roll tightly and sear seam-side down."
+    ]
+  },
+  {
+    "id": "r016",
+    "name": "Chicken Enchiladas",
+    "ingredients": [
+      {
+        "name": "chicken breast",
+        "quantity": 500,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "corn tortillas",
+        "quantity": 8,
+        "unit": null,
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "enchilada sauce",
+        "quantity": 500,
+        "unit": "g",
+        "category": "other",
+        "is_core": false
+      },
+      {
+        "name": "cheddar cheese",
+        "quantity": 200,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "cumin",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "cilantro",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "sour cream",
+        "quantity": null,
+        "unit": null,
+        "category": "dairy",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Mexican",
+    "dietary_tags": [
+      "gluten-free",
+      "nut-free"
+    ],
+    "prep_time_min": 20,
+    "cook_time_min": 25,
+    "difficulty": 3,
+    "nutrition": {
+      "calories": 620,
+      "protein_g": 42,
+      "carbs_g": 48,
+      "fat_g": 26
+    },
+    "flavor_profile": [
+      "savory",
+      "sour",
+      "fresh",
+      "rich"
+    ],
+    "instructions": [
+      "Simmer chicken with onion and cumin; shred.",
+      "Dip tortillas in warm enchilada sauce.",
+      "Fill with chicken, roll, place in baking dish.",
+      "Top with remaining sauce and cheese; bake 20 min at 375°F."
+    ]
+  },
+  {
+    "id": "r017",
+    "name": "Chicken Fajitas",
+    "ingredients": [
+      {
+        "name": "chicken breast",
+        "quantity": 500,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "bell pepper",
+        "quantity": 2,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "flour tortillas",
+        "quantity": 6,
+        "unit": null,
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "cumin",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "paprika",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "chili powder",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "lime",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Mexican",
+    "dietary_tags": [
+      "dairy-free",
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 15,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 540,
+      "protein_g": 38,
+      "carbs_g": 44,
+      "fat_g": 20
+    },
+    "flavor_profile": [
+      "spicy",
+      "savory",
+      "sour",
+      "smoky",
+      "rich"
+    ],
+    "instructions": [
+      "Slice chicken and vegetables into strips.",
+      "Sear chicken with spices in a hot pan.",
+      "Add peppers and onion; cook 5 minutes.",
+      "Squeeze lime and serve in warm tortillas."
+    ]
+  },
+  {
+    "id": "r018",
+    "name": "Guacamole and Chips",
+    "ingredients": [
+      {
+        "name": "avocado",
+        "quantity": 3,
+        "unit": null,
+        "category": "fat",
+        "is_core": true
+      },
+      {
+        "name": "lime",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "red onion",
+        "quantity": 0.5,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "cilantro",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "jalapeño",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "salt",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "tortilla chips",
+        "quantity": 200,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      }
+    ],
+    "cuisine": "Mexican",
+    "dietary_tags": [
+      "vegan",
+      "vegetarian",
+      "dairy-free",
+      "gluten-free",
+      "nut-free",
+      "quick",
+      "low-carb"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 0,
+    "difficulty": 1,
+    "nutrition": {
+      "calories": 420,
+      "protein_g": 6,
+      "carbs_g": 38,
+      "fat_g": 26
+    },
+    "flavor_profile": [
+      "spicy",
+      "savory",
+      "sour",
+      "fresh",
+      "rich"
+    ],
+    "instructions": [
+      "Mash avocado with lime juice and salt.",
+      "Fold in diced onion, jalapeño, and cilantro.",
+      "Serve with tortilla chips."
+    ]
+  },
+  {
+    "id": "r019",
+    "name": "Huevos Rancheros",
+    "ingredients": [
+      {
+        "name": "eggs",
+        "quantity": 4,
+        "unit": null,
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "corn tortillas",
+        "quantity": 4,
+        "unit": null,
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "black beans",
+        "quantity": 300,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "salsa",
+        "quantity": 300,
+        "unit": "g",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "avocado",
+        "quantity": 1,
+        "unit": null,
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "cilantro",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Mexican",
+    "dietary_tags": [
+      "vegetarian",
+      "dairy-free",
+      "gluten-free",
+      "nut-free",
+      "quick",
+      "high-protein"
+    ],
+    "prep_time_min": 5,
+    "cook_time_min": 10,
+    "difficulty": 1,
+    "nutrition": {
+      "calories": 480,
+      "protein_g": 22,
+      "carbs_g": 44,
+      "fat_g": 22
+    },
+    "flavor_profile": [
+      "fresh",
+      "rich"
+    ],
+    "instructions": [
+      "Warm tortillas and beans.",
+      "Fry eggs sunny-side up in olive oil.",
+      "Layer tortilla, beans, egg, salsa, avocado.",
+      "Top with cilantro."
+    ]
+  },
+  {
+    "id": "r020",
+    "name": "Pozole Rojo",
+    "ingredients": [
+      {
+        "name": "pork shoulder",
+        "quantity": 800,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "hominy",
+        "quantity": 500,
+        "unit": "g",
+        "category": "other",
+        "is_core": false
+      },
+      {
+        "name": "dried chili",
+        "quantity": 4,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 4,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "oregano",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "lime",
+        "quantity": 2,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "cilantro",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "salt",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Mexican",
+    "dietary_tags": [
+      "dairy-free",
+      "gluten-free",
+      "nut-free",
+      "low-carb"
+    ],
+    "prep_time_min": 20,
+    "cook_time_min": 60,
+    "difficulty": 3,
+    "nutrition": {
+      "calories": 520,
+      "protein_g": 36,
+      "carbs_g": 42,
+      "fat_g": 20
+    },
+    "flavor_profile": [
+      "spicy",
+      "savory",
+      "sour",
+      "fresh"
+    ],
+    "instructions": [
+      "Simmer pork with onion, garlic 45 min.",
+      "Blend soaked chilies with a ladle of broth.",
+      "Return to pot; add hominy, simmer 15 min.",
+      "Serve with lime, oregano, cilantro."
+    ]
+  },
+  {
+    "id": "r021",
+    "name": "Chicken Tortilla Soup",
+    "ingredients": [
+      {
+        "name": "chicken breast",
+        "quantity": 400,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "canned tomatoes",
+        "quantity": 400,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "black beans",
+        "quantity": 200,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "corn",
+        "quantity": 200,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "chicken broth",
+        "quantity": 1,
+        "unit": "l",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "cumin",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "paprika",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 2,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "tortilla chips",
+        "quantity": null,
+        "unit": null,
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "avocado",
+        "quantity": 1,
+        "unit": null,
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "lime",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Mexican",
+    "dietary_tags": [
+      "dairy-free",
+      "gluten-free",
+      "nut-free",
+      "high-protein",
+      "low-carb"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 30,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 520,
+      "protein_g": 36,
+      "carbs_g": 42,
+      "fat_g": 18
+    },
+    "flavor_profile": [
+      "savory",
+      "sour",
+      "smoky",
+      "rich"
+    ],
+    "instructions": [
+      "Sauté onion and garlic; add spices.",
+      "Add broth, tomatoes, beans, chicken; simmer 20 min.",
+      "Shred chicken; add corn.",
+      "Top bowls with chips, avocado, lime."
+    ]
+  },
+  {
+    "id": "r022",
+    "name": "Carne Asada Tacos",
+    "ingredients": [
+      {
+        "name": "flank steak",
+        "quantity": 600,
+        "unit": "g",
+        "category": "other",
+        "is_core": true
+      },
+      {
+        "name": "corn tortillas",
+        "quantity": 8,
+        "unit": null,
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "lime",
+        "quantity": 2,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "cumin",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "cilantro",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Mexican",
+    "dietary_tags": [
+      "vegan",
+      "vegetarian",
+      "dairy-free",
+      "gluten-free",
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 10,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 560,
+      "protein_g": 44,
+      "carbs_g": 36,
+      "fat_g": 22
+    },
+    "flavor_profile": [
+      "savory",
+      "sour",
+      "fresh",
+      "rich"
+    ],
+    "instructions": [
+      "Marinate steak in lime, garlic, cumin 30 min.",
+      "Grill steak to medium-rare; rest and slice.",
+      "Char tortillas; fill with steak.",
+      "Top with onion and cilantro."
+    ]
+  },
+  {
+    "id": "r023",
+    "name": "Miso Ramen",
+    "ingredients": [
+      {
+        "name": "ramen noodles",
+        "quantity": 200,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "miso paste",
+        "quantity": 3,
+        "unit": "tbsp",
+        "category": "condiment",
+        "is_core": true
+      },
+      {
+        "name": "soy sauce",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "soft-boiled egg",
+        "quantity": 2,
+        "unit": null,
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "tofu",
+        "quantity": 150,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "bok choy",
+        "quantity": 200,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "sesame oil",
+        "quantity": 1,
+        "unit": "tsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "green onion",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "chicken broth",
+        "quantity": 800,
+        "unit": "ml",
+        "category": "protein",
+        "is_core": true
+      }
+    ],
+    "cuisine": "Asian",
+    "dietary_tags": [
+      "dairy-free",
+      "nut-free",
+      "high-protein"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 25,
+    "difficulty": 3,
+    "nutrition": {
+      "calories": 540,
+      "protein_g": 28,
+      "carbs_g": 62,
+      "fat_g": 18
+    },
+    "flavor_profile": [
+      "umami",
+      "savory"
+    ],
+    "instructions": [
+      "Whisk miso and soy into hot broth.",
+      "Cook noodles separately.",
+      "Blanch bok choy; halve the eggs.",
+      "Assemble bowls with noodles, broth, toppings."
+    ]
+  },
+  {
+    "id": "r024",
+    "name": "Pad Thai",
+    "ingredients": [
+      {
+        "name": "rice noodles",
+        "quantity": 300,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "shrimp",
+        "quantity": 300,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "eggs",
+        "quantity": 2,
+        "unit": null,
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "bean sprouts",
+        "quantity": 150,
+        "unit": "g",
+        "category": "other",
+        "is_core": false
+      },
+      {
+        "name": "fish sauce",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "tamarind paste",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "other",
+        "is_core": false
+      },
+      {
+        "name": "brown sugar",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "peanuts",
+        "quantity": 60,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "lime",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "green onion",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Asian",
+    "dietary_tags": [
+      "dairy-free",
+      "quick",
+      "high-protein"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 15,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 620,
+      "protein_g": 32,
+      "carbs_g": 78,
+      "fat_g": 22
+    },
+    "flavor_profile": [
+      "umami",
+      "savory",
+      "sweet",
+      "sour"
+    ],
+    "instructions": [
+      "Soak rice noodles in warm water.",
+      "Sear shrimp with garlic; push aside and scramble eggs.",
+      "Add drained noodles and sauce; toss.",
+      "Finish with sprouts, peanuts, lime, scallions."
+    ]
+  },
+  {
+    "id": "r025",
+    "name": "Vegetable Fried Rice",
+    "ingredients": [
+      {
+        "name": "cooked rice",
+        "quantity": 500,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "eggs",
+        "quantity": 2,
+        "unit": null,
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "peas",
+        "quantity": 100,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "carrot",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "soy sauce",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "sesame oil",
+        "quantity": 1,
+        "unit": "tsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "green onion",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 2,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Asian",
+    "dietary_tags": [
+      "vegetarian",
+      "dairy-free",
+      "gluten-free",
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 10,
+    "difficulty": 1,
+    "nutrition": {
+      "calories": 420,
+      "protein_g": 12,
+      "carbs_g": 68,
+      "fat_g": 10
+    },
+    "flavor_profile": [
+      "umami",
+      "savory"
+    ],
+    "instructions": [
+      "Scramble eggs, set aside.",
+      "Stir-fry carrot and peas with garlic.",
+      "Add cold rice; break up and toss.",
+      "Stir in eggs, soy sauce, sesame oil, scallions."
+    ]
+  },
+  {
+    "id": "r026",
+    "name": "Beef Stir Fry",
+    "ingredients": [
+      {
+        "name": "flank steak",
+        "quantity": 500,
+        "unit": "g",
+        "category": "other",
+        "is_core": true
+      },
+      {
+        "name": "broccoli",
+        "quantity": 300,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "bell pepper",
+        "quantity": 1,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "soy sauce",
+        "quantity": 3,
+        "unit": "tbsp",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "oyster sauce",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "ginger",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "sesame oil",
+        "quantity": 1,
+        "unit": "tsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "cornstarch",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "grain",
+        "is_core": true
+      }
+    ],
+    "cuisine": "Asian",
+    "dietary_tags": [
+      "vegan",
+      "vegetarian",
+      "dairy-free",
+      "gluten-free",
+      "nut-free",
+      "quick",
+      "low-carb"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 10,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 520,
+      "protein_g": 44,
+      "carbs_g": 22,
+      "fat_g": 26
+    },
+    "flavor_profile": [
+      "umami",
+      "savory"
+    ],
+    "instructions": [
+      "Slice beef thin; toss with cornstarch and soy.",
+      "Sear beef in a hot wok; remove.",
+      "Stir-fry garlic, ginger, vegetables.",
+      "Return beef; add sauces and toss."
+    ]
+  },
+  {
+    "id": "r027",
+    "name": "Chicken Teriyaki",
+    "ingredients": [
+      {
+        "name": "chicken thigh",
+        "quantity": 600,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "soy sauce",
+        "quantity": 4,
+        "unit": "tbsp",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "mirin",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "other",
+        "is_core": false
+      },
+      {
+        "name": "sugar",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "ginger",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "rice",
+        "quantity": 300,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "sesame seeds",
+        "quantity": null,
+        "unit": null,
+        "category": "other",
+        "is_core": false
+      },
+      {
+        "name": "green onion",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Asian",
+    "dietary_tags": [
+      "dairy-free",
+      "gluten-free",
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 15,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 640,
+      "protein_g": 42,
+      "carbs_g": 62,
+      "fat_g": 18
+    },
+    "flavor_profile": [
+      "umami",
+      "savory",
+      "sweet"
+    ],
+    "instructions": [
+      "Cook rice.",
+      "Pan-sear chicken skin-side down until crisp.",
+      "Add soy, mirin, sugar, ginger; reduce to glaze.",
+      "Slice; serve over rice with sesame and scallions."
+    ]
+  },
+  {
+    "id": "r028",
+    "name": "Vietnamese Pho",
+    "ingredients": [
+      {
+        "name": "beef bones",
+        "quantity": 1,
+        "unit": "kg",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "rice noodles",
+        "quantity": 300,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "sirloin",
+        "quantity": 300,
+        "unit": "g",
+        "category": "other",
+        "is_core": false
+      },
+      {
+        "name": "star anise",
+        "quantity": 2,
+        "unit": null,
+        "category": "other",
+        "is_core": false
+      },
+      {
+        "name": "cinnamon stick",
+        "quantity": 1,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "ginger",
+        "quantity": 50,
+        "unit": "g",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "fish sauce",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "bean sprouts",
+        "quantity": null,
+        "unit": null,
+        "category": "other",
+        "is_core": false
+      },
+      {
+        "name": "basil",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "lime",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "jalapeño",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Asian",
+    "dietary_tags": [
+      "dairy-free",
+      "nut-free"
+    ],
+    "prep_time_min": 20,
+    "cook_time_min": 60,
+    "difficulty": 3,
+    "nutrition": {
+      "calories": 520,
+      "protein_g": 32,
+      "carbs_g": 62,
+      "fat_g": 14
+    },
+    "flavor_profile": [
+      "spicy",
+      "umami",
+      "savory",
+      "sweet",
+      "sour",
+      "fresh"
+    ],
+    "instructions": [
+      "Char onion and ginger; simmer with bones and spices 2+ hrs.",
+      "Cook rice noodles; slice raw sirloin thin.",
+      "Ladle boiling broth over noodles and beef to cook.",
+      "Garnish with sprouts, basil, lime, chili."
+    ]
+  },
+  {
+    "id": "r029",
+    "name": "Kung Pao Chicken",
+    "ingredients": [
+      {
+        "name": "chicken breast",
+        "quantity": 500,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "peanuts",
+        "quantity": 80,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "dried chili",
+        "quantity": 6,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "soy sauce",
+        "quantity": 3,
+        "unit": "tbsp",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "rice vinegar",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "sugar",
+        "quantity": 1,
+        "unit": "tsp",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "ginger",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "sesame oil",
+        "quantity": 1,
+        "unit": "tsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "green onion",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Asian",
+    "dietary_tags": [
+      "dairy-free",
+      "gluten-free",
+      "quick"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 10,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 560,
+      "protein_g": 42,
+      "carbs_g": 22,
+      "fat_g": 30
+    },
+    "flavor_profile": [
+      "spicy",
+      "umami",
+      "savory",
+      "sweet",
+      "sour"
+    ],
+    "instructions": [
+      "Marinate diced chicken in soy and cornstarch.",
+      "Sear chicken; remove from wok.",
+      "Toast chilies and aromatics; add sauce.",
+      "Return chicken with peanuts and scallions."
+    ]
+  },
+  {
+    "id": "r030",
+    "name": "Sesame Noodles",
+    "ingredients": [
+      {
+        "name": "soba noodles",
+        "quantity": 300,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "soy sauce",
+        "quantity": 3,
+        "unit": "tbsp",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "tahini",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": true
+      },
+      {
+        "name": "sesame oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": true
+      },
+      {
+        "name": "rice vinegar",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "honey",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 2,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "cucumber",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "green onion",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "sesame seeds",
+        "quantity": null,
+        "unit": null,
+        "category": "other",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Asian",
+    "dietary_tags": [
+      "vegetarian",
+      "dairy-free",
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 10,
+    "difficulty": 1,
+    "nutrition": {
+      "calories": 440,
+      "protein_g": 14,
+      "carbs_g": 68,
+      "fat_g": 14
+    },
+    "flavor_profile": [
+      "umami",
+      "savory",
+      "sweet",
+      "sour",
+      "fresh",
+      "rich"
+    ],
+    "instructions": [
+      "Cook soba; rinse cold.",
+      "Whisk sauce ingredients.",
+      "Toss noodles with sauce, cucumber, scallions.",
+      "Top with sesame seeds."
+    ]
+  },
+  {
+    "id": "r031",
+    "name": "Kimchi Fried Rice",
+    "ingredients": [
+      {
+        "name": "cooked rice",
+        "quantity": 500,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "kimchi",
+        "quantity": 250,
+        "unit": "g",
+        "category": "other",
+        "is_core": true
+      },
+      {
+        "name": "eggs",
+        "quantity": 2,
+        "unit": null,
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "soy sauce",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "sesame oil",
+        "quantity": 1,
+        "unit": "tsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "green onion",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "gochujang",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "other",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Asian",
+    "dietary_tags": [
+      "vegetarian",
+      "dairy-free",
+      "gluten-free",
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 10,
+    "difficulty": 1,
+    "nutrition": {
+      "calories": 460,
+      "protein_g": 14,
+      "carbs_g": 72,
+      "fat_g": 12
+    },
+    "flavor_profile": [
+      "umami",
+      "savory"
+    ],
+    "instructions": [
+      "Sauté kimchi 3 minutes.",
+      "Add rice and gochujang; toss.",
+      "Fry eggs sunny-side up.",
+      "Top rice with eggs and scallions."
+    ]
+  },
+  {
+    "id": "r032",
+    "name": "Thai Green Curry",
+    "ingredients": [
+      {
+        "name": "chicken thigh",
+        "quantity": 500,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "green curry paste",
+        "quantity": 3,
+        "unit": "tbsp",
+        "category": "other",
+        "is_core": true
+      },
+      {
+        "name": "coconut milk",
+        "quantity": 400,
+        "unit": "ml",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "fish sauce",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "sugar",
+        "quantity": 1,
+        "unit": "tsp",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "bamboo shoots",
+        "quantity": 200,
+        "unit": "g",
+        "category": "other",
+        "is_core": false
+      },
+      {
+        "name": "thai basil",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": true
+      },
+      {
+        "name": "lime",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "rice",
+        "quantity": 300,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      }
+    ],
+    "cuisine": "Asian",
+    "dietary_tags": [
+      "gluten-free",
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 20,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 680,
+      "protein_g": 38,
+      "carbs_g": 62,
+      "fat_g": 32
+    },
+    "flavor_profile": [
+      "umami",
+      "sweet",
+      "sour",
+      "fresh",
+      "rich"
+    ],
+    "instructions": [
+      "Cook rice.",
+      "Fry curry paste in a splash of coconut milk.",
+      "Add chicken; cook 5 min.",
+      "Pour remaining coconut milk, fish sauce, sugar; simmer 10 min."
+    ]
+  },
+  {
+    "id": "r033",
+    "name": "Beef Bulgogi",
+    "ingredients": [
+      {
+        "name": "ribeye",
+        "quantity": 500,
+        "unit": "g",
+        "category": "other",
+        "is_core": true
+      },
+      {
+        "name": "soy sauce",
+        "quantity": 4,
+        "unit": "tbsp",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "brown sugar",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "sesame oil",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "pear",
+        "quantity": 0.5,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "green onion",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "rice",
+        "quantity": 300,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "sesame seeds",
+        "quantity": null,
+        "unit": null,
+        "category": "other",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Asian",
+    "dietary_tags": [
+      "vegan",
+      "vegetarian",
+      "dairy-free",
+      "gluten-free",
+      "nut-free"
+    ],
+    "prep_time_min": 30,
+    "cook_time_min": 10,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 640,
+      "protein_g": 42,
+      "carbs_g": 58,
+      "fat_g": 22
+    },
+    "flavor_profile": [
+      "umami",
+      "savory",
+      "sweet"
+    ],
+    "instructions": [
+      "Slice beef paper-thin; marinate 30 min in soy, sugar, pear puree, garlic.",
+      "Sear in a very hot pan 1–2 min per batch.",
+      "Serve over rice with scallions and sesame seeds."
+    ]
+  },
+  {
+    "id": "r034",
+    "name": "Egg Drop Soup",
+    "ingredients": [
+      {
+        "name": "chicken broth",
+        "quantity": 1,
+        "unit": "l",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "eggs",
+        "quantity": 2,
+        "unit": null,
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "cornstarch",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "soy sauce",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "green onion",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "ginger",
+        "quantity": 1,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "sesame oil",
+        "quantity": null,
+        "unit": null,
+        "category": "fat",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Asian",
+    "dietary_tags": [
+      "dairy-free",
+      "gluten-free",
+      "nut-free",
+      "quick",
+      "high-protein",
+      "low-carb"
+    ],
+    "prep_time_min": 5,
+    "cook_time_min": 10,
+    "difficulty": 1,
+    "nutrition": {
+      "calories": 150,
+      "protein_g": 10,
+      "carbs_g": 8,
+      "fat_g": 8
+    },
+    "flavor_profile": [
+      "umami",
+      "savory"
+    ],
+    "instructions": [
+      "Bring broth to a simmer with ginger and soy.",
+      "Stir in cornstarch slurry to thicken.",
+      "Drizzle in beaten eggs while stirring.",
+      "Finish with sesame oil and scallions."
+    ]
+  },
+  {
+    "id": "r035",
+    "name": "Chicken Tikka Masala",
+    "ingredients": [
+      {
+        "name": "chicken breast",
+        "quantity": 600,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "tomato sauce",
+        "quantity": 400,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "heavy cream",
+        "quantity": 200,
+        "unit": "ml",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "garam masala",
+        "quantity": 2,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": true
+      },
+      {
+        "name": "turmeric",
+        "quantity": 1,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 4,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "ginger",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "butter",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "dairy",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Indian",
+    "dietary_tags": [
+      "gluten-free",
+      "nut-free",
+      "low-carb"
+    ],
+    "prep_time_min": 20,
+    "cook_time_min": 30,
+    "difficulty": 3,
+    "nutrition": {
+      "calories": 680,
+      "protein_g": 45,
+      "carbs_g": 22,
+      "fat_g": 42
+    },
+    "flavor_profile": [
+      "savory",
+      "rich"
+    ],
+    "instructions": [
+      "Marinate chicken in yogurt and spices 30 min.",
+      "Sear chicken until just cooked; set aside.",
+      "Sauté onion in butter; add tomato sauce and spices.",
+      "Return chicken; stir in cream and simmer 5 min."
+    ]
+  },
+  {
+    "id": "r036",
+    "name": "Lentil Dal",
+    "ingredients": [
+      {
+        "name": "red lentils",
+        "quantity": 300,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "tomato",
+        "quantity": 2,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "turmeric",
+        "quantity": 1,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "cumin",
+        "quantity": 1,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "coriander",
+        "quantity": 1,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "ghee",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "ginger",
+        "quantity": 1,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Indian",
+    "dietary_tags": [
+      "vegetarian",
+      "gluten-free",
+      "nut-free",
+      "low-carb"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 25,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 390,
+      "protein_g": 22,
+      "carbs_g": 54,
+      "fat_g": 10
+    },
+    "flavor_profile": [
+      "savory",
+      "rich"
+    ],
+    "instructions": [
+      "Sauté onion, garlic, ginger in ghee.",
+      "Add spices; cook 1 min.",
+      "Add lentils, tomatoes, water; simmer 20 min until thick.",
+      "Season and serve with rice."
+    ]
+  },
+  {
+    "id": "r037",
+    "name": "Palak Paneer",
+    "ingredients": [
+      {
+        "name": "spinach",
+        "quantity": 400,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "paneer",
+        "quantity": 300,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "heavy cream",
+        "quantity": 100,
+        "unit": "ml",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "ginger",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "garam masala",
+        "quantity": 1,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "cumin",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "ghee",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "dairy",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Indian",
+    "dietary_tags": [
+      "vegetarian",
+      "gluten-free",
+      "nut-free",
+      "low-carb"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 20,
+    "difficulty": 3,
+    "nutrition": {
+      "calories": 480,
+      "protein_g": 24,
+      "carbs_g": 16,
+      "fat_g": 36
+    },
+    "flavor_profile": [
+      "savory",
+      "rich"
+    ],
+    "instructions": [
+      "Blanch spinach; blend smooth.",
+      "Sauté onion, garlic, ginger, spices in ghee.",
+      "Stir in spinach puree and cream.",
+      "Add cubed paneer; simmer 5 min."
+    ]
+  },
+  {
+    "id": "r038",
+    "name": "Chana Masala",
+    "ingredients": [
+      {
+        "name": "chickpeas",
+        "quantity": 500,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "canned tomatoes",
+        "quantity": 400,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "ginger",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "garam masala",
+        "quantity": 2,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": true
+      },
+      {
+        "name": "cumin",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "coriander",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Indian",
+    "dietary_tags": [
+      "vegan",
+      "vegetarian",
+      "dairy-free",
+      "gluten-free",
+      "nut-free",
+      "low-carb"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 25,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 380,
+      "protein_g": 16,
+      "carbs_g": 56,
+      "fat_g": 10
+    },
+    "flavor_profile": [
+      "savory",
+      "rich"
+    ],
+    "instructions": [
+      "Sauté onion with garlic and ginger.",
+      "Add spices; cook 1 min.",
+      "Add tomatoes and chickpeas; simmer 20 min.",
+      "Adjust salt and serve with rice or naan."
+    ]
+  },
+  {
+    "id": "r039",
+    "name": "Chicken Biryani",
+    "ingredients": [
+      {
+        "name": "chicken thigh",
+        "quantity": 600,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "basmati rice",
+        "quantity": 400,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "yogurt",
+        "quantity": 200,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "onion",
+        "quantity": 2,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "ginger",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 4,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "garam masala",
+        "quantity": 2,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "saffron",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "ghee",
+        "quantity": 3,
+        "unit": "tbsp",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "mint",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "cilantro",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Indian",
+    "dietary_tags": [
+      "gluten-free",
+      "nut-free"
+    ],
+    "prep_time_min": 25,
+    "cook_time_min": 40,
+    "difficulty": 4,
+    "nutrition": {
+      "calories": 760,
+      "protein_g": 48,
+      "carbs_g": 76,
+      "fat_g": 24
+    },
+    "flavor_profile": [
+      "savory",
+      "sour",
+      "fresh",
+      "rich"
+    ],
+    "instructions": [
+      "Marinate chicken in yogurt and spices 30 min.",
+      "Fry sliced onions until crisp.",
+      "Layer rice, chicken, onions, herbs in a pot.",
+      "Steam covered 30 min on low heat."
+    ]
+  },
+  {
+    "id": "r040",
+    "name": "Butter Chicken",
+    "ingredients": [
+      {
+        "name": "chicken breast",
+        "quantity": 600,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "tomato sauce",
+        "quantity": 400,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "heavy cream",
+        "quantity": 200,
+        "unit": "ml",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "butter",
+        "quantity": 60,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "garam masala",
+        "quantity": 2,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "fenugreek",
+        "quantity": 1,
+        "unit": "tsp",
+        "category": "other",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 4,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "ginger",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Indian",
+    "dietary_tags": [
+      "gluten-free",
+      "nut-free",
+      "low-carb"
+    ],
+    "prep_time_min": 20,
+    "cook_time_min": 25,
+    "difficulty": 3,
+    "nutrition": {
+      "calories": 720,
+      "protein_g": 46,
+      "carbs_g": 18,
+      "fat_g": 48
+    },
+    "flavor_profile": [
+      "savory",
+      "rich"
+    ],
+    "instructions": [
+      "Marinate chicken in yogurt and spices.",
+      "Grill or broil chicken until lightly charred.",
+      "Simmer tomato sauce with butter and spices.",
+      "Add chicken and cream; simmer 10 min."
+    ]
+  },
+  {
+    "id": "r041",
+    "name": "Aloo Gobi",
+    "ingredients": [
+      {
+        "name": "potato",
+        "quantity": 500,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "cauliflower",
+        "quantity": 400,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "tomato",
+        "quantity": 2,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "ginger",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "turmeric",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "cumin",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "garam masala",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Indian",
+    "dietary_tags": [
+      "vegan",
+      "vegetarian",
+      "dairy-free",
+      "gluten-free",
+      "nut-free"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 25,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 320,
+      "protein_g": 10,
+      "carbs_g": 52,
+      "fat_g": 10
+    },
+    "flavor_profile": [
+      "savory",
+      "rich"
+    ],
+    "instructions": [
+      "Sauté onion with cumin.",
+      "Add garlic, ginger, tomatoes, spices.",
+      "Add potatoes and cauliflower; cover and cook 20 min.",
+      "Finish with garam masala."
+    ]
+  },
+  {
+    "id": "r042",
+    "name": "Tandoori Chicken",
+    "ingredients": [
+      {
+        "name": "chicken drumsticks",
+        "quantity": 8,
+        "unit": null,
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "yogurt",
+        "quantity": 250,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "garam masala",
+        "quantity": 2,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "paprika",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 4,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "ginger",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "lemon",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Indian",
+    "dietary_tags": [
+      "gluten-free",
+      "nut-free",
+      "low-carb"
+    ],
+    "prep_time_min": 20,
+    "cook_time_min": 30,
+    "difficulty": 3,
+    "nutrition": {
+      "calories": 540,
+      "protein_g": 48,
+      "carbs_g": 6,
+      "fat_g": 32
+    },
+    "flavor_profile": [
+      "savory",
+      "sour",
+      "smoky",
+      "rich"
+    ],
+    "instructions": [
+      "Marinate chicken in yogurt, spices, garlic 4+ hours.",
+      "Roast at 450°F for 25–30 min turning once.",
+      "Squeeze lemon before serving."
+    ]
+  },
+  {
+    "id": "r043",
+    "name": "Saag Aloo",
+    "ingredients": [
+      {
+        "name": "spinach",
+        "quantity": 400,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "potato",
+        "quantity": 400,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "turmeric",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "cumin",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "ghee",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "dairy",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Indian",
+    "dietary_tags": [
+      "vegetarian",
+      "gluten-free",
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 20,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 320,
+      "protein_g": 10,
+      "carbs_g": 44,
+      "fat_g": 12
+    },
+    "flavor_profile": [
+      "savory",
+      "rich"
+    ],
+    "instructions": [
+      "Boil cubed potato until tender.",
+      "Sauté onion and garlic in ghee; add spices.",
+      "Add potatoes and spinach; cook until wilted."
+    ]
+  },
+  {
+    "id": "r044",
+    "name": "Vegetable Curry",
+    "ingredients": [
+      {
+        "name": "mixed vegetables",
+        "quantity": 500,
+        "unit": "g",
+        "category": "other",
+        "is_core": true
+      },
+      {
+        "name": "coconut milk",
+        "quantity": 400,
+        "unit": "ml",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "ginger",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "curry powder",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "spice",
+        "is_core": true
+      },
+      {
+        "name": "tomato",
+        "quantity": 2,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Indian",
+    "dietary_tags": [
+      "vegetarian",
+      "gluten-free",
+      "nut-free",
+      "low-carb"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 25,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 420,
+      "protein_g": 10,
+      "carbs_g": 40,
+      "fat_g": 26
+    },
+    "flavor_profile": [
+      "savory",
+      "rich"
+    ],
+    "instructions": [
+      "Sauté onion, garlic, ginger.",
+      "Add curry powder and tomatoes.",
+      "Stir in vegetables and coconut milk; simmer 20 min."
+    ]
+  },
+  {
+    "id": "r045",
+    "name": "BBQ Pulled Pork Sandwiches",
+    "ingredients": [
+      {
+        "name": "pork shoulder",
+        "quantity": 1.5,
+        "unit": "lbs",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "bbq sauce",
+        "quantity": 300,
+        "unit": "g",
+        "category": "condiment",
+        "is_core": true
+      },
+      {
+        "name": "brioche buns",
+        "quantity": 4,
+        "unit": null,
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "coleslaw mix",
+        "quantity": 200,
+        "unit": "g",
+        "category": "other",
+        "is_core": false
+      },
+      {
+        "name": "apple cider vinegar",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "brown sugar",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "paprika",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "American",
+    "dietary_tags": [
+      "dairy-free",
+      "nut-free"
+    ],
+    "prep_time_min": 20,
+    "cook_time_min": 180,
+    "difficulty": 3,
+    "nutrition": {
+      "calories": 620,
+      "protein_g": 38,
+      "carbs_g": 54,
+      "fat_g": 28
+    },
+    "flavor_profile": [
+      "sweet",
+      "sour",
+      "smoky"
+    ],
+    "instructions": [
+      "Rub pork with sugar, paprika, salt; roast at 300°F for 3 hrs.",
+      "Shred and toss with BBQ sauce and vinegar.",
+      "Pile onto buns with coleslaw."
+    ]
+  },
+  {
+    "id": "r046",
+    "name": "Classic Cheeseburger",
+    "ingredients": [
+      {
+        "name": "ground beef",
+        "quantity": 500,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "hamburger buns",
+        "quantity": 4,
+        "unit": null,
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "cheddar cheese",
+        "quantity": 4,
+        "unit": "slices",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "lettuce",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "tomato",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "pickles",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "ketchup",
+        "quantity": null,
+        "unit": null,
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "mustard",
+        "quantity": null,
+        "unit": null,
+        "category": "condiment",
+        "is_core": false
+      }
+    ],
+    "cuisine": "American",
+    "dietary_tags": [
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 10,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 700,
+      "protein_g": 38,
+      "carbs_g": 42,
+      "fat_g": 38
+    },
+    "flavor_profile": [
+      "savory",
+      "rich"
+    ],
+    "instructions": [
+      "Form 4 patties; season with salt and pepper.",
+      "Sear 3 min per side; add cheese in last minute.",
+      "Toast buns; build with lettuce, tomato, onion, pickles.",
+      "Finish with condiments."
+    ]
+  },
+  {
+    "id": "r047",
+    "name": "Southern Fried Chicken",
+    "ingredients": [
+      {
+        "name": "chicken thigh",
+        "quantity": 800,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "buttermilk",
+        "quantity": 400,
+        "unit": "ml",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "flour",
+        "quantity": 250,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "paprika",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "garlic powder",
+        "quantity": 1,
+        "unit": "tsp",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "cayenne",
+        "quantity": 1,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "vegetable oil",
+        "quantity": 1,
+        "unit": "l",
+        "category": "fat",
+        "is_core": false
+      }
+    ],
+    "cuisine": "American",
+    "dietary_tags": [
+      "nut-free"
+    ],
+    "prep_time_min": 20,
+    "cook_time_min": 20,
+    "difficulty": 3,
+    "nutrition": {
+      "calories": 780,
+      "protein_g": 46,
+      "carbs_g": 48,
+      "fat_g": 42
+    },
+    "flavor_profile": [
+      "spicy",
+      "savory",
+      "smoky",
+      "rich"
+    ],
+    "instructions": [
+      "Soak chicken in buttermilk 2+ hours.",
+      "Dredge in seasoned flour.",
+      "Fry at 350°F for 12–15 min until golden.",
+      "Rest on a rack; sprinkle with salt."
+    ]
+  },
+  {
+    "id": "r048",
+    "name": "Mac and Cheese",
+    "ingredients": [
+      {
+        "name": "elbow pasta",
+        "quantity": 400,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "cheddar cheese",
+        "quantity": 300,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "milk",
+        "quantity": 500,
+        "unit": "ml",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "butter",
+        "quantity": 40,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "flour",
+        "quantity": 30,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "breadcrumbs",
+        "quantity": 60,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      }
+    ],
+    "cuisine": "American",
+    "dietary_tags": [
+      "vegetarian",
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 20,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 720,
+      "protein_g": 28,
+      "carbs_g": 68,
+      "fat_g": 38
+    },
+    "flavor_profile": [
+      "rich"
+    ],
+    "instructions": [
+      "Cook pasta.",
+      "Make a roux with butter and flour; whisk in milk.",
+      "Stir in cheese until smooth.",
+      "Toss with pasta, top with breadcrumbs, bake 10 min."
+    ]
+  },
+  {
+    "id": "r049",
+    "name": "Beef Chili",
+    "ingredients": [
+      {
+        "name": "ground beef",
+        "quantity": 500,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "kidney beans",
+        "quantity": 400,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "canned tomatoes",
+        "quantity": 400,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "chili powder",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "spice",
+        "is_core": true
+      },
+      {
+        "name": "cumin",
+        "quantity": 1,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "bell pepper",
+        "quantity": 1,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "American",
+    "dietary_tags": [
+      "dairy-free",
+      "gluten-free",
+      "nut-free",
+      "low-carb"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 45,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 560,
+      "protein_g": 36,
+      "carbs_g": 38,
+      "fat_g": 26
+    },
+    "flavor_profile": [
+      "spicy",
+      "savory"
+    ],
+    "instructions": [
+      "Brown beef with onion.",
+      "Add garlic, peppers, spices.",
+      "Add tomatoes and beans; simmer 40 min."
+    ]
+  },
+  {
+    "id": "r050",
+    "name": "Cobb Salad",
+    "ingredients": [
+      {
+        "name": "romaine lettuce",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "chicken breast",
+        "quantity": 300,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "bacon",
+        "quantity": 4,
+        "unit": "slices",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "hard boiled eggs",
+        "quantity": 2,
+        "unit": null,
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "avocado",
+        "quantity": 1,
+        "unit": null,
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "blue cheese",
+        "quantity": 80,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "tomato",
+        "quantity": 2,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "ranch dressing",
+        "quantity": null,
+        "unit": null,
+        "category": "other",
+        "is_core": false
+      }
+    ],
+    "cuisine": "American",
+    "dietary_tags": [
+      "gluten-free",
+      "nut-free",
+      "quick",
+      "high-protein",
+      "low-carb"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 10,
+    "difficulty": 1,
+    "nutrition": {
+      "calories": 580,
+      "protein_g": 42,
+      "carbs_g": 12,
+      "fat_g": 38
+    },
+    "flavor_profile": [
+      "smoky",
+      "rich"
+    ],
+    "instructions": [
+      "Cook chicken and bacon; chop.",
+      "Arrange toppings in rows over lettuce.",
+      "Drizzle with ranch."
+    ]
+  },
+  {
+    "id": "r051",
+    "name": "Grilled Cheese Sandwich",
+    "ingredients": [
+      {
+        "name": "bread",
+        "quantity": 4,
+        "unit": "slices",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "cheddar cheese",
+        "quantity": 150,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "butter",
+        "quantity": 30,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": true
+      }
+    ],
+    "cuisine": "American",
+    "dietary_tags": [
+      "vegetarian",
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 3,
+    "cook_time_min": 7,
+    "difficulty": 1,
+    "nutrition": {
+      "calories": 520,
+      "protein_g": 22,
+      "carbs_g": 36,
+      "fat_g": 32
+    },
+    "flavor_profile": [
+      "rich"
+    ],
+    "instructions": [
+      "Butter bread on both sides.",
+      "Layer cheese between slices.",
+      "Griddle 3 min per side until golden."
+    ]
+  },
+  {
+    "id": "r052",
+    "name": "Buffalo Wings",
+    "ingredients": [
+      {
+        "name": "chicken wings",
+        "quantity": 1,
+        "unit": "kg",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "hot sauce",
+        "quantity": 120,
+        "unit": "ml",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "butter",
+        "quantity": 60,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "garlic powder",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "blue cheese dressing",
+        "quantity": null,
+        "unit": null,
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "celery",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      }
+    ],
+    "cuisine": "American",
+    "dietary_tags": [
+      "gluten-free",
+      "nut-free",
+      "low-carb"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 40,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 620,
+      "protein_g": 48,
+      "carbs_g": 4,
+      "fat_g": 42
+    },
+    "flavor_profile": [
+      "spicy",
+      "savory",
+      "rich"
+    ],
+    "instructions": [
+      "Roast wings at 400°F for 35 min.",
+      "Melt butter with hot sauce and garlic.",
+      "Toss hot wings in sauce.",
+      "Serve with celery and blue cheese."
+    ]
+  },
+  {
+    "id": "r053",
+    "name": "Meatloaf",
+    "ingredients": [
+      {
+        "name": "ground beef",
+        "quantity": 800,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "breadcrumbs",
+        "quantity": 80,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "eggs",
+        "quantity": 2,
+        "unit": null,
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "ketchup",
+        "quantity": 120,
+        "unit": "g",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "worcestershire",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "garlic powder",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      }
+    ],
+    "cuisine": "American",
+    "dietary_tags": [
+      "dairy-free",
+      "nut-free",
+      "high-protein"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 60,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 540,
+      "protein_g": 38,
+      "carbs_g": 24,
+      "fat_g": 30
+    },
+    "flavor_profile": [
+      "umami",
+      "savory"
+    ],
+    "instructions": [
+      "Mix beef, breadcrumbs, eggs, onion, spices.",
+      "Shape loaf; top with ketchup.",
+      "Bake at 375°F for 55 min."
+    ]
+  },
+  {
+    "id": "r054",
+    "name": "Buttermilk Pancakes",
+    "ingredients": [
+      {
+        "name": "flour",
+        "quantity": 250,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "buttermilk",
+        "quantity": 400,
+        "unit": "ml",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "eggs",
+        "quantity": 2,
+        "unit": null,
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "sugar",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "baking powder",
+        "quantity": 2,
+        "unit": "tsp",
+        "category": "other",
+        "is_core": false
+      },
+      {
+        "name": "butter",
+        "quantity": 40,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "maple syrup",
+        "quantity": null,
+        "unit": null,
+        "category": "condiment",
+        "is_core": false
+      }
+    ],
+    "cuisine": "American",
+    "dietary_tags": [
+      "vegetarian",
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 15,
+    "difficulty": 1,
+    "nutrition": {
+      "calories": 420,
+      "protein_g": 12,
+      "carbs_g": 68,
+      "fat_g": 12
+    },
+    "flavor_profile": [
+      "sweet",
+      "rich"
+    ],
+    "instructions": [
+      "Whisk dry ingredients; whisk wet separately.",
+      "Fold together without overmixing.",
+      "Griddle ¼-cup portions 2 min per side.",
+      "Serve with butter and syrup."
+    ]
+  },
+  {
+    "id": "r055",
+    "name": "Greek Salad",
+    "ingredients": [
+      {
+        "name": "cucumber",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "tomato",
+        "quantity": 3,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "red onion",
+        "quantity": 0.5,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "feta cheese",
+        "quantity": 150,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "kalamata olives",
+        "quantity": 80,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 3,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "oregano",
+        "quantity": 1,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "lemon juice",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "vegetable",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Mediterranean",
+    "dietary_tags": [
+      "vegetarian",
+      "gluten-free",
+      "nut-free",
+      "quick",
+      "low-carb"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 0,
+    "difficulty": 1,
+    "nutrition": {
+      "calories": 320,
+      "protein_g": 10,
+      "carbs_g": 14,
+      "fat_g": 26
+    },
+    "flavor_profile": [
+      "savory",
+      "sour",
+      "fresh",
+      "rich"
+    ],
+    "instructions": [
+      "Chop cucumber, tomatoes, red onion.",
+      "Add olives and cubed feta.",
+      "Dress with oil, lemon, oregano."
+    ]
+  },
+  {
+    "id": "r056",
+    "name": "Classic Hummus",
+    "ingredients": [
+      {
+        "name": "chickpeas",
+        "quantity": 400,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "tahini",
+        "quantity": 3,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": true
+      },
+      {
+        "name": "lemon",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "garlic",
+        "quantity": 2,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 3,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "cumin",
+        "quantity": 0.5,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "salt",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Mediterranean",
+    "dietary_tags": [
+      "vegan",
+      "vegetarian",
+      "dairy-free",
+      "gluten-free",
+      "nut-free",
+      "quick",
+      "low-carb"
+    ],
+    "prep_time_min": 5,
+    "cook_time_min": 0,
+    "difficulty": 1,
+    "nutrition": {
+      "calories": 260,
+      "protein_g": 8,
+      "carbs_g": 22,
+      "fat_g": 16
+    },
+    "flavor_profile": [
+      "savory",
+      "sour",
+      "rich"
+    ],
+    "instructions": [
+      "Blend chickpeas, tahini, lemon, garlic until smooth.",
+      "Thin with ice water if needed.",
+      "Drizzle with oil and sprinkle cumin."
+    ]
+  },
+  {
+    "id": "r057",
+    "name": "Falafel Wraps",
+    "ingredients": [
+      {
+        "name": "chickpeas",
+        "quantity": 400,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "parsley",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "cumin",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "coriander",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "flour",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "pita bread",
+        "quantity": 4,
+        "unit": null,
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "tahini",
+        "quantity": null,
+        "unit": null,
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "cucumber",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "tomato",
+        "quantity": 2,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Mediterranean",
+    "dietary_tags": [
+      "vegan",
+      "vegetarian",
+      "dairy-free",
+      "nut-free"
+    ],
+    "prep_time_min": 20,
+    "cook_time_min": 15,
+    "difficulty": 3,
+    "nutrition": {
+      "calories": 540,
+      "protein_g": 18,
+      "carbs_g": 72,
+      "fat_g": 20
+    },
+    "flavor_profile": [
+      "savory",
+      "fresh",
+      "rich"
+    ],
+    "instructions": [
+      "Blend chickpeas, herbs, onion, garlic, spices coarsely.",
+      "Form balls; fry in hot oil 4 min until brown.",
+      "Stuff pitas with falafel, veg, tahini."
+    ]
+  },
+  {
+    "id": "r058",
+    "name": "Tabbouleh",
+    "ingredients": [
+      {
+        "name": "bulgur",
+        "quantity": 150,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "parsley",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "mint",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "tomato",
+        "quantity": 3,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "cucumber",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "lemon juice",
+        "quantity": 3,
+        "unit": "tbsp",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 3,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "scallions",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "salt",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Mediterranean",
+    "dietary_tags": [
+      "vegan",
+      "vegetarian",
+      "dairy-free",
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 10,
+    "difficulty": 1,
+    "nutrition": {
+      "calories": 280,
+      "protein_g": 6,
+      "carbs_g": 38,
+      "fat_g": 12
+    },
+    "flavor_profile": [
+      "savory",
+      "sour",
+      "fresh",
+      "rich"
+    ],
+    "instructions": [
+      "Soak bulgur in hot water 10 min; drain.",
+      "Chop parsley, mint, tomato, cucumber finely.",
+      "Toss everything with lemon and olive oil."
+    ]
+  },
+  {
+    "id": "r059",
+    "name": "Mediterranean Chickpea Salad",
+    "ingredients": [
+      {
+        "name": "chickpeas",
+        "quantity": 500,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "cucumber",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "tomato",
+        "quantity": 2,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "red onion",
+        "quantity": 0.5,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "feta cheese",
+        "quantity": 100,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "kalamata olives",
+        "quantity": 60,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 3,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "lemon",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "oregano",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Mediterranean",
+    "dietary_tags": [
+      "vegetarian",
+      "gluten-free",
+      "nut-free",
+      "quick",
+      "low-carb"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 0,
+    "difficulty": 1,
+    "nutrition": {
+      "calories": 420,
+      "protein_g": 16,
+      "carbs_g": 42,
+      "fat_g": 20
+    },
+    "flavor_profile": [
+      "savory",
+      "sour",
+      "fresh",
+      "rich"
+    ],
+    "instructions": [
+      "Combine chickpeas with chopped vegetables.",
+      "Add feta and olives.",
+      "Dress with oil, lemon, oregano."
+    ]
+  },
+  {
+    "id": "r060",
+    "name": "Spanakopita",
+    "ingredients": [
+      {
+        "name": "phyllo dough",
+        "quantity": 250,
+        "unit": "g",
+        "category": "other",
+        "is_core": true
+      },
+      {
+        "name": "spinach",
+        "quantity": 500,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "feta cheese",
+        "quantity": 250,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "eggs",
+        "quantity": 2,
+        "unit": null,
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 2,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 4,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "dill",
+        "quantity": null,
+        "unit": null,
+        "category": "other",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Mediterranean",
+    "dietary_tags": [
+      "vegetarian",
+      "nut-free"
+    ],
+    "prep_time_min": 20,
+    "cook_time_min": 35,
+    "difficulty": 3,
+    "nutrition": {
+      "calories": 460,
+      "protein_g": 18,
+      "carbs_g": 32,
+      "fat_g": 28
+    },
+    "flavor_profile": [
+      "savory",
+      "fresh",
+      "rich"
+    ],
+    "instructions": [
+      "Sauté onion and garlic; add spinach until wilted.",
+      "Mix with feta, eggs, dill; cool.",
+      "Layer phyllo with oil; spread filling; fold.",
+      "Bake at 375°F for 30 min."
+    ]
+  },
+  {
+    "id": "r061",
+    "name": "Chicken Souvlaki",
+    "ingredients": [
+      {
+        "name": "chicken thigh",
+        "quantity": 600,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "olive oil",
+        "quantity": 3,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": true
+      },
+      {
+        "name": "lemon",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "oregano",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "pita bread",
+        "quantity": 4,
+        "unit": null,
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "tzatziki",
+        "quantity": null,
+        "unit": null,
+        "category": "other",
+        "is_core": false
+      },
+      {
+        "name": "tomato",
+        "quantity": 2,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "red onion",
+        "quantity": 0.5,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Mediterranean",
+    "dietary_tags": [
+      "dairy-free",
+      "nut-free"
+    ],
+    "prep_time_min": 20,
+    "cook_time_min": 15,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 620,
+      "protein_g": 42,
+      "carbs_g": 48,
+      "fat_g": 26
+    },
+    "flavor_profile": [
+      "savory",
+      "sour",
+      "rich"
+    ],
+    "instructions": [
+      "Marinate diced chicken in oil, lemon, garlic, oregano 30 min.",
+      "Skewer and grill 10–12 min.",
+      "Serve in pita with tzatziki and vegetables."
+    ]
+  },
+  {
+    "id": "r062",
+    "name": "Baba Ganoush",
+    "ingredients": [
+      {
+        "name": "eggplant",
+        "quantity": 2,
+        "unit": null,
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "tahini",
+        "quantity": 3,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": true
+      },
+      {
+        "name": "lemon juice",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "garlic",
+        "quantity": 2,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "cumin",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "salt",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Mediterranean",
+    "dietary_tags": [
+      "vegetarian",
+      "dairy-free",
+      "gluten-free",
+      "nut-free",
+      "low-carb"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 30,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 180,
+      "protein_g": 4,
+      "carbs_g": 16,
+      "fat_g": 12
+    },
+    "flavor_profile": [
+      "savory",
+      "sour",
+      "rich"
+    ],
+    "instructions": [
+      "Roast whole eggplants 30 min at 400°F until soft.",
+      "Scoop flesh; blend with tahini, lemon, garlic, cumin.",
+      "Drizzle with olive oil."
+    ]
+  },
+  {
+    "id": "r063",
+    "name": "Classic Omelette",
+    "ingredients": [
+      {
+        "name": "eggs",
+        "quantity": 3,
+        "unit": null,
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "butter",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "cheddar cheese",
+        "quantity": 40,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "chives",
+        "quantity": null,
+        "unit": null,
+        "category": "other",
+        "is_core": false
+      },
+      {
+        "name": "salt",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "pepper",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "French",
+    "dietary_tags": [
+      "vegetarian",
+      "gluten-free",
+      "nut-free",
+      "quick",
+      "low-carb"
+    ],
+    "prep_time_min": 5,
+    "cook_time_min": 5,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 320,
+      "protein_g": 20,
+      "carbs_g": 2,
+      "fat_g": 25
+    },
+    "flavor_profile": [
+      "savory",
+      "rich"
+    ],
+    "instructions": [
+      "Beat eggs with salt and pepper.",
+      "Melt butter in non-stick pan over medium heat.",
+      "Pour in eggs; fold edges as they set.",
+      "Add cheese, fold omelette, serve with chives."
+    ]
+  },
+  {
+    "id": "r064",
+    "name": "Quiche Lorraine",
+    "ingredients": [
+      {
+        "name": "pie crust",
+        "quantity": 1,
+        "unit": null,
+        "category": "other",
+        "is_core": true
+      },
+      {
+        "name": "bacon",
+        "quantity": 200,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "eggs",
+        "quantity": 4,
+        "unit": null,
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "heavy cream",
+        "quantity": 300,
+        "unit": "ml",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "gruyere",
+        "quantity": 150,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "nutmeg",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "French",
+    "dietary_tags": [
+      "gluten-free",
+      "nut-free",
+      "low-carb"
+    ],
+    "prep_time_min": 20,
+    "cook_time_min": 40,
+    "difficulty": 3,
+    "nutrition": {
+      "calories": 560,
+      "protein_g": 22,
+      "carbs_g": 28,
+      "fat_g": 42
+    },
+    "flavor_profile": [
+      "savory",
+      "smoky",
+      "rich"
+    ],
+    "instructions": [
+      "Blind-bake crust 10 min.",
+      "Crisp bacon with onion; drain.",
+      "Whisk eggs, cream, cheese, nutmeg.",
+      "Pour into crust with bacon; bake 30 min at 375°F."
+    ]
+  },
+  {
+    "id": "r065",
+    "name": "French Onion Soup",
+    "ingredients": [
+      {
+        "name": "onion",
+        "quantity": 6,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "butter",
+        "quantity": 40,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "beef broth",
+        "quantity": 1,
+        "unit": "l",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "white wine",
+        "quantity": 120,
+        "unit": "ml",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "baguette",
+        "quantity": 1,
+        "unit": null,
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "gruyere",
+        "quantity": 150,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "thyme",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "bay leaf",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "French",
+    "dietary_tags": [
+      "nut-free"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 50,
+    "difficulty": 3,
+    "nutrition": {
+      "calories": 420,
+      "protein_g": 14,
+      "carbs_g": 42,
+      "fat_g": 22
+    },
+    "flavor_profile": [
+      "savory",
+      "rich"
+    ],
+    "instructions": [
+      "Caramelize sliced onions in butter 30–40 min.",
+      "Deglaze with wine; add broth and herbs; simmer 15 min.",
+      "Top bowls with bread and cheese; broil until bubbly."
+    ]
+  },
+  {
+    "id": "r066",
+    "name": "Ratatouille",
+    "ingredients": [
+      {
+        "name": "eggplant",
+        "quantity": 1,
+        "unit": null,
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "zucchini",
+        "quantity": 2,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "bell pepper",
+        "quantity": 2,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "tomato",
+        "quantity": 4,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 4,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 4,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "herbes de provence",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "other",
+        "is_core": false
+      }
+    ],
+    "cuisine": "French",
+    "dietary_tags": [
+      "vegetarian",
+      "dairy-free",
+      "gluten-free",
+      "nut-free",
+      "low-carb"
+    ],
+    "prep_time_min": 20,
+    "cook_time_min": 35,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 280,
+      "protein_g": 6,
+      "carbs_g": 32,
+      "fat_g": 16
+    },
+    "flavor_profile": [
+      "savory",
+      "rich"
+    ],
+    "instructions": [
+      "Sauté onion and garlic in olive oil.",
+      "Add diced peppers and eggplant; cook 10 min.",
+      "Add zucchini, tomatoes, herbs; simmer 20 min."
+    ]
+  },
+  {
+    "id": "r067",
+    "name": "Croque Monsieur",
+    "ingredients": [
+      {
+        "name": "bread",
+        "quantity": 4,
+        "unit": "slices",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "ham",
+        "quantity": 200,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "gruyere",
+        "quantity": 150,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "butter",
+        "quantity": 40,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "flour",
+        "quantity": 20,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "milk",
+        "quantity": 200,
+        "unit": "ml",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "nutmeg",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "French",
+    "dietary_tags": [
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 10,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 620,
+      "protein_g": 32,
+      "carbs_g": 38,
+      "fat_g": 36
+    },
+    "flavor_profile": [
+      "rich"
+    ],
+    "instructions": [
+      "Make a béchamel with butter, flour, milk, nutmeg.",
+      "Build sandwiches with ham, cheese, béchamel.",
+      "Top with cheese; bake 8 min at 400°F."
+    ]
+  },
+  {
+    "id": "r068",
+    "name": "Niçoise Salad",
+    "ingredients": [
+      {
+        "name": "tuna",
+        "quantity": 300,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "potato",
+        "quantity": 300,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "green beans",
+        "quantity": 200,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "hard boiled eggs",
+        "quantity": 3,
+        "unit": null,
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "tomato",
+        "quantity": 3,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "kalamata olives",
+        "quantity": 80,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "anchovy",
+        "quantity": 6,
+        "unit": null,
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "olive oil",
+        "quantity": 4,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "lemon",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      }
+    ],
+    "cuisine": "French",
+    "dietary_tags": [
+      "dairy-free",
+      "gluten-free",
+      "nut-free",
+      "quick",
+      "high-protein"
+    ],
+    "prep_time_min": 20,
+    "cook_time_min": 10,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 480,
+      "protein_g": 36,
+      "carbs_g": 28,
+      "fat_g": 24
+    },
+    "flavor_profile": [
+      "umami",
+      "sour",
+      "rich"
+    ],
+    "instructions": [
+      "Boil potatoes and green beans until tender.",
+      "Arrange lettuce, potatoes, beans, tomatoes, eggs on platter.",
+      "Top with tuna, olives, anchovies.",
+      "Drizzle with oil and lemon."
+    ]
+  },
+  {
+    "id": "r069",
+    "name": "Coq au Vin",
+    "ingredients": [
+      {
+        "name": "chicken thigh",
+        "quantity": 1,
+        "unit": "kg",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "bacon",
+        "quantity": 150,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "mushroom",
+        "quantity": 300,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "pearl onions",
+        "quantity": 200,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "red wine",
+        "quantity": 500,
+        "unit": "ml",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "chicken broth",
+        "quantity": 300,
+        "unit": "ml",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "flour",
+        "quantity": 30,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "thyme",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "bay leaf",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "butter",
+        "quantity": 30,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      }
+    ],
+    "cuisine": "French",
+    "dietary_tags": [
+      "nut-free",
+      "high-protein"
+    ],
+    "prep_time_min": 20,
+    "cook_time_min": 75,
+    "difficulty": 4,
+    "nutrition": {
+      "calories": 720,
+      "protein_g": 52,
+      "carbs_g": 18,
+      "fat_g": 42
+    },
+    "flavor_profile": [
+      "umami",
+      "savory",
+      "smoky",
+      "rich"
+    ],
+    "instructions": [
+      "Crisp bacon; brown chicken in the fat.",
+      "Deglaze with wine; add broth, herbs; braise 1 hr.",
+      "Sauté mushrooms and onions; add to pot.",
+      "Thicken with flour-butter paste."
+    ]
+  },
+  {
+    "id": "r070",
+    "name": "Crêpes",
+    "ingredients": [
+      {
+        "name": "flour",
+        "quantity": 200,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "eggs",
+        "quantity": 3,
+        "unit": null,
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "milk",
+        "quantity": 400,
+        "unit": "ml",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "butter",
+        "quantity": 40,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "sugar",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "salt",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "French",
+    "dietary_tags": [
+      "vegetarian",
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 15,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 380,
+      "protein_g": 12,
+      "carbs_g": 54,
+      "fat_g": 12
+    },
+    "flavor_profile": [
+      "savory",
+      "sweet",
+      "rich"
+    ],
+    "instructions": [
+      "Whisk flour, eggs, milk, sugar, salt, melted butter.",
+      "Rest batter 30 min.",
+      "Cook thin crêpes in a buttered pan 1 min per side.",
+      "Fill with jam or Nutella."
+    ]
+  },
+  {
+    "id": "r071",
+    "name": "Shakshuka",
+    "ingredients": [
+      {
+        "name": "eggs",
+        "quantity": 4,
+        "unit": null,
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "canned tomatoes",
+        "quantity": 400,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "red bell pepper",
+        "quantity": 1,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "cumin",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "paprika",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "feta cheese",
+        "quantity": 60,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Middle Eastern",
+    "dietary_tags": [
+      "vegetarian",
+      "gluten-free",
+      "nut-free",
+      "quick",
+      "low-carb"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 20,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 340,
+      "protein_g": 18,
+      "carbs_g": 20,
+      "fat_g": 20
+    },
+    "flavor_profile": [
+      "savory",
+      "smoky",
+      "rich"
+    ],
+    "instructions": [
+      "Sauté onion and pepper in olive oil.",
+      "Add garlic and spices; cook 1 min.",
+      "Pour in tomatoes; simmer 10 min.",
+      "Crack eggs into wells; cover until set. Top with feta."
+    ]
+  },
+  {
+    "id": "r072",
+    "name": "Chicken Shawarma",
+    "ingredients": [
+      {
+        "name": "chicken thigh",
+        "quantity": 700,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "yogurt",
+        "quantity": 100,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "garlic",
+        "quantity": 4,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "lemon",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "cumin",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "paprika",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "cinnamon",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "pita bread",
+        "quantity": 4,
+        "unit": null,
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "tahini",
+        "quantity": null,
+        "unit": null,
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "tomato",
+        "quantity": 2,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Middle Eastern",
+    "dietary_tags": [
+      "nut-free"
+    ],
+    "prep_time_min": 30,
+    "cook_time_min": 20,
+    "difficulty": 3,
+    "nutrition": {
+      "calories": 620,
+      "protein_g": 48,
+      "carbs_g": 38,
+      "fat_g": 28
+    },
+    "flavor_profile": [
+      "savory",
+      "sweet",
+      "sour",
+      "smoky",
+      "rich"
+    ],
+    "instructions": [
+      "Marinate chicken with yogurt, garlic, lemon, spices 1+ hr.",
+      "Roast or grill 18 min, turning once.",
+      "Slice; serve in pita with tahini and tomatoes."
+    ]
+  },
+  {
+    "id": "r073",
+    "name": "Beef Kebabs",
+    "ingredients": [
+      {
+        "name": "sirloin",
+        "quantity": 600,
+        "unit": "g",
+        "category": "other",
+        "is_core": true
+      },
+      {
+        "name": "bell pepper",
+        "quantity": 2,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "olive oil",
+        "quantity": 3,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "lemon",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "cumin",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "paprika",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Middle Eastern",
+    "dietary_tags": [
+      "vegan",
+      "vegetarian",
+      "dairy-free",
+      "gluten-free",
+      "nut-free",
+      "low-carb"
+    ],
+    "prep_time_min": 20,
+    "cook_time_min": 12,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 460,
+      "protein_g": 40,
+      "carbs_g": 12,
+      "fat_g": 26
+    },
+    "flavor_profile": [
+      "savory",
+      "sour",
+      "smoky",
+      "rich"
+    ],
+    "instructions": [
+      "Cube beef and vegetables; marinate with oil, lemon, spices 30 min.",
+      "Skewer alternately.",
+      "Grill 10–12 min, turning often."
+    ]
+  },
+  {
+    "id": "r074",
+    "name": "Moroccan Tagine",
+    "ingredients": [
+      {
+        "name": "lamb shoulder",
+        "quantity": 800,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "onion",
+        "quantity": 2,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "garlic",
+        "quantity": 4,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "ras el hanout",
+        "quantity": 2,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "apricot",
+        "quantity": 150,
+        "unit": "g",
+        "category": "other",
+        "is_core": false
+      },
+      {
+        "name": "chickpeas",
+        "quantity": 300,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "canned tomatoes",
+        "quantity": 400,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "cilantro",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Middle Eastern",
+    "dietary_tags": [
+      "dairy-free",
+      "gluten-free",
+      "nut-free",
+      "high-protein",
+      "low-carb"
+    ],
+    "prep_time_min": 20,
+    "cook_time_min": 75,
+    "difficulty": 3,
+    "nutrition": {
+      "calories": 720,
+      "protein_g": 48,
+      "carbs_g": 42,
+      "fat_g": 36
+    },
+    "flavor_profile": [
+      "savory",
+      "fresh",
+      "rich"
+    ],
+    "instructions": [
+      "Brown lamb in batches.",
+      "Sauté onion, garlic, spices.",
+      "Add tomatoes, apricots, chickpeas; braise 1 hr.",
+      "Top with cilantro."
+    ]
+  },
+  {
+    "id": "r075",
+    "name": "Couscous Salad",
+    "ingredients": [
+      {
+        "name": "couscous",
+        "quantity": 250,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "cucumber",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "tomato",
+        "quantity": 2,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "parsley",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "mint",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "lemon",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 3,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "chickpeas",
+        "quantity": 200,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      }
+    ],
+    "cuisine": "Middle Eastern",
+    "dietary_tags": [
+      "vegan",
+      "vegetarian",
+      "dairy-free",
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 5,
+    "difficulty": 1,
+    "nutrition": {
+      "calories": 380,
+      "protein_g": 12,
+      "carbs_g": 62,
+      "fat_g": 10
+    },
+    "flavor_profile": [
+      "sour",
+      "fresh",
+      "rich"
+    ],
+    "instructions": [
+      "Pour boiling water over couscous; cover 5 min, then fluff.",
+      "Chop vegetables and herbs.",
+      "Toss everything with lemon and oil."
+    ]
+  },
+  {
+    "id": "r076",
+    "name": "Lamb Kofta",
+    "ingredients": [
+      {
+        "name": "ground lamb",
+        "quantity": 600,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "parsley",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "cumin",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "coriander",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "cinnamon",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "pita bread",
+        "quantity": 4,
+        "unit": null,
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "tzatziki",
+        "quantity": null,
+        "unit": null,
+        "category": "other",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Middle Eastern",
+    "dietary_tags": [
+      "dairy-free",
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 12,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 580,
+      "protein_g": 38,
+      "carbs_g": 28,
+      "fat_g": 36
+    },
+    "flavor_profile": [
+      "savory",
+      "sweet",
+      "fresh"
+    ],
+    "instructions": [
+      "Mix lamb with minced onion, herbs, spices.",
+      "Form into oblong patties on skewers.",
+      "Grill 10–12 min.",
+      "Serve in pita with tzatziki."
+    ]
+  },
+  {
+    "id": "r077",
+    "name": "Fattoush Salad",
+    "ingredients": [
+      {
+        "name": "pita bread",
+        "quantity": 2,
+        "unit": null,
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "cucumber",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "tomato",
+        "quantity": 3,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "red onion",
+        "quantity": 0.5,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "parsley",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "mint",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "sumac",
+        "quantity": 1,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "lemon",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 3,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Middle Eastern",
+    "dietary_tags": [
+      "vegan",
+      "vegetarian",
+      "dairy-free",
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 5,
+    "difficulty": 1,
+    "nutrition": {
+      "calories": 280,
+      "protein_g": 6,
+      "carbs_g": 36,
+      "fat_g": 12
+    },
+    "flavor_profile": [
+      "savory",
+      "sour",
+      "fresh",
+      "rich"
+    ],
+    "instructions": [
+      "Toast pita until crisp; break into pieces.",
+      "Chop vegetables and herbs.",
+      "Toss with lemon, oil, sumac; add pita."
+    ]
+  },
+  {
+    "id": "r078",
+    "name": "Mujaddara",
+    "ingredients": [
+      {
+        "name": "green lentils",
+        "quantity": 250,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "rice",
+        "quantity": 200,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "onion",
+        "quantity": 3,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "olive oil",
+        "quantity": 4,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "cumin",
+        "quantity": 1,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "salt",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Middle Eastern",
+    "dietary_tags": [
+      "vegan",
+      "vegetarian",
+      "dairy-free",
+      "gluten-free",
+      "nut-free"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 35,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 440,
+      "protein_g": 16,
+      "carbs_g": 68,
+      "fat_g": 14
+    },
+    "flavor_profile": [
+      "savory",
+      "rich"
+    ],
+    "instructions": [
+      "Simmer lentils 20 min; add rice and cook 15 more min.",
+      "Caramelize sliced onions deeply in oil (20 min).",
+      "Fold onions into lentils and rice; season with cumin."
+    ]
+  },
+  {
+    "id": "r079",
+    "name": "Pasta Puttanesca",
+    "ingredients": [
+      {
+        "name": "spaghetti",
+        "quantity": 400,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "canned tomatoes",
+        "quantity": 400,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "anchovy",
+        "quantity": 4,
+        "unit": null,
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "kalamata olives",
+        "quantity": 100,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "capers",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "other",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 4,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 3,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "red pepper flakes",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Italian",
+    "dietary_tags": [
+      "dairy-free",
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 20,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 510,
+      "protein_g": 18,
+      "carbs_g": 74,
+      "fat_g": 14
+    },
+    "flavor_profile": [
+      "spicy",
+      "umami",
+      "savory",
+      "rich"
+    ],
+    "instructions": [
+      "Cook spaghetti until al dente.",
+      "Sauté garlic and anchovy in olive oil until fragrant.",
+      "Add tomatoes, olives, capers, and chilli; simmer 10 minutes.",
+      "Toss pasta in the sauce and serve."
+    ]
+  },
+  {
+    "id": "r080",
+    "name": "Mushroom Risotto",
+    "ingredients": [
+      {
+        "name": "arborio rice",
+        "quantity": 300,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "mushroom",
+        "quantity": 400,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "garlic",
+        "quantity": 2,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "parmesan",
+        "quantity": 80,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "butter",
+        "quantity": 40,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "vegetable broth",
+        "quantity": 1,
+        "unit": "l",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Italian",
+    "dietary_tags": [
+      "vegetarian",
+      "gluten-free",
+      "nut-free"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 30,
+    "difficulty": 3,
+    "nutrition": {
+      "calories": 540,
+      "protein_g": 14,
+      "carbs_g": 70,
+      "fat_g": 18
+    },
+    "flavor_profile": [
+      "umami",
+      "savory",
+      "rich"
+    ],
+    "instructions": [
+      "Sauté onion, garlic, and mushrooms until browned.",
+      "Toast arborio rice in the pan for 2 minutes.",
+      "Add broth gradually, stirring until creamy and tender.",
+      "Finish with butter and parmesan."
+    ]
+  },
+  {
+    "id": "r081",
+    "name": "Pasta Primavera",
+    "ingredients": [
+      {
+        "name": "penne",
+        "quantity": 400,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "zucchini",
+        "quantity": 2,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "cherry tomatoes",
+        "quantity": 250,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "broccoli",
+        "quantity": 250,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 3,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "parmesan",
+        "quantity": 70,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "basil",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Italian",
+    "dietary_tags": [
+      "vegetarian",
+      "nut-free"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 20,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 480,
+      "protein_g": 16,
+      "carbs_g": 68,
+      "fat_g": 14
+    },
+    "flavor_profile": [
+      "umami",
+      "savory",
+      "fresh",
+      "rich"
+    ],
+    "instructions": [
+      "Cook penne until al dente.",
+      "Sauté zucchini, broccoli, and garlic in olive oil.",
+      "Add tomatoes and cook until just softened.",
+      "Toss with pasta, parmesan, and basil."
+    ]
+  },
+  {
+    "id": "r082",
+    "name": "Chicken Quesadillas",
+    "ingredients": [
+      {
+        "name": "flour tortillas",
+        "quantity": 4,
+        "unit": null,
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "chicken breast",
+        "quantity": 400,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "cheddar cheese",
+        "quantity": 180,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "salsa",
+        "quantity": 120,
+        "unit": "g",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "red onion",
+        "quantity": 0.5,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "bell pepper",
+        "quantity": 1,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "cumin",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Mexican",
+    "dietary_tags": [
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 12,
+    "difficulty": 1,
+    "nutrition": {
+      "calories": 620,
+      "protein_g": 38,
+      "carbs_g": 42,
+      "fat_g": 28
+    },
+    "flavor_profile": [
+      "savory",
+      "rich"
+    ],
+    "instructions": [
+      "Cook seasoned chicken with onion and pepper until done.",
+      "Fill tortillas with chicken, cheese, and salsa.",
+      "Toast in a skillet until crisp on both sides.",
+      "Slice and serve hot."
+    ]
+  },
+  {
+    "id": "r083",
+    "name": "Chilaquiles Rojos",
+    "ingredients": [
+      {
+        "name": "corn tortillas",
+        "quantity": 8,
+        "unit": null,
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "eggs",
+        "quantity": 4,
+        "unit": null,
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "salsa",
+        "quantity": 300,
+        "unit": "g",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "onion",
+        "quantity": 0.5,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "avocado",
+        "quantity": 1,
+        "unit": null,
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "feta cheese",
+        "quantity": 60,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "cilantro",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Mexican",
+    "dietary_tags": [
+      "vegetarian",
+      "gluten-free",
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 15,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 460,
+      "protein_g": 18,
+      "carbs_g": 40,
+      "fat_g": 24
+    },
+    "flavor_profile": [
+      "savory",
+      "fresh",
+      "rich"
+    ],
+    "instructions": [
+      "Fry tortilla pieces until crisp.",
+      "Warm salsa with sliced onion until simmering.",
+      "Toss chips lightly in salsa, then top with fried eggs.",
+      "Finish with avocado, feta, and cilantro."
+    ]
+  },
+  {
+    "id": "r084",
+    "name": "Carne Asada Bowls",
+    "ingredients": [
+      {
+        "name": "sirloin",
+        "quantity": 500,
+        "unit": "g",
+        "category": "other",
+        "is_core": true
+      },
+      {
+        "name": "rice",
+        "quantity": 250,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "black beans",
+        "quantity": 250,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "avocado",
+        "quantity": 1,
+        "unit": null,
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "lime",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "cilantro",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "cumin",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Mexican",
+    "dietary_tags": [
+      "vegan",
+      "vegetarian",
+      "dairy-free",
+      "gluten-free",
+      "nut-free"
+    ],
+    "prep_time_min": 20,
+    "cook_time_min": 15,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 640,
+      "protein_g": 42,
+      "carbs_g": 48,
+      "fat_g": 26
+    },
+    "flavor_profile": [
+      "savory",
+      "sour",
+      "fresh",
+      "rich"
+    ],
+    "instructions": [
+      "Marinate steak with garlic, lime, cumin, and oil.",
+      "Cook rice and warm black beans.",
+      "Sear steak until charred and slice thinly.",
+      "Build bowls with rice, beans, steak, avocado, and cilantro."
+    ]
+  },
+  {
+    "id": "r085",
+    "name": "Teriyaki Salmon Bowls",
+    "ingredients": [
+      {
+        "name": "salmon",
+        "quantity": 500,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "rice",
+        "quantity": 250,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "soy sauce",
+        "quantity": 4,
+        "unit": "tbsp",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "brown sugar",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "ginger",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 2,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "broccoli",
+        "quantity": 250,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "sesame oil",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Asian",
+    "dietary_tags": [
+      "dairy-free",
+      "gluten-free",
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 15,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 590,
+      "protein_g": 36,
+      "carbs_g": 44,
+      "fat_g": 24
+    },
+    "flavor_profile": [
+      "umami",
+      "savory",
+      "sweet"
+    ],
+    "instructions": [
+      "Cook rice until fluffy.",
+      "Simmer soy sauce, sugar, ginger, and garlic into a glaze.",
+      "Roast or pan-sear salmon and brush with teriyaki glaze.",
+      "Serve over rice with broccoli."
+    ]
+  },
+  {
+    "id": "r086",
+    "name": "Kimchi Fried Rice",
+    "ingredients": [
+      {
+        "name": "rice",
+        "quantity": 300,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "kimchi",
+        "quantity": 200,
+        "unit": "g",
+        "category": "other",
+        "is_core": true
+      },
+      {
+        "name": "eggs",
+        "quantity": 2,
+        "unit": null,
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "green onion",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "soy sauce",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "sesame oil",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 2,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Asian",
+    "dietary_tags": [
+      "vegetarian",
+      "dairy-free",
+      "gluten-free",
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 12,
+    "difficulty": 1,
+    "nutrition": {
+      "calories": 430,
+      "protein_g": 14,
+      "carbs_g": 52,
+      "fat_g": 16
+    },
+    "flavor_profile": [
+      "umami",
+      "savory"
+    ],
+    "instructions": [
+      "Fry garlic and kimchi in sesame oil.",
+      "Add cold rice and soy sauce; stir-fry until hot.",
+      "Top with fried eggs and green onion."
+    ]
+  },
+  {
+    "id": "r087",
+    "name": "Garlic Tofu Stir-Fry",
+    "ingredients": [
+      {
+        "name": "tofu",
+        "quantity": 400,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "broccoli",
+        "quantity": 250,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "bell pepper",
+        "quantity": 1,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "soy sauce",
+        "quantity": 3,
+        "unit": "tbsp",
+        "category": "condiment",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 4,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "ginger",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "sesame oil",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "rice",
+        "quantity": 250,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      }
+    ],
+    "cuisine": "Asian",
+    "dietary_tags": [
+      "vegan",
+      "vegetarian",
+      "dairy-free",
+      "gluten-free",
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 12,
+    "difficulty": 1,
+    "nutrition": {
+      "calories": 470,
+      "protein_g": 22,
+      "carbs_g": 46,
+      "fat_g": 18
+    },
+    "flavor_profile": [
+      "umami",
+      "savory"
+    ],
+    "instructions": [
+      "Press tofu and sear until golden.",
+      "Stir-fry garlic, ginger, broccoli, and pepper.",
+      "Add soy sauce and return tofu to the pan.",
+      "Serve with rice."
+    ]
+  },
+  {
+    "id": "r088",
+    "name": "Chana Masala",
+    "ingredients": [
+      {
+        "name": "chickpeas",
+        "quantity": 400,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "canned tomatoes",
+        "quantity": 400,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "ginger",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "garam masala",
+        "quantity": 2,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": true
+      },
+      {
+        "name": "cumin",
+        "quantity": 1,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "cilantro",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Indian",
+    "dietary_tags": [
+      "vegan",
+      "vegetarian",
+      "dairy-free",
+      "gluten-free",
+      "nut-free",
+      "low-carb"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 25,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 390,
+      "protein_g": 14,
+      "carbs_g": 48,
+      "fat_g": 12
+    },
+    "flavor_profile": [
+      "savory",
+      "fresh",
+      "rich"
+    ],
+    "instructions": [
+      "Sauté onion, garlic, and ginger until soft.",
+      "Add spices and cook 1 minute.",
+      "Add tomatoes and chickpeas; simmer 20 minutes.",
+      "Finish with cilantro."
+    ]
+  },
+  {
+    "id": "r089",
+    "name": "Palak Paneer",
+    "ingredients": [
+      {
+        "name": "paneer",
+        "quantity": 300,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "spinach",
+        "quantity": 400,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "ginger",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "garam masala",
+        "quantity": 2,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "cumin",
+        "quantity": 1,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "heavy cream",
+        "quantity": 60,
+        "unit": "ml",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Indian",
+    "dietary_tags": [
+      "vegetarian",
+      "gluten-free",
+      "nut-free",
+      "low-carb"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 20,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 510,
+      "protein_g": 22,
+      "carbs_g": 18,
+      "fat_g": 36
+    },
+    "flavor_profile": [
+      "savory",
+      "rich"
+    ],
+    "instructions": [
+      "Cook onion, garlic, and ginger until soft.",
+      "Wilt spinach and blend into a smooth sauce.",
+      "Return sauce to the pan with spices and cream.",
+      "Fold in paneer cubes and simmer briefly."
+    ]
+  },
+  {
+    "id": "r090",
+    "name": "Vegetable Biryani",
+    "ingredients": [
+      {
+        "name": "basmati rice",
+        "quantity": 300,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "cauliflower",
+        "quantity": 250,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "peas",
+        "quantity": 150,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "carrot",
+        "quantity": 2,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "ginger",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "garam masala",
+        "quantity": 2,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "yogurt",
+        "quantity": 120,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Indian",
+    "dietary_tags": [
+      "vegetarian",
+      "gluten-free",
+      "nut-free"
+    ],
+    "prep_time_min": 20,
+    "cook_time_min": 30,
+    "difficulty": 3,
+    "nutrition": {
+      "calories": 480,
+      "protein_g": 12,
+      "carbs_g": 74,
+      "fat_g": 10
+    },
+    "flavor_profile": [
+      "savory",
+      "sour"
+    ],
+    "instructions": [
+      "Parboil basmati rice until nearly tender.",
+      "Cook onion, garlic, ginger, and vegetables with spices.",
+      "Layer rice and vegetables in a pot with yogurt.",
+      "Steam on low heat until fragrant."
+    ]
+  },
+  {
+    "id": "r091",
+    "name": "Turkey Chili",
+    "ingredients": [
+      {
+        "name": "ground turkey",
+        "quantity": 500,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "kidney beans",
+        "quantity": 300,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "canned tomatoes",
+        "quantity": 400,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "chili powder",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "spice",
+        "is_core": true
+      },
+      {
+        "name": "cumin",
+        "quantity": 1,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      }
+    ],
+    "cuisine": "American",
+    "dietary_tags": [
+      "dairy-free",
+      "gluten-free",
+      "nut-free",
+      "low-carb"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 35,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 430,
+      "protein_g": 34,
+      "carbs_g": 28,
+      "fat_g": 16
+    },
+    "flavor_profile": [
+      "spicy",
+      "savory",
+      "rich"
+    ],
+    "instructions": [
+      "Brown turkey with onion and garlic.",
+      "Add spices and toast briefly.",
+      "Add tomatoes and beans; simmer 30 minutes.",
+      "Serve with your favorite toppings."
+    ]
+  },
+  {
+    "id": "r092",
+    "name": "Baked Mac and Cheese",
+    "ingredients": [
+      {
+        "name": "macaroni",
+        "quantity": 350,
+        "unit": "g",
+        "category": "other",
+        "is_core": true
+      },
+      {
+        "name": "cheddar cheese",
+        "quantity": 250,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "milk",
+        "quantity": 400,
+        "unit": "ml",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "butter",
+        "quantity": 50,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "flour",
+        "quantity": 35,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "breadcrumb",
+        "quantity": 60,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "black pepper",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "salt",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "American",
+    "dietary_tags": [
+      "vegetarian",
+      "nut-free"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 25,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 690,
+      "protein_g": 24,
+      "carbs_g": 70,
+      "fat_g": 32
+    },
+    "flavor_profile": [
+      "savory",
+      "rich"
+    ],
+    "instructions": [
+      "Cook macaroni until just tender.",
+      "Make a cheese sauce with butter, flour, milk, and cheddar.",
+      "Combine pasta and sauce in a baking dish.",
+      "Top with breadcrumbs and bake until golden."
+    ]
+  },
+  {
+    "id": "r093",
+    "name": "Sheet Pan Sausage and Veg",
+    "ingredients": [
+      {
+        "name": "sausage",
+        "quantity": 500,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "potatoes",
+        "quantity": 500,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "broccoli",
+        "quantity": 300,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "red onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "paprika",
+        "quantity": 1,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 2,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      }
+    ],
+    "cuisine": "American",
+    "dietary_tags": [
+      "dairy-free",
+      "gluten-free",
+      "nut-free"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 30,
+    "difficulty": 1,
+    "nutrition": {
+      "calories": 560,
+      "protein_g": 24,
+      "carbs_g": 34,
+      "fat_g": 32
+    },
+    "flavor_profile": [
+      "savory",
+      "smoky",
+      "rich"
+    ],
+    "instructions": [
+      "Toss potatoes, broccoli, onion, and garlic with oil and paprika.",
+      "Spread on a sheet pan with sausage pieces.",
+      "Roast at 425°F until browned and cooked through."
+    ]
+  },
+  {
+    "id": "r094",
+    "name": "Greek Chicken Bowls",
+    "ingredients": [
+      {
+        "name": "chicken breast",
+        "quantity": 500,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "rice",
+        "quantity": 250,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "cucumber",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "tomato",
+        "quantity": 2,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "feta cheese",
+        "quantity": 80,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "lemon",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 3,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "oregano",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Mediterranean",
+    "dietary_tags": [
+      "gluten-free",
+      "nut-free"
+    ],
+    "prep_time_min": 20,
+    "cook_time_min": 20,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 560,
+      "protein_g": 40,
+      "carbs_g": 38,
+      "fat_g": 22
+    },
+    "flavor_profile": [
+      "savory",
+      "sour",
+      "fresh",
+      "rich"
+    ],
+    "instructions": [
+      "Marinate chicken with lemon, garlic, oregano, and oil.",
+      "Cook rice and grill the chicken.",
+      "Slice cucumber and tomato for the bowl base.",
+      "Assemble bowls with feta on top."
+    ]
+  },
+  {
+    "id": "r095",
+    "name": "Lemon Herb Chicken Orzo",
+    "ingredients": [
+      {
+        "name": "chicken breast",
+        "quantity": 450,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "orzo",
+        "quantity": 300,
+        "unit": "g",
+        "category": "other",
+        "is_core": true
+      },
+      {
+        "name": "lemon",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "spinach",
+        "quantity": 150,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "feta cheese",
+        "quantity": 60,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "parsley",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Mediterranean",
+    "dietary_tags": [
+      "gluten-free",
+      "nut-free",
+      "quick",
+      "low-carb"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 20,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 540,
+      "protein_g": 34,
+      "carbs_g": 46,
+      "fat_g": 20
+    },
+    "flavor_profile": [
+      "savory",
+      "sour",
+      "fresh",
+      "rich"
+    ],
+    "instructions": [
+      "Brown chicken pieces in olive oil.",
+      "Add garlic and orzo, then cook briefly.",
+      "Pour in water and simmer until orzo is tender.",
+      "Finish with lemon, spinach, feta, and parsley."
+    ]
+  },
+  {
+    "id": "r096",
+    "name": "White Bean Vegetable Soup",
+    "ingredients": [
+      {
+        "name": "white beans",
+        "quantity": 400,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "carrot",
+        "quantity": 2,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "celery",
+        "quantity": 2,
+        "unit": "stalks",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "onion",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "spinach",
+        "quantity": 150,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "vegetable broth",
+        "quantity": 1,
+        "unit": "l",
+        "category": "condiment",
+        "is_core": true
+      },
+      {
+        "name": "olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Mediterranean",
+    "dietary_tags": [
+      "vegan",
+      "vegetarian",
+      "dairy-free",
+      "gluten-free",
+      "nut-free",
+      "low-carb"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 30,
+    "difficulty": 1,
+    "nutrition": {
+      "calories": 310,
+      "protein_g": 14,
+      "carbs_g": 38,
+      "fat_g": 10
+    },
+    "flavor_profile": [
+      "savory",
+      "rich"
+    ],
+    "instructions": [
+      "Cook onion, carrot, celery, and garlic in olive oil.",
+      "Add beans and broth; simmer 20 minutes.",
+      "Stir in spinach just before serving."
+    ]
+  },
+  {
+    "id": "r097",
+    "name": "Quiche Lorraine",
+    "ingredients": [
+      {
+        "name": "pie crust",
+        "quantity": 1,
+        "unit": null,
+        "category": "other",
+        "is_core": true
+      },
+      {
+        "name": "eggs",
+        "quantity": 4,
+        "unit": null,
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "bacon",
+        "quantity": 150,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "gruyere",
+        "quantity": 120,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "heavy cream",
+        "quantity": 250,
+        "unit": "ml",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "onion",
+        "quantity": 0.5,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "black pepper",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "salt",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "French",
+    "dietary_tags": [
+      "gluten-free",
+      "nut-free",
+      "low-carb"
+    ],
+    "prep_time_min": 20,
+    "cook_time_min": 35,
+    "difficulty": 3,
+    "nutrition": {
+      "calories": 620,
+      "protein_g": 24,
+      "carbs_g": 24,
+      "fat_g": 44
+    },
+    "flavor_profile": [
+      "savory",
+      "smoky",
+      "rich"
+    ],
+    "instructions": [
+      "Blind-bake the crust until lightly set.",
+      "Cook bacon and onion until fragrant.",
+      "Whisk eggs with cream and cheese.",
+      "Fill crust and bake until just set."
+    ]
+  },
+  {
+    "id": "r098",
+    "name": "Salmon en Papillote",
+    "ingredients": [
+      {
+        "name": "salmon",
+        "quantity": 500,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "asparagus",
+        "quantity": 250,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "lemon",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "butter",
+        "quantity": 30,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "shallot",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "thyme",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      }
+    ],
+    "cuisine": "French",
+    "dietary_tags": [
+      "gluten-free",
+      "nut-free",
+      "low-carb"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 18,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 410,
+      "protein_g": 34,
+      "carbs_g": 10,
+      "fat_g": 24
+    },
+    "flavor_profile": [
+      "savory",
+      "sour",
+      "rich"
+    ],
+    "instructions": [
+      "Layer salmon, asparagus, shallot, lemon, and butter on parchment.",
+      "Fold packets tightly.",
+      "Bake until the salmon is tender and flaky."
+    ]
+  },
+  {
+    "id": "r099",
+    "name": "Mushroom Gruyere Tartine",
+    "ingredients": [
+      {
+        "name": "bread",
+        "quantity": 4,
+        "unit": "slices",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "mushroom",
+        "quantity": 300,
+        "unit": "g",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "gruyere",
+        "quantity": 120,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": true
+      },
+      {
+        "name": "shallot",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "butter",
+        "quantity": 20,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "thyme",
+        "quantity": null,
+        "unit": null,
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 1,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      }
+    ],
+    "cuisine": "French",
+    "dietary_tags": [
+      "vegetarian",
+      "nut-free",
+      "quick"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 15,
+    "difficulty": 1,
+    "nutrition": {
+      "calories": 420,
+      "protein_g": 16,
+      "carbs_g": 30,
+      "fat_g": 24
+    },
+    "flavor_profile": [
+      "umami",
+      "savory",
+      "rich"
+    ],
+    "instructions": [
+      "Sauté mushrooms and shallot with butter and thyme.",
+      "Toast bread slices until crisp.",
+      "Pile mushrooms on bread, top with gruyere, and broil briefly."
+    ]
+  },
+  {
+    "id": "r100",
+    "name": "Falafel Plate",
+    "ingredients": [
+      {
+        "name": "chickpeas",
+        "quantity": 400,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "parsley",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "cumin",
+        "quantity": 1,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "coriander",
+        "quantity": 1,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": false
+      },
+      {
+        "name": "pita bread",
+        "quantity": 4,
+        "unit": null,
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "tahini",
+        "quantity": 3,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "tomato",
+        "quantity": 2,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "cucumber",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Middle Eastern",
+    "dietary_tags": [
+      "vegan",
+      "vegetarian",
+      "dairy-free",
+      "nut-free"
+    ],
+    "prep_time_min": 20,
+    "cook_time_min": 15,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 470,
+      "protein_g": 16,
+      "carbs_g": 56,
+      "fat_g": 16
+    },
+    "flavor_profile": [
+      "savory",
+      "fresh",
+      "rich"
+    ],
+    "instructions": [
+      "Pulse chickpeas with garlic, parsley, and spices into a coarse mixture.",
+      "Form patties and pan-fry until crisp.",
+      "Serve with pita, tahini, tomato, and cucumber."
+    ]
+  },
+  {
+    "id": "r101",
+    "name": "Harissa Roasted Cauliflower",
+    "ingredients": [
+      {
+        "name": "cauliflower",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": true
+      },
+      {
+        "name": "chickpeas",
+        "quantity": 250,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "harissa",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "spice",
+        "is_core": true
+      },
+      {
+        "name": "olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "lemon",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "tahini",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      },
+      {
+        "name": "parsley",
+        "quantity": null,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Middle Eastern",
+    "dietary_tags": [
+      "vegan",
+      "vegetarian",
+      "dairy-free",
+      "gluten-free",
+      "nut-free",
+      "low-carb"
+    ],
+    "prep_time_min": 10,
+    "cook_time_min": 30,
+    "difficulty": 1,
+    "nutrition": {
+      "calories": 320,
+      "protein_g": 12,
+      "carbs_g": 28,
+      "fat_g": 18
+    },
+    "flavor_profile": [
+      "spicy",
+      "sour",
+      "fresh",
+      "rich"
+    ],
+    "instructions": [
+      "Toss cauliflower and chickpeas with harissa and olive oil.",
+      "Roast until deeply caramelized.",
+      "Drizzle with tahini and lemon, then finish with parsley."
+    ]
+  },
+  {
+    "id": "r102",
+    "name": "Za'atar Chicken Rice Bowl",
+    "ingredients": [
+      {
+        "name": "chicken thigh",
+        "quantity": 500,
+        "unit": "g",
+        "category": "protein",
+        "is_core": true
+      },
+      {
+        "name": "rice",
+        "quantity": 250,
+        "unit": "g",
+        "category": "grain",
+        "is_core": true
+      },
+      {
+        "name": "za'atar",
+        "quantity": 2,
+        "unit": "tsp",
+        "category": "spice",
+        "is_core": true
+      },
+      {
+        "name": "cucumber",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "tomato",
+        "quantity": 2,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "yogurt",
+        "quantity": 120,
+        "unit": "g",
+        "category": "dairy",
+        "is_core": false
+      },
+      {
+        "name": "lemon",
+        "quantity": 1,
+        "unit": null,
+        "category": "vegetable",
+        "is_core": false
+      },
+      {
+        "name": "olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "category": "fat",
+        "is_core": false
+      }
+    ],
+    "cuisine": "Middle Eastern",
+    "dietary_tags": [
+      "gluten-free",
+      "nut-free"
+    ],
+    "prep_time_min": 15,
+    "cook_time_min": 20,
+    "difficulty": 2,
+    "nutrition": {
+      "calories": 560,
+      "protein_g": 34,
+      "carbs_g": 44,
+      "fat_g": 22
+    },
+    "flavor_profile": [
+      "sour",
+      "fresh",
+      "rich"
+    ],
+    "instructions": [
+      "Season chicken with za'atar, lemon, and olive oil.",
+      "Roast or pan-sear until cooked through.",
+      "Serve over rice with cucumber, tomato, and yogurt sauce."
+    ]
+  }
+]

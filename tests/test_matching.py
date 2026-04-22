@@ -172,6 +172,14 @@ class TestAllergyRule:
         profile = _make_profile(hard_constraints=["nut-free"])
         assert self.rule.applies(recipe, profile) is False
 
+    def test_passes_when_recipe_uses_coconut_in_nut_free_recipe(self) -> None:
+        recipe = _make_recipe(
+            ingredients=[Ingredient(name="coconut milk", category="other")],
+            dietary_tags=["nut-free"],
+        )
+        profile = _make_profile(hard_constraints=["nut-free"])
+        assert self.rule.applies(recipe, profile) is True
+
     def test_fail_reason_mentions_recipe(self) -> None:
         recipe = _make_recipe(name="Walnut Cake", dietary_tags=[])
         profile = _make_profile(hard_constraints=["nut-free"])

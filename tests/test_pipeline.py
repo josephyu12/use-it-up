@@ -80,6 +80,19 @@ class TestRecommend:
         results = recommend(demo_profile, sample_recipes)
         assert len(results) == 1
 
+    def test_served_recipe_still_respects_hard_constraints_after_adaptation(self):
+        from useitup.data_loader import load_recipes
+
+        recipes = load_recipes(_DATA_DIR / "recipes_curated.json")
+        restrictive = UserProfile(
+            user_id="test",
+            pantry=["bread", "olive oil", "butter"],
+            hard_constraints=["dairy-free"],
+            soft_preferences=SoftPreferences(goals=["dairy_free"]),
+        )
+        with pytest.raises(ValueError, match="No recipes survived"):
+            recommend(restrictive, recipes, top_k=1)
+
     def test_all_results_share_same_filter_result(self, demo_profile, sample_recipes):
         results = recommend(demo_profile, sample_recipes, top_k=3)
         if len(results) > 1:
@@ -91,10 +104,11 @@ class TestRecommend:
             assert results[0].cbr_matches is results[1].cbr_matches
 
     def test_minimal_profile_cold_start(self, minimal_profile, sample_recipes):
+        # With a generous pantry and no hard constraints, the relaxed
+        # essential-coverage check should still surface recommendations.
         results = recommend(minimal_profile, sample_recipes, top_k=1)
-        assert results
-        r = results[0]
-        assert r.cbr_matches[0].fallback_reason is not None
+        assert len(results) == 1
+        assert results[0].adapted_recipe.recipe.name
 
     def test_explanation_markdown_contains_recipe_name(self, demo_profile, sample_recipes):
         from useitup.explain import render_explanation

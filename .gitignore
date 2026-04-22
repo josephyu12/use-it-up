@@ -17,6 +17,10 @@ htmlcov/
 # Jupyter
 .ipynb_checkpoints/
 
+# Large local datasets / generated artifacts
+data/raw/
+*.parquet
+
 # macOS
 .DS_Store
 
@@ -25,3 +29,4 @@ htmlcov/
 .idea/
 *.swp
 *.swo
+.gstack/

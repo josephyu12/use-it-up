@@ -45,6 +45,7 @@ Compiles the decision log from Stages 1–2 into four explanation types:
 | `quantity` | `float \| None` | Amount |
 | `unit` | `str \| None` | Unit of measure |
 | `category` | `IngredientCategory` | One of: `protein`, `vegetable`, `grain`, `dairy`, `spice`, `fat`, `condiment`, `other` |
+| `is_core` | `bool \| None` | Whether this ingredient is a core/essential component of the recipe. `None` = not inferred (runtime heuristic applies). Populated by `enrichment.infer_is_core` for generated datasets. |
 
 ### Recipe
 | Field | Type | Description |
@@ -136,6 +137,7 @@ Pantry coverage threshold: `COVERAGE_THRESHOLD = 0.50`.
 | 6 | Pipeline integration + Jupyter notebook: `Recommendation` dataclass + `recommend()` in `pipeline.py`; `notebooks/UseItUp.ipynb` with 6 idempotent cells (ipywidgets interactive input, decision-trace bar chart, alt-scenario counterfactual buttons); 13 new tests including notebook smoke test. |
 | 7 | QA pass: `tests/test_scenarios.py` (5 end-to-end scenarios, 18 tests), `tests/test_explanation_quality.py` (4 rule-based quality checks, 13 tests); 31/31 pass; 98% line coverage overall. `docs/qa_report.md` with scenario results and 5 known edge cases. |
 | 8 | Write-up + presentation: `docs/writeup.md` (~6 pages, Mermaid architecture diagram, 4 real explanation examples captured from the pipeline, evaluation table, division of labor, future work). |
+| 9 | Dataset scale-up + `is_core` schema extension: new `src/useitup/enrichment.py` centralises category / dietary / flavor / `is_core` inference; added `Ingredient.is_core: bool \| None`; `matching._is_essential` prefers the field when set (heuristic remains as fallback). `scripts/build_recipes_from_datahive.py` converts the 39 447-recipe `datahiveai/recipes-with-nutrition` parquet into `data/recipes.json` (55 MB). Curated 102-recipe corpus moved to `data/recipes_curated.json` as the fallback test fixture. |
 
 ### Schema / Interface Changes in Phase 1
 - `ingredients` changed from `list[str]` → `list[Ingredient]` (structured model with `name`, `quantity`, `unit`, `category`).

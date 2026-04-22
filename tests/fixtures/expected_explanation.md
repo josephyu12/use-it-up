@@ -1,54 +1,66 @@
-## Goal Trace: Why **Black Bean Tacos**?
+## Goal Trace: Why **Shakshuka**?
 
-I recommend **Black Bean Tacos** because you have **4 of 7 ingredients** (57%) on hand.
+I recommend **Shakshuka** because you have **9 of 9 ingredients** (100%) on hand, including **1 of 1 core ingredients**.
 
-**Pantry items used:** black beans, olive oil, cumin, lime, avocado.
+**Pantry items used:** eggs, olive oil, sesame oil, garlic, onion, red onion, cumin, paprika, cherry tomatoes, feta cheese, canned tomatoes.
 
-**Goals satisfied:** low cost.
+*No explicit goal tags matched — hard constraints are still respected.*
 
 **Hard constraints respected:** gluten-free.
+
+*Note: 2 soft preference(s) not fully met (CuisinePreferenceRule, GoalAlignmentRule), but this was the best available match.*
 
 ---
 
 ## Counterfactual
 
-I did not recommend **Lentil Dal** because: _Recipe 'Lentil Dal' eliminated: coverage 44% < 50%_.
+I did not recommend **Spaghetti Aglio e Olio** because: _Recipe 'Spaghetti Aglio e Olio' eliminated: required tags ['gluten-free'] absent_.
 
+If you removed your **gluten-free** constraint(s), it would have ranked **#3** in the candidate pool due to its **ingredient coverage** profile.
 
 ---
 
 ## CBR Trace
 
-**Cold-start mode:** No rating history; ranked by preferred cuisines and prep time.
+**Cold-start mode:** No rating history; ranked by pantry coverage, preferred cuisines, prep time.
 
-**Black Bean Tacos** was selected as the top candidate using cuisine preference and prep-time ranking, because no past recipe ratings are available to guide similarity matching.
+**Shakshuka** was selected as the top candidate using cuisine preference and prep-time ranking, because no past recipe ratings are available to guide similarity matching.
 
 ---
 
 ## Ingredient Utilization Report
 
 ### ✅ Pantry Ingredients Used
-- black beans
+- eggs
 - olive oil
+- sesame oil
+- garlic
+- onion
+- red onion
 - cumin
-- lime
-- avocado
+- paprika
+- cherry tomatoes
+- feta cheese
+- canned tomatoes
 
 ### ⚠️ Pantry Ingredients NOT Used
 - chicken breast
-- eggs
+- chicken thighs
+- black beans
+- chickpeas
 - brown rice
-- garlic
-- onion
-- paprika
-- cherry tomatoes
+- quinoa
+- ginger
+- turmeric
+- cinnamon
+- lime
+- lemon
+- avocado
 - spinach
-
-### 🛒 Missing Ingredients to Buy
-- corn tortillas
-- salsa
 - cilantro
+- parsley
+- greek yogurt
+- coconut milk
 
 ### 💡 Follow-Up Recipe Suggestions
-- **Shakshuka** — would also use: eggs, garlic, onion, paprika, cherry tomatoes
-- **Greek Salad** — would also use: onion, cherry tomatoes
+- **Lentil Dal** — would also use: ginger, turmeric

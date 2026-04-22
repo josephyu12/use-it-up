@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UseItUp</title>
+    <meta name="description" content="Cook what you have. An explainable recipe recommendation engine that finds recipes from your pantry items." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">
+          <div class="brand-mark">
+            <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true">
+              <defs>
+                <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#ff8a4c" />
+                  <stop offset="1" stop-color="#d94a1a" />
+                </linearGradient>
+              </defs>
+              <path fill="url(#g1)" d="M16 3c-3 0-5 2-5 4 0 1 1 2 2 3-4 1-7 4-7 9 0 6 5 10 10 10s10-4 10-10c0-5-3-8-7-9 1-1 2-2 2-3 0-2-2-4-5-4z"/>
+            </svg>
+          </div>
+          <span class="brand-text">UseItUp</span>
+        </div>
+        <button type="button" class="btn-secondary btn-small" id="demo-btn">🚀 Load demo</button>
+      </div>
+    </header>
+
+    <main class="page">
+      <section id="setup-view" class="setup-view">
+        <div class="setup-hero">
+          <div class="eyebrow">🧠 Explainable Cooking</div>
+          <h1>Cook what you have.</h1>
+          <p>Pick pantry items, set your preferences, and we'll recommend recipes with clear reasoning — powered by AI.</p>
+        </div>
+
+        <section class="setup-shell">
+          <div class="wizard-progress">
+            <div class="progress-copy">
+              <span class="progress-label">Setup</span>
+              <strong id="step-counter">Step 1 of 4</strong>
+            </div>
+            <div id="progress-rail" class="progress-rail"></div>
+          </div>
+
+          <section class="template-panel">
+            <button type="button" class="template-toggle btn-secondary" id="template-toggle">✨ Use a starter template</button>
+            <div id="templates" class="template-grid hidden"></div>
+          </section>
+
+          <section class="wizard-panel">
+            <section class="wizard-step active" data-step="pantry">
+              <div class="step-head">
+                <h2>Step 1: Pantry</h2>
+                <p>Select what you already have on hand.</p>
+              </div>
+
+              <div id="pantry-board" class="pantry-board"></div>
+
+              <div class="field-block">
+                <label for="pantry" class="field-label">Custom ingredients</label>
+                <input id="pantry" type="text" placeholder="kimchi, feta, basil, chickpeas…" />
+              </div>
+
+              <div class="step-footer">
+                <span id="pantry-count" class="count-note">0 items selected</span>
+                <div class="step-actions">
+                  <button type="button" class="btn-primary" id="next-pantry-btn">Continue →</button>
+                </div>
+              </div>
+            </section>
+
+            <section class="wizard-step hidden" data-step="constraints">
+              <div class="step-head">
+                <h2>Step 2: Restrictions</h2>
+                <p>These are hard rules a recipe must satisfy.</p>
+              </div>
+
+              <div id="constraints" class="pill-group"></div>
+
+              <div class="step-footer">
+                <span id="constraint-count" class="count-note">No restrictions selected</span>
+                <div class="step-actions">
+                  <button type="button" class="btn-secondary" id="back-constraints-btn">← Back</button>
+                  <button type="button" class="btn-primary" id="next-constraints-btn">Continue →</button>
+                </div>
+              </div>
+            </section>
+
+            <section class="wizard-step hidden" data-step="goals">
+              <div class="step-head">
+                <h2>Step 3: Goals</h2>
+                <p>These guide ranking without filtering recipes out.</p>
+              </div>
+
+              <div id="goals" class="pill-group"></div>
+
+              <div class="step-footer">
+                <span id="goal-count" class="count-note">No goals selected</span>
+                <div class="step-actions">
+                  <button type="button" class="btn-secondary" id="back-goals-btn">← Back</button>
+                  <button type="button" class="btn-primary" id="next-goals-btn">Continue →</button>
+                </div>
+              </div>
+            </section>
+
+            <section class="wizard-step hidden" data-step="taste">
+              <div class="step-head">
+                <h2>Step 4: Taste & time</h2>
+                <p>Set cuisine preferences, prep time, and result count.</p>
+              </div>
+
+              <div class="field-block">
+                <label class="field-label">Cuisines you love</label>
+                <div id="cuisines" class="pill-group"></div>
+              </div>
+
+              <div class="field-block">
+                <label for="max-prep" class="field-label">Max prep time</label>
+                <div class="slider-row">
+                  <input type="range" id="max-prep" min="10" max="120" step="5" value="45" />
+                  <span id="max-prep-val" class="slider-value">45 min</span>
+                </div>
+              </div>
+
+              <div class="field-block">
+                <label for="top-k" class="field-label">How many recipes?</label>
+                <select id="top-k">
+                  <option value="1">1 result</option>
+                  <option value="3" selected>3 results</option>
+                  <option value="5">5 results</option>
+                  <option value="8">8 results</option>
+                  <option value="10">10 results</option>
+                  <option value="12">12 results</option>
+                </select>
+              </div>
+
+              <div class="step-footer">
+                <span class="count-note">Ready to search</span>
+                <div class="step-actions">
+                  <button type="button" class="btn-secondary" id="back-taste-btn">← Back</button>
+                  <button type="button" class="btn-primary" id="submit-btn">🍳 Find recipes</button>
+                </div>
+              </div>
+            </section>
+          </section>
+        </section>
+      </section>
+
+      <section id="results-view" class="results-view hidden">
+        <div id="results-summary" class="results-summary"></div>
+        <div id="shopping-alert"></div>
+        <div id="recipe-stack" class="recipe-stack"></div>
+
+        <details class="advanced-panel">
+          <summary>📋 Decision log</summary>
+          <div id="decision-log-wrap"></div>
+        </details>
+
+        <details class="advanced-panel">
+          <summary>📚 Browse recipe library</summary>
+          <div class="library-tools">
+            <input id="library-search" type="text" placeholder="Search recipes or ingredients…" />
+            <div id="library-count" class="library-count"></div>
+          </div>
+          <div id="library-grid" class="library-grid"></div>
+        </details>
+
+        <section id="error-panel" class="error-panel hidden"></section>
+      </section>
+    </main>
+
+    <div id="loading" class="loading hidden">
+      <div class="loading-card">
+        <div class="spinner"></div>
+        <p>Finding delicious recipes…</p>
+      </div>
+    </div>
+
+    <div id="recipe-modal-root"></div>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>

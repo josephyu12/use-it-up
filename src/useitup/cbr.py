@@ -8,8 +8,9 @@ from pathlib import Path
 
 import numpy as np
 
+from useitup.matching import IngredientScorer as _IngredientScorer
 from useitup.profile import UserProfile, add_rating
-from useitup.schemas import Recipe
+from useitup.schemas import DietaryTag, Recipe
 
 _DATA_DIR = Path(__file__).parent.parent.parent / "data"
 _SUBSTITUTIONS_PATH = _DATA_DIR / "substitutions.json"
@@ -59,6 +60,32 @@ _GOAL_CONFLICTS: dict[str, list[str]] = {
         "mozzarella", "parmesan", "cheddar", "brie", "ricotta", "sour cream",
     ],
 }
+
+_MEAT_KEYWORDS = {
+    "chicken", "beef", "pork", "fish", "shrimp", "lamb", "turkey",
+    "bacon", "ham", "anchovy", "sausage", "tuna", "salmon",
+}
+_DAIRY_KEYWORDS = {
+    "milk", "cheese", "butter", "yogurt", "feta", "ghee", "mozzarella",
+    "parmesan", "cheddar", "brie", "ricotta", "cream", "paneer", "gruyere",
+}
+_GLUTEN_KEYWORDS = {
+    "flour", "bread", "pasta", "wheat", "barley", "rye", "noodle",
+    "spaghetti", "fettuccine", "penne", "lasagna", "breadcrumb", "cracker",
+    "bulgur", "couscous", "semolina", "pita", "naan", "baguette", "bun", "wrap",
+}
+_NUT_KEYWORDS = {
+    "almond", "walnut", "pecan", "cashew", "pistachio", "hazelnut",
+    "pine nut", "macadamia", "peanut",
+}
+_CATEGORY_RULES: list[tuple[list[str], str]] = [
+    (["chicken", "beef", "pork", "lamb", "salmon", "tuna", "shrimp", "turkey", "bacon", "sausage", "tofu", "tempeh", "lentil", "chickpea", "bean", "egg", "paneer"], "protein"),
+    (["flour", "rice", "pasta", "bread", "oat", "quinoa", "barley", "corn", "wheat", "noodle", "tortilla", "couscous", "spaghetti", "fettuccine", "penne", "breadcrumb", "cracker", "bun", "wrap"], "grain"),
+    (["milk", "cheese", "butter", "cream", "yogurt", "ghee", "mozzarella", "parmesan", "cheddar", "feta", "ricotta", "brie", "paneer", "gruyere"], "dairy"),
+    (["salt", "pepper", "cumin", "paprika", "turmeric", "cinnamon", "oregano", "thyme", "basil", "rosemary", "ginger", "chili", "cayenne", "coriander", "cardamom", "nutmeg", "clove"], "spice"),
+    (["olive oil", "vegetable oil", "canola oil", "coconut oil", "sesame oil", "avocado", "tahini"], "fat"),
+    (["soy sauce", "ketchup", "mustard", "mayo", "vinegar", "hot sauce", "worcestershire", "fish sauce", "oyster sauce", "hoisin", "sriracha", "miso", "teriyaki", "salsa", "relish", "bbq sauce", "honey", "maple syrup", "pesto", "tomato sauce", "stock", "broth"], "condiment"),
+]
 
 # Feature vector slice boundaries
 _CUISINE_SLICE = slice(0, len(CUISINES))
@@ -219,6 +246,9 @@ class CBRRetriever:
             return self._cold_start_retrieve(candidates, k)
 
         results: list[CBRMatch] = []
+        preferred = set(self._profile.soft_preferences.preferred_cuisines)
+        pantry = self._profile.pantry
+        scorer = _IngredientScorer()
         for recipe in candidates:
             vec = recipe_feature_vector(recipe)
             sim = _cosine_similarity(vec, self._centroid)
@@ -247,22 +277,32 @@ class CBRRetriever:
                 similarity_breakdown=breakdown,
             ))
 
-        results.sort(key=lambda m: m.similarity_score, reverse=True)
+        def _rank(match: CBRMatch) -> tuple[float, float, float]:
+            cuisine_score = 1.0 if preferred and match.recipe.cuisine in preferred else 0.0
+            coverage = scorer.score(match.recipe, pantry).weighted_coverage if pantry else 0.0
+            return (cuisine_score, match.similarity_score, coverage)
+
+        results.sort(key=_rank, reverse=True)
         return results[:k]
 
     def _cold_start_retrieve(self, candidates: list[Recipe], k: int) -> list[CBRMatch]:
         preferred = set(self._profile.soft_preferences.preferred_cuisines)
+        pantry = self._profile.pantry
+        scorer = _IngredientScorer()
 
-        def _rank(r: Recipe) -> tuple[float, float]:
+        # Primary: cuisine match when the user has expressed a preference.
+        # Secondary: pantry coverage. Tertiary: shorter prep time.
+        def _rank(r: Recipe) -> tuple[float, float, float]:
             cuisine_score = 1.0 if r.cuisine in preferred else 0.0
+            coverage = scorer.score(r, pantry).weighted_coverage if pantry else 0.0
             time_score = 1.0 - min(r.prep_time_min / MAX_PREP_TIME, 1.0)
-            return (cuisine_score, time_score)
+            return (cuisine_score, coverage, time_score) if preferred else (coverage, time_score, cuisine_score)
 
         sorted_candidates = sorted(candidates, key=_rank, reverse=True)
         fallback_msg = (
-            "No rating history; ranked by preferred cuisines and prep time"
+            "No rating history; ranked by preferred cuisines, pantry coverage, prep time"
             if preferred
-            else "No rating history or cuisine preferences; ranked by prep time"
+            else "No rating history or cuisine preferences; ranked by pantry coverage and prep time"
         )
 
         zero_breakdown = FeatureBreakdown(
@@ -301,7 +341,10 @@ class CBRAdapter:
                 if sub is None:
                     continue
                 new_ingredients[i] = ingredient.model_copy(
-                    update={"name": sub["replacement"]}
+                    update={
+                        "name": sub["replacement"],
+                        "category": _classify_category(sub["replacement"]),
+                    }
                 )
                 adaptations.append(AdaptationEntry(
                     original=ingredient.name,
@@ -310,11 +353,12 @@ class CBRAdapter:
                 ))
                 break  # one substitution per ingredient
 
-        adapted_recipe = (
-            match.recipe.model_copy(update={"ingredients": new_ingredients})
-            if adaptations
-            else match.recipe
-        )
+        adapted_recipe = match.recipe
+        if adaptations:
+            adapted_recipe = match.recipe.model_copy(update={
+                "ingredients": new_ingredients,
+                "dietary_tags": _infer_dietary_tags(match.recipe, new_ingredients),
+            })
         return AdaptedRecipe(recipe=adapted_recipe, adaptations=adaptations)
 
     def _find_substitution(self, ing_name: str, goal: str) -> dict | None:
@@ -329,3 +373,55 @@ class CBRAdapter:
 
 def record_success(profile: UserProfile, recipe_id: str, rating: int = 5) -> UserProfile:
     return add_rating(profile, recipe_id, rating)
+
+
+def _classify_category(name: str) -> str:
+    low = name.lower()
+    if any(keyword in low for keyword in ["coconut yogurt", "oat milk", "vegan butter", "coconut cream", "cashew cream", "nutritional yeast", "marinated tofu", "flax egg"]):
+        if "milk" in low or "yogurt" in low or "cream" in low:
+            return "condiment"
+        if "butter" in low or "oil" in low:
+            return "fat"
+        if "tofu" in low or "egg" in low:
+            return "protein"
+        return "other"
+    for keywords, category in _CATEGORY_RULES:
+        if any(keyword in low for keyword in keywords):
+            return category
+    if any(keyword in low for keyword in ["onion", "garlic", "tomato", "spinach", "broccoli", "pepper", "mushroom", "zucchini", "cucumber", "lettuce", "potato", "parsley", "cilantro", "mint", "lemon", "lime", "basil"]):
+        return "vegetable"
+    return "other"
+
+
+def _infer_dietary_tags(recipe: Recipe, ingredients) -> list[DietaryTag]:
+    lowered = [ingredient.name.lower() for ingredient in ingredients]
+    combined = " ".join(lowered)
+
+    has_meat = any(any(keyword in name for keyword in _MEAT_KEYWORDS) for name in lowered)
+    has_dairy = any(_contains_dairy(name) for name in lowered)
+    has_gluten = any(any(keyword in name for keyword in _GLUTEN_KEYWORDS) for name in lowered)
+    has_nuts = any(any(keyword in name for keyword in _NUT_KEYWORDS) for name in lowered)
+
+    tags: list[str] = []
+    if not has_meat and not has_dairy and "egg" not in combined and "honey" not in combined:
+        tags.append("vegan")
+    if not has_meat:
+        tags.append("vegetarian")
+    if not has_dairy:
+        tags.append("dairy-free")
+    if not has_gluten:
+        tags.append("gluten-free")
+    if not has_nuts:
+        tags.append("nut-free")
+
+    for tag in recipe.dietary_tags:
+        if tag in {"low-carb", "high-protein", "low-cost", "quick"} and tag not in tags:
+            tags.append(tag)
+
+    return tags  # type: ignore[return-value]
+
+
+def _contains_dairy(name: str) -> bool:
+    if any(prefix in name for prefix in ["coconut ", "oat ", "vegan ", "cashew ", "almond "]):
+        return False
+    return any(keyword in name for keyword in _DAIRY_KEYWORDS)
