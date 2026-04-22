@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections import Counter
 from dataclasses import asdict
+import os
 from pathlib import Path
 from typing import Any
 
@@ -23,7 +24,23 @@ _STATIC_DIR = _PKG_DIR / "static"
 _DATA_DIR = _PKG_DIR.parent.parent / "data"
 _RECIPES_FULL = _DATA_DIR / "recipes.json"
 _RECIPES_SAMPLE = _DATA_DIR / "recipes_sample.json"
-_RECIPES_PATH = _RECIPES_FULL if _RECIPES_FULL.exists() else _RECIPES_SAMPLE
+_RECIPES_CURATED = _DATA_DIR / "recipes_curated.json"
+
+
+def _default_recipes_path() -> Path:
+    override = os.getenv("USEITUP_RECIPES_PATH")
+    if override:
+        return Path(override)
+    if os.getenv("VERCEL") and _RECIPES_CURATED.exists():
+        return _RECIPES_CURATED
+    if _RECIPES_FULL.exists():
+        return _RECIPES_FULL
+    if _RECIPES_CURATED.exists():
+        return _RECIPES_CURATED
+    return _RECIPES_SAMPLE
+
+
+_RECIPES_PATH = _default_recipes_path()
 
 _CUISINE_EMOJI: dict[str, str] = {
     "Italian": "\U0001F1EE\U0001F1F9",

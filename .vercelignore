@@ -1,0 +1,12 @@
+.git
+.venv
+__pycache__
+.pytest_cache
+.coverage
+htmlcov
+tests
+notebooks
+docs
+scripts
+data/raw
+data/recipes.json

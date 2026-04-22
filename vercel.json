@@ -8,7 +8,10 @@
         "runtime": "python3.11",
         "includeFiles": [
           "src/useitup/static/**",
-          "data/**"
+          "data/recipes_curated.json",
+          "data/recipes_sample.json",
+          "data/substitutions.json",
+          "data/profiles/**"
         ]
       }
     }
