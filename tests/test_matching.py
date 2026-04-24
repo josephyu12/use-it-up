@@ -17,6 +17,7 @@ from useitup.matching import (
     PantryCoverageRule,
     PrepTimeRule,
     ScoredRecipe,
+    _ingredient_match,
 )
 from useitup.profile import SoftPreferences, UserProfile
 from useitup.schemas import Ingredient, Recipe
@@ -441,6 +442,129 @@ class TestFilterEngineEndToEnd:
 # ---------------------------------------------------------------------------
 # FilterEngine — custom rule injection
 # ---------------------------------------------------------------------------
+
+class TestIngredientMatchSemantics:
+    """Regression tests for the asymmetric ingredient matcher.
+
+    The matcher must distinguish between a pantry item that's more specific
+    than the recipe ingredient (safe: user has the variant) and a pantry item
+    that's more generic (often unsafe: "cheese" does not mean "feta cheese").
+    """
+
+    @pytest.mark.parametrize("pantry,recipe_ing", [
+        ("cheese", "feta cheese"),
+        ("cheese", "goat cheese"),
+        ("cheese", "parmesan cheese"),
+        ("cheese", "cheese pizza"),
+        ("cheese", "cheese tortellini"),
+        ("milk", "almond milk"),
+        ("milk", "coconut milk"),
+        ("butter", "peanut butter"),
+        ("butter", "apple butter"),
+        ("flour", "almond flour"),
+        ("flour", "rice flour"),
+        ("oil", "sesame oil"),
+        ("pepper", "bell pepper"),
+        ("pepper", "jalapeno pepper"),
+        ("beans", "green beans"),
+        ("sugar", "sugar snap peas"),
+        ("cream", "sour cream"),
+        ("cream", "ice cream"),
+    ])
+    def test_generic_pantry_does_not_match_specific_recipe_variant(
+        self, pantry: str, recipe_ing: str
+    ) -> None:
+        assert _ingredient_match(pantry, recipe_ing) is False
+
+    @pytest.mark.parametrize("pantry,recipe_ing", [
+        ("olive oil", "sesame oil"),
+        ("olive oil", "vegetable oil"),
+        ("cheddar cheese", "feta cheese"),
+        ("black beans", "green beans"),
+    ])
+    def test_cross_variant_ingredients_do_not_match(
+        self, pantry: str, recipe_ing: str
+    ) -> None:
+        """Two specific variants with a shared head noun must not match."""
+        assert _ingredient_match(pantry, recipe_ing) is False
+
+    @pytest.mark.parametrize("pantry,recipe_ing", [
+        ("peanut butter", "butter"),
+        ("almond milk", "milk"),
+        ("sour cream", "cream"),
+        ("bell pepper", "pepper"),
+        ("green beans", "beans"),
+        ("almond flour", "flour"),
+    ])
+    def test_compound_noun_not_head_substitute(
+        self, pantry: str, recipe_ing: str
+    ) -> None:
+        """A compound-noun pantry item is not a substitute for its head noun."""
+        assert _ingredient_match(pantry, recipe_ing) is False
+
+    @pytest.mark.parametrize("pantry,recipe_ing", [
+        ("chicken", "chicken breast"),
+        ("chicken", "chicken thigh"),
+        ("onion", "yellow onion"),
+        ("onion", "white onion"),
+        ("salt", "kosher salt"),
+        ("tomato", "roma tomato"),
+    ])
+    def test_generic_pantry_matches_allowlisted_specific_variant(
+        self, pantry: str, recipe_ing: str
+    ) -> None:
+        """Whitelisted generic→specific pairs still match (e.g. chicken→chicken breast)."""
+        assert _ingredient_match(pantry, recipe_ing) is True
+
+    @pytest.mark.parametrize("pantry,recipe_ing", [
+        ("parsley", "fresh parsley"),
+        ("cilantro", "chopped cilantro"),
+        ("ginger", "ground ginger"),
+        ("onion", "chopped onion"),
+    ])
+    def test_prep_modifier_extras_do_not_block_match(
+        self, pantry: str, recipe_ing: str
+    ) -> None:
+        """Recipe-side prep modifiers like 'fresh' or 'ground' don't block a match."""
+        assert _ingredient_match(pantry, recipe_ing) is True
+
+    @pytest.mark.parametrize("pantry,recipe_ing", [
+        ("yellow onion", "onion"),
+        ("chicken breast", "chicken"),
+        ("heavy cream", "cream"),
+        ("extra virgin olive oil", "olive oil"),
+    ])
+    def test_specific_pantry_matches_generic_recipe(
+        self, pantry: str, recipe_ing: str
+    ) -> None:
+        """Pantry-more-specific-than-recipe direction is always a valid match."""
+        assert _ingredient_match(pantry, recipe_ing) is True
+
+
+class TestPantryCoverageNotInflated:
+    """Integration: coverage must not be inflated by bogus ingredient matches."""
+
+    def test_generic_cheese_does_not_inflate_coverage(self) -> None:
+        scorer = IngredientScorer()
+        recipe = _make_recipe(ingredients=[
+            Ingredient(name="feta cheese", category="dairy"),
+            Ingredient(name="olives", category="vegetable"),
+            Ingredient(name="cucumber", category="vegetable"),
+        ])
+        score = scorer.score(recipe, pantry=["cheese"])
+        assert score.overlap_count == 0
+        assert "feta cheese" not in score.matched_ingredients
+
+    def test_generic_oil_does_not_inflate_coverage(self) -> None:
+        scorer = IngredientScorer()
+        recipe = _make_recipe(ingredients=[
+            Ingredient(name="sesame oil", category="fat"),
+            Ingredient(name="soy sauce", category="condiment"),
+        ])
+        score = scorer.score(recipe, pantry=["olive oil"])
+        # olive oil in pantry must NOT match sesame oil in recipe
+        assert "sesame oil" not in score.matched_ingredients
+
 
 class TestFilterEngineCustomRules:
     def test_empty_hard_rules_keeps_all_recipes(self) -> None:

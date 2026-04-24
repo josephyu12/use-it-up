@@ -7,8 +7,6 @@ from dataclasses import dataclass
 from functools import lru_cache
 from typing import Protocol, runtime_checkable
 
-from rapidfuzz import fuzz
-
 from useitup.profile import UserProfile
 from useitup.schemas import Ingredient, Recipe
 
@@ -64,10 +62,49 @@ class IngredientScore:
 
 
 _STOPWORDS = frozenset({
-    "fresh", "dried", "ground", "crushed", "chopped", "minced", "large", "small",
-    "extra", "virgin", "boneless", "skinless", "whole", "plain", "low", "fat",
     "optional", "for", "serving",
 })
+# Recipe-side descriptor tokens that don't change the ingredient's identity.
+# If a pantry item is "parsley" and recipe asks "fresh parsley", the extra
+# "fresh" should not block the match.
+_RECIPE_PREP_MODIFIERS = frozenset({
+    "fresh", "dried", "ground", "crushed", "chopped", "minced", "whole", "plain",
+    "large", "small", "medium", "extra", "virgin", "boneless", "skinless",
+    "raw", "cooked", "uncooked", "shredded", "grated", "sliced", "diced", "cubed",
+    "peeled", "toasted", "roasted", "low", "fat", "reduced", "nonfat", "skim",
+    "ripe", "frozen", "canned", "melted", "softened", "salted", "unsalted",
+})
+# Generic pantry terms may match a specific recipe variant ONLY when the extra
+# recipe tokens are on this head's allowlist. Excluded intentionally:
+#   cheese, milk, butter, flour, oil, pepper, beans, sugar, cream, sauce, bread,
+#   noodle, pasta — compound nouns with these heads are often non-substitutable
+#   (e.g. "feta cheese" is not substitutable for any "cheese"; "almond milk" for
+#   dairy-based milk recipes; "bell pepper" for black pepper).
+_GENERIC_PANTRY_SPECIFIERS: dict[str, frozenset[str]] = {
+    "chicken": frozenset({"breast", "thigh", "wing", "leg", "drumstick", "tender", "tenderloin"}),
+    "beef": frozenset({"chuck", "sirloin", "tenderloin", "round", "flank", "brisket"}),
+    "pork": frozenset({"chop", "tenderloin", "loin", "shoulder", "belly"}),
+    "onion": frozenset({"yellow", "white", "sweet", "spanish", "vidalia"}),
+    "tomato": frozenset({"roma", "plum", "cherry", "grape", "heirloom", "vine", "ripe"}),
+    "potato": frozenset({"russet", "yukon", "red", "gold", "yellow", "fingerling", "new", "baby"}),
+    "carrot": frozenset({"baby"}),
+    "salt": frozenset({"kosher", "sea", "table", "iodized", "coarse", "fine"}),
+    "rice": frozenset({"basmati", "jasmine", "long", "short", "grain", "arborio"}),
+}
+# Pantry-side compound-noun traps: "<modifier> <head>" is NOT a substitute for
+# the head noun alone. "peanut butter" should not match recipe "butter".
+_COMPOUND_NOT_HEAD: dict[str, frozenset[str]] = {
+    "butter": frozenset({"peanut", "almond", "cocoa", "apple", "cashew", "sun"}),
+    "milk": frozenset({"almond", "coconut", "soy", "oat", "cashew", "rice"}),
+    "cream": frozenset({"sour", "ice", "whip"}),
+    "cheese": frozenset({"cream", "cottage", "macaroni", "pizza"}),
+    "pepper": frozenset({"bell", "jalapeno", "cayenne", "chili", "chile", "poblano", "serrano", "habanero"}),
+    "flour": frozenset({"almond", "coconut", "rice", "corn", "chickpea"}),
+    "bean": frozenset({"green", "string", "wax"}),
+    "oil": frozenset({"essential"}),
+    "sauce": frozenset({"apple", "cranberry"}),
+    "sugar": frozenset({"snap"}),
+}
 _GARNISH_KEYWORDS = frozenset({
     "salt", "pepper", "parsley", "cilantro", "chives", "scallion", "green onion",
     "sesame seeds", "red pepper flakes", "lemon wedges", "lime wedges",
@@ -83,6 +120,12 @@ _TOKEN_ALIASES: dict[str, str] = {
     "eggs": "egg",
     "tortillas": "tortilla",
     "noodles": "noodle",
+    "beans": "bean",
+    "chillies": "chili",
+    "chilis": "chili",
+    "chiles": "chili",
+    "chilli": "chili",
+    "chile": "chili",
 }
 
 
@@ -148,22 +191,48 @@ def _ingredient_tokens(text: str) -> frozenset[str]:
     return frozenset(token for token in tokens if token and token not in _STOPWORDS)
 
 
-def _ingredient_match(a: str, b: str) -> bool:
-    a_tokens = _ingredient_tokens(a)
-    b_tokens = _ingredient_tokens(b)
-    if not a_tokens or not b_tokens:
+def _ingredient_match(pantry_item: str, recipe_ing: str) -> bool:
+    """Asymmetric ingredient match between a pantry item and a recipe ingredient.
+
+    A pantry item matches a recipe ingredient iff one of:
+      (1) Token sets are equal after alias + plural + stopword normalization.
+      (2) Pantry is strictly more specific (recipe tokens ⊂ pantry tokens), and
+          the pantry's extra tokens don't flip the head noun into a different
+          food (e.g. "peanut butter" is NOT a match for "butter").
+      (3) Pantry is strictly more generic (pantry tokens ⊂ recipe tokens), and
+          the recipe's extra tokens are either pure prep descriptors
+          ("fresh parsley" ↔ "parsley") or are on the explicit allowlist for the
+          pantry head ("chicken" ↔ "chicken breast", "onion" ↔ "yellow onion").
+
+    No intersection fallback, no loose fuzzy ratio: prevents bogus matches like
+    "cheese" ↔ "feta cheese" or "olive oil" ↔ "sesame oil".
+    """
+    p = _ingredient_tokens(pantry_item)
+    r = _ingredient_tokens(recipe_ing)
+    if not p or not r:
         return False
-    if a_tokens == b_tokens or a_tokens.issubset(b_tokens) or b_tokens.issubset(a_tokens):
-        return True
-    if a_tokens & b_tokens:
+    if p == r:
         return True
 
-    normalized_a = " ".join(sorted(a_tokens))
-    normalized_b = " ".join(sorted(b_tokens))
-    return (
-        fuzz.token_set_ratio(normalized_a, normalized_b) >= 92
-        or fuzz.ratio(normalized_a, normalized_b) >= 88
-    )
+    if r < p:
+        pantry_extras = p - r
+        for recipe_head in r:
+            blocklist = _COMPOUND_NOT_HEAD.get(recipe_head)
+            if blocklist and pantry_extras & blocklist:
+                return False
+        return True
+
+    if p < r:
+        extras = r - p
+        if extras <= _RECIPE_PREP_MODIFIERS:
+            return True
+        non_prep = extras - _RECIPE_PREP_MODIFIERS
+        for head in p:
+            allowed = _GENERIC_PANTRY_SPECIFIERS.get(head)
+            if allowed is not None and non_prep <= allowed:
+                return True
+
+    return False
 
 
 def _ingredient_contains_keyword(recipe: Recipe, keywords: frozenset[str]) -> bool:
