@@ -59,7 +59,7 @@ class TestRecommend:
         assert r.explanation.cbr_trace
         assert r.explanation.ingredient_utilization_report
         assert r.decision_log
-        assert r.cbr_matches
+        assert r.cbr_match is not None
         assert r.filter_result.survivors
 
     def test_decision_log_non_empty(self, demo_profile, sample_recipes):
@@ -98,10 +98,14 @@ class TestRecommend:
         if len(results) > 1:
             assert results[0].filter_result is results[1].filter_result
 
-    def test_cbr_matches_shared_across_results(self, demo_profile, sample_recipes):
+    def test_each_result_has_its_own_cbr_match(self, demo_profile, sample_recipes):
+        """Each Recommendation carries its own CBRMatch — not a shared list."""
         results = recommend(demo_profile, sample_recipes, top_k=3)
         if len(results) > 1:
-            assert results[0].cbr_matches is results[1].cbr_matches
+            # Distinct recommendations should carry distinct CBRMatch objects
+            # (one per retrieved case), though they share the upstream FilterResult.
+            ids = {id(r.cbr_match) for r in results}
+            assert len(ids) == len(results)
 
     def test_minimal_profile_cold_start(self, minimal_profile, sample_recipes):
         # With a generous pantry and no hard constraints, the relaxed

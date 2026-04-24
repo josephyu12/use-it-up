@@ -1,8 +1,8 @@
 ## Goal Trace: Why **Shakshuka**?
 
-I recommend **Shakshuka** because you have **9 of 9 ingredients** (100%) on hand, including **1 of 1 core ingredients**.
+I recommend **Shakshuka** because you have **8 of 9 ingredients** (88%) on hand, including **1 of 1 core ingredients**.
 
-**Pantry items used:** eggs, olive oil, sesame oil, garlic, onion, red onion, cumin, paprika, cherry tomatoes, feta cheese, canned tomatoes.
+**Matched recipe ingredients:** eggs, canned tomatoes, onion, garlic, cumin, paprika, olive oil, feta cheese.
 
 *No explicit goal tags matched — hard constraints are still respected.*
 
@@ -14,17 +14,16 @@ I recommend **Shakshuka** because you have **9 of 9 ingredients** (100%) on hand
 
 ## Counterfactual
 
-I did not recommend **Spaghetti Aglio e Olio** because: _Recipe 'Spaghetti Aglio e Olio' eliminated: required tags ['gluten-free'] absent_.
+I did not recommend **Black Bean Tacos** because: _Recipe 'Black Bean Tacos' eliminated: raw coverage 71%, weighted coverage 68%, essential coverage 67% (need 50% raw and all core ingredients present); missing essentials: ['corn tortillas']_.
 
-If you removed your **gluten-free** constraint(s), it would have ranked **#3** in the candidate pool due to its **ingredient coverage** profile.
 
 ---
 
 ## CBR Trace
 
-**Cold-start mode:** No rating history; ranked by pantry coverage, preferred cuisines, prep time.
+**Cold-start mode:** No rating history; ranked by preferred cuisines, pantry coverage, prep time.
 
-**Shakshuka** was selected as the top candidate using cuisine preference and prep-time ranking, because no past recipe ratings are available to guide similarity matching.
+**Shakshuka** was selected in cold-start mode using pantry fit, your active preferences, and prep-time ranking because no past recipe ratings are available to guide similarity matching.
 
 ---
 
@@ -33,13 +32,11 @@ If you removed your **gluten-free** constraint(s), it would have ranked **#3** i
 ### ✅ Pantry Ingredients Used
 - eggs
 - olive oil
-- sesame oil
 - garlic
 - onion
 - red onion
 - cumin
 - paprika
-- cherry tomatoes
 - feta cheese
 - canned tomatoes
 
@@ -50,17 +47,22 @@ If you removed your **gluten-free** constraint(s), it would have ranked **#3** i
 - chickpeas
 - brown rice
 - quinoa
+- sesame oil
 - ginger
 - turmeric
 - cinnamon
 - lime
 - lemon
 - avocado
+- cherry tomatoes
 - spinach
 - cilantro
 - parsley
 - greek yogurt
 - coconut milk
 
+### 🛒 Missing Ingredients to Buy
+- red bell pepper
+
 ### 💡 Follow-Up Recipe Suggestions
-- **Lentil Dal** — would also use: ginger, turmeric
+No other candidates found that would further reduce pantry waste.

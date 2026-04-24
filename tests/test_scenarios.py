@@ -152,7 +152,7 @@ class TestScenarioB:
         self, profile: UserProfile, sample_recipes: list[Recipe]
     ) -> None:
         results = recommend(profile, sample_recipes, top_k=1)
-        assert results[0].cbr_matches[0].fallback_reason is not None
+        assert results[0].cbr_match.fallback_reason is not None
 
     def test_recommended_recipe_is_vegan(
         self, profile: UserProfile, sample_recipes: list[Recipe]
@@ -263,7 +263,7 @@ class TestScenarioD:
         retriever = CBRRetriever(sample_recipes, profile)
         matches = retriever.retrieve([sr.recipe for sr in filter_result.survivors], k=1)
         adapted = CBRAdapter().adapt(matches[0], profile)
-        explanation = generate_explanation(adapted, filter_result, matches, profile, sample_recipes)
+        explanation = generate_explanation(adapted, filter_result, matches[0], profile, sample_recipes)
 
         report = explanation.ingredient_utilization_report
         assert "## Ingredient Utilization Report" in report

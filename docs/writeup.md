@@ -295,13 +295,13 @@ The full suite runs in **4.6 seconds**. The notebook smoke test (`test_notebook_
 
 ### Known Limitations
 
-1. **Fuzzy-match false positives.** `partial_ratio("olive oil", "lime") = 75` exactly (the threshold), caused by `"live"` ⊂ `"olive"` scoring against `"lime"`. This over-counts used pantry items in the goal trace by at most 1 item for affected recipes.
+1. **Asymmetric match rejects some plausible substitutions.** The current matcher (see §2.1) deliberately refuses to match a generic pantry term against a specific recipe variant unless the variant is on an explicit allowlist for that head (e.g. `chicken → chicken breast` is allowed, `cheese → feta cheese` is not). This means a user who types `"pasta"` in the pantry will not automatically be credited for a `spaghetti` recipe — that substitution is the CBR stage's responsibility via `data/substitutions.json`, and is not yet wired up for every ingredient pair. The conservative bias is intentional: false-positive matches would inflate coverage and mislead the explanation.
 
-2. **Dietary tag vs. ingredient mismatch.** Sample data includes Lentil Dal tagged `"vegan"` despite containing `ghee`. The rule engine trusts tags; ingredient-level vegan enforcement was not implemented.
+2. **Dietary tag vs. ingredient mismatch.** A handful of source recipes carry a `"vegan"` tag despite listing ghee or honey. The rule engine trusts the tags; ingredient-level re-derivation runs only after CBR adaptation (`_infer_dietary_tags`). Enforcing ingredient-level consistency on the raw catalog would require one more pass over the source data.
 
-3. **Adaptation does not update dietary tags.** After substituting chicken → tofu, the recipe still lacks a `"vegetarian"` tag, causing `GoalAlignmentRule` to report the goal as unmet.
+3. **Adaptation does not always re-tag transitively.** When CBRAdapter swaps chicken → tofu, `_infer_dietary_tags` updates the adapted copy. But if the same recipe is then displayed against a user whose soft goal is `vegetarian`, the original recipe's tag list is what appears in the catalog view. This is a UI concern, not a correctness concern for `recommend()`.
 
-4. **Small catalog.** Ten sample recipes make it easy to exhaust the survivor pool; realistic deployments would require hundreds of recipes.
+4. **Small curated corpus by default.** The zoo demo uses 102 curated recipes to keep startup fast. The 39 447-recipe `recipes.json` is available but exhibits long-tail ingredient-naming noise ("cheddar® cheese", "(optional) butter") that the normalizer handles heuristically rather than exhaustively.
 
 ---
 
@@ -332,3 +332,39 @@ The 🛒 section of the utilization report already identifies missing ingredient
 ### Multi-day meal planning
 
 Extend `recommend()` to accept a `days: int` parameter and return a weekly plan that collectively minimizes waste — i.e., recipes whose missing ingredients overlap so that a single grocery run satisfies multiple future meals.
+
+---
+
+## 9. Annotated Bibliography (CS 5580 requirement)
+
+This project draws on three lines of literature: case-based reasoning, rule/knowledge-based expert systems, and explainable recommender systems. Each entry below states the claim the source contributes and how UseItUp uses or departs from it.
+
+**Aamodt, A., & Plaza, E. (1994).** *Case-Based Reasoning: Foundational Issues, Methodological Variations, and System Approaches.* **AI Communications, 7(1), 39–59.**
+Canonical formulation of the Retrieve–Reuse–Revise–Retain (R⁴) cycle. UseItUp's `cbr.py` implements all four phases explicitly: `CBRRetriever` (Retrieve, via weighted centroid over user's ≥4-star past recipes), direct reuse of the top-similarity recipe, `CBRAdapter` (Revise, via goal-triggered substitutions in `substitutions.json`), and `record_success` (Retain, writes back to `rating_history`). The paper's warning that retrieval must be grounded in a meaningful similarity metric shaped our six-feature vector (`cuisine | primary-protein | cooking-method | flavor | difficulty | prep-time`) rather than raw ingredient-set overlap, which would conflate retrieval with Stage 1.
+
+**Kolodner, J. L. (1993).** *Case-Based Reasoning.* **Morgan Kaufmann.**
+Textbook treatment of case representation, indexing, and adaptation. Kolodner's distinction between *structural* adaptation (rewriting the solution) and *derivational* adaptation (replaying reasoning steps) informed the decision to implement substitution as structural adaptation only: UseItUp rewrites an ingredient in place and re-infers dietary tags rather than replaying a generative derivation, because the source recipes don't record the derivation steps.
+
+**Slade, S. (1991).** *Case-Based Reasoning: A Research Paradigm.* **AI Magazine, 12(1), 42–55.**
+Listed as suggested reading on the project spec. Slade argues that CBR is most effective when cases carry rich contextual features, not just inputs and outputs. This motivated including `flavor_profile` and `cooking_method` alongside cuisine and protein in the feature vector — without them, similarity collapses into "same cuisine" and the CBR trace has nothing interesting to report.
+
+**Russell, S., & Norvig, P. (2021).** *Artificial Intelligence: A Modern Approach (4th ed.), Ch. 16 (Rule-Based Systems).* **Pearson.**
+Referenced by the project spec for MYCIN/EMYCIN translation. UseItUp's rule engine follows the hard-vs-soft separation and the "every firing rule appends to an explanation trace" pattern from MYCIN, but the rules are declaratively weighted floats rather than certainty factors, because our domain (recipe filtering) does not benefit from probabilistic chaining.
+
+**Miller, T. (2019).** *Explanation in Artificial Intelligence: Insights from the Social Sciences.* **Artificial Intelligence, 267, 1–38.**
+Argues that explanations should be *contrastive* (why X rather than Y?), *selected* (a few relevant causes, not all causes), and *social* (phrased as a conversation). UseItUp's four explanation types map directly: Goal Trace = selected causes; Counterfactual = contrastive ("I did not recommend *Carne Asada Bowls* because…"); CBR Trace = social appeal to the user's own history; Utilization Report = action-oriented next steps. This paper is the justification for having four narrow explanations rather than one generic one.
+
+**Tintarev, N., & Masthoff, J. (2012).** *Evaluating the Effectiveness of Explanations for Recommender Systems.* **User Modeling and User-Adapted Interaction, 22(4–5), 399–439.**
+Empirically establishes that transparency (how was this picked?) and scrutability (can I correct it?) matter more for user trust than persuasiveness. UseItUp's explanation templates prioritize transparency by surfacing coverage percentages and hard-constraint checks verbatim; the counterfactual section supports scrutability by telling the user which threshold change would flip the decision. The notebook's "relax a constraint" slider operationalizes this.
+
+**Lundberg, S. M., & Lee, S.-I. (2017).** *A Unified Approach to Interpreting Model Predictions.* **NeurIPS.**
+The SHAP paper. Cited here as the counterexample: local feature-attribution explanations are the state of the art for black-box models. UseItUp instead chose an inherently interpretable rule-based pipeline so explanations are derivations, not post-hoc approximations. We note this because the project spec explicitly flags the black-box-plus-mimic-model pattern as less desirable than direct explanation — our design choice aligns with that guidance.
+
+**Ricci, F., Rokach, L., & Shapira, B. (eds.) (2015).** *Recommender Systems Handbook (2nd ed.), Ch. 11 (Knowledge-Based Recommender Systems).* **Springer.**
+Establishes the distinction between collaborative filtering, content-based, and knowledge-based recommenders. UseItUp is a hybrid knowledge-based + CBR system: rule-driven filtering (Stage 1) plus retrieval from user history (Stage 2). The handbook's note that knowledge-based systems avoid the cold-start problem is borne out here — cold-start users get sensible recommendations from pantry/preferences alone, and the warm path only kicks in once ≥1 rating ≥4 exists.
+
+**Leake, D. B. (1996).** *CBR in Context: The Present and Future.* In *Case-Based Reasoning: Experiences, Lessons and Future Directions*, pp. 3–30. **AAAI Press / MIT Press.**
+Emphasizes that adaptation rules are the bottleneck of a CBR system in practice. This shaped our decision to keep `substitutions.json` small (20 entries) but highly targeted at the dietary goals we actually model (vegan, vegetarian, dairy-free). Expanding the substitution catalog is explicitly flagged in §8 (Future Work).
+
+**Chen, J., Dong, H., Wang, X., Feng, F., Wang, M., & He, X. (2023).** *Bias and Debias in Recommender System: A Survey and Future Directions.* **ACM Transactions on Information Systems, 41(3).**
+Surveys selection bias, popularity bias, and feedback-loop bias in learned recommenders. Knowledge-based systems like UseItUp are largely immune to collaborative-filtering's popularity bias — but the rating-history centroid in CBR *does* risk a self-reinforcing feedback loop (user rates cuisine X → future recs trend toward cuisine X → user has less to rate elsewhere). We mitigate this only partially via the `preferred_cuisines` soft rule, which can override centroid pull when the user explicitly shifts preferences. A fuller fix would be Thompson-sampling the retrieval step, left as future work.

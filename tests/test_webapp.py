@@ -2,9 +2,13 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from fastapi.testclient import TestClient
+import pytest
 
-from useitup.webapp import create_app
+pytest.importorskip("fastapi", reason="webapp tests require the optional [webapp] extras")
+
+from fastapi.testclient import TestClient  # noqa: E402
+
+from useitup.webapp import create_app  # noqa: E402
 
 _CURATED_RECIPES = Path(__file__).parent.parent / "data" / "recipes_curated.json"
 client = TestClient(create_app(recipes_path=_CURATED_RECIPES))

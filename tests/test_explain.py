@@ -286,7 +286,7 @@ def test_cbr_trace_with_history(sample_recipes: list[Recipe]) -> None:
     matches = retriever.retrieve(survivors, k=5)
     adapted = AdaptedRecipe(recipe=matches[0].recipe, adaptations=[])
 
-    trace = _build_cbr_trace(adapted, matches, profile)
+    trace = _build_cbr_trace(adapted, matches[0], profile)
     assert "## CBR Trace" in trace
     assert len(trace) > 50
     # Should mention past recipe in normal (non-cold-start) mode
@@ -309,7 +309,7 @@ def test_cbr_trace_cold_start(sample_recipes: list[Recipe]) -> None:
     matches = retriever.retrieve(survivors, k=5)
     adapted = AdaptedRecipe(recipe=matches[0].recipe, adaptations=[])
 
-    trace = _build_cbr_trace(adapted, matches, cold_start_profile)
+    trace = _build_cbr_trace(adapted, matches[0], cold_start_profile)
     assert "## CBR Trace" in trace
     assert "Cold-start" in trace or "cold-start" in trace or "No rating history" in trace
 
@@ -323,7 +323,7 @@ def test_cbr_trace_empty_matches() -> None:
         difficulty=1, nutrition={}, flavor_profile=[], instructions=["Cook."],
     )
     adapted = AdaptedRecipe(recipe=recipe, adaptations=[])
-    trace = _build_cbr_trace(adapted, [], profile)
+    trace = _build_cbr_trace(adapted, None, profile)
     assert "## CBR Trace" in trace
 
 
@@ -386,19 +386,17 @@ def test_generate_explanation_produces_all_fields(
     simple_recipe: Recipe,
 ) -> None:
     breakdown = FeatureBreakdown(cuisine=0.0, protein=0.0, cooking_method=0.0, flavor=0.0, difficulty=0.0, prep_time=0.0)
-    cbr_matches = [
-        CBRMatch(
-            recipe=simple_recipe,
-            similarity_score=0.0,
-            nearest_past_recipe=None,
-            similarity_breakdown=breakdown,
-            fallback_reason="No rating history; ranked by preferred cuisines and prep time",
-        )
-    ]
+    cbr_match = CBRMatch(
+        recipe=simple_recipe,
+        similarity_score=0.0,
+        nearest_past_recipe=None,
+        similarity_breakdown=breakdown,
+        fallback_reason="No rating history; ranked by preferred cuisines and prep time",
+    )
     expl = generate_explanation(
         adapted=simple_adapted,
         filter_result=simple_filter_result,
-        cbr_matches=cbr_matches,
+        cbr_match=cbr_match,
         profile=simple_profile,
         all_recipes=[simple_recipe],
     )
@@ -416,19 +414,17 @@ def test_render_explanation_is_valid_markdown(
     simple_recipe: Recipe,
 ) -> None:
     breakdown = FeatureBreakdown(cuisine=0.0, protein=0.0, cooking_method=0.0, flavor=0.0, difficulty=0.0, prep_time=0.0)
-    cbr_matches = [
-        CBRMatch(
-            recipe=simple_recipe,
-            similarity_score=0.0,
-            nearest_past_recipe=None,
-            similarity_breakdown=breakdown,
-            fallback_reason="No rating history",
-        )
-    ]
+    cbr_match = CBRMatch(
+        recipe=simple_recipe,
+        similarity_score=0.0,
+        nearest_past_recipe=None,
+        similarity_breakdown=breakdown,
+        fallback_reason="No rating history",
+    )
     expl = generate_explanation(
         adapted=simple_adapted,
         filter_result=simple_filter_result,
-        cbr_matches=cbr_matches,
+        cbr_match=cbr_match,
         profile=simple_profile,
         all_recipes=[simple_recipe],
     )

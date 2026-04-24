@@ -122,7 +122,7 @@ Scored keyword matching against 8 cuisine keyword lists: Italian, Mexican, Asian
 | `CuisinePreferenceRule` | Soft | 0.3 | — |
 | `GoalAlignmentRule` | Soft | 0.3 | — |
 
-Fuzzy match threshold: `FUZZY_THRESHOLD = 75` (rapidfuzz `partial_ratio`).
+Ingredient matcher: token-based, asymmetric (see `matching._ingredient_match`). Exact token-set equality matches; pantry-more-specific matches; pantry-more-generic matches only when recipe extras are prep modifiers (`_RECIPE_PREP_MODIFIERS`) or on an explicit allowlist (`_GENERIC_PANTRY_SPECIFIERS`). Compound-noun traps (`peanut butter` → `butter`, `bell pepper` → `pepper`, etc.) are rejected via `_COMPOUND_NOT_HEAD`. No fuzzy-ratio fallback: prevents over-counting coverage from accidental substring overlap.
 Pantry coverage threshold: `COVERAGE_THRESHOLD = 0.50`.
 
 ### Completed Phases
