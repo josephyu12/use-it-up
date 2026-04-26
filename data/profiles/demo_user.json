@@ -8,14 +8,14 @@
     "goals": ["high_protein", "low_cost"]
   },
   "rating_history": [
-    {"recipe_id": "d001234-pork-tenderloin-with-chipotle-marinade", "rating": 5, "timestamp": "2026-01-10T18:30:00"},
-    {"recipe_id": "d000205-garlic-shrimp", "rating": 5, "timestamp": "2026-01-14T19:00:00"},
-    {"recipe_id": "d001307-tandoori-spiced-chicken-with-tomato-ginger-chutney", "rating": 4, "timestamp": "2026-01-20T12:15:00"},
-    {"recipe_id": "d000360-chicken-zucchini-and-prosciutto", "rating": 4, "timestamp": "2026-01-25T20:00:00"},
-    {"recipe_id": "d015193-bcd-soon-tofu-soup-starter-with-mussels-in-white-wine-recipe", "rating": 5, "timestamp": "2026-02-01T13:45:00"},
-    {"recipe_id": "d000028-grilled-lamb-and-potato-brochettes", "rating": 4, "timestamp": "2026-02-08T18:00:00"},
-    {"recipe_id": "d000031-georgian-grilled-tomato-sauce", "rating": 2, "timestamp": "2026-02-15T19:30:00"},
-    {"recipe_id": "d000086-tomato-rhubarb-chutney", "rating": 5, "timestamp": "2026-02-22T17:00:00"}
+    {"recipe_id": "r042", "rating": 5, "timestamp": "2026-01-10T18:30:00"},
+    {"recipe_id": "r021", "rating": 5, "timestamp": "2026-01-14T19:00:00"},
+    {"recipe_id": "r027", "rating": 4, "timestamp": "2026-01-20T12:15:00"},
+    {"recipe_id": "r061", "rating": 5, "timestamp": "2026-01-25T20:00:00"},
+    {"recipe_id": "r020", "rating": 4, "timestamp": "2026-02-01T13:45:00"},
+    {"recipe_id": "r085", "rating": 5, "timestamp": "2026-02-08T18:00:00"},
+    {"recipe_id": "r094", "rating": 4, "timestamp": "2026-02-15T19:30:00"},
+    {"recipe_id": "r048", "rating": 2, "timestamp": "2026-02-22T17:00:00"}
   ],
   "pantry": [
     "chicken breast",
