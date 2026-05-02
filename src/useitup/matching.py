@@ -26,14 +26,41 @@ _DAIRY_KEYWORDS = frozenset({
     "milk", "cheese", "butter", "cream", "yogurt", "feta", "ghee",
     "mozzarella", "parmesan", "cheddar", "brie", "ricotta",
 })
+_MEAT_KEYWORDS = frozenset({
+    "chicken", "beef", "pork", "shrimp", "lamb", "turkey",
+    "bacon", "anchovy", "sausage", "tuna", "salmon", "fish",
+    "prosciutto", "pancetta", "pepperoni", "duck", "venison",
+    "ham", "meat", "steak", "sirloin", "flank", "ribeye", "brisket",
+    "tenderloin", "chuck", "veal", "goat", "rabbit",
+    "carne", "asada", "carnitas", "chorizo", "barbacoa",
+    "schnitzel", "pastrami", "salami",
+    "cod", "tilapia", "crab", "lobster", "scallop", "oyster",
+    "mussel", "sardine", "mackerel", "trout", "halibut",
+})
+_VEGAN_EXTRA_KEYWORDS = frozenset({"egg", "honey"})
 
 _CONSTRAINT_KEYWORDS: dict[str, frozenset[str]] = {
     "nut-free": _NUT_KEYWORDS,
     "gluten-free": _GLUTEN_KEYWORDS,
     "dairy-free": _DAIRY_KEYWORDS,
+    "vegetarian": _MEAT_KEYWORDS,
+    "vegan": _MEAT_KEYWORDS | _DAIRY_KEYWORDS | _VEGAN_EXTRA_KEYWORDS,
 }
+# Constraints that get name+ingredient keyword verification on top of the tag
+# check. Kept narrow: vegan/vegetarian have severe data-tag bugs (chicken-named
+# recipes mistagged vegan), and false positives are rare. Gluten-free / dairy-free
+# stay tag-only because legitimate variants ("rice pasta", "almond milk") are
+# common and would be over-rejected.
+_NAME_VERIFIED_CONSTRAINTS: frozenset[str] = frozenset({"vegan", "vegetarian"})
 
 _PLANT_BASED_DAIRY_PREFIXES = ("coconut ", "oat ", "vegan ", "cashew ", "almond ", "soy ")
+# Substring-match false positives: "ham" appears in "champagne", "graham", etc.;
+# "egg" in "eggplant"; "fish" in "fish sauce" (kept — it really is anchovy-derived).
+_KEYWORD_FALSE_POSITIVES: dict[str, frozenset[str]] = {
+    "ham": frozenset({"champagne", "graham", "chamomile"}),
+    "egg": frozenset({"eggplant"}),
+    "duck": frozenset({"product"}),
+}
 
 # Maps profile goals → recipe dietary_tags
 GOAL_TO_TAG: dict[str, str] = {
@@ -248,7 +275,14 @@ def _name_matches_constraint_keywords(name: str, keywords: frozenset[str]) -> bo
         return False
     if keywords is _DAIRY_KEYWORDS and any(name.startswith(prefix) for prefix in _PLANT_BASED_DAIRY_PREFIXES):
         return False
-    return any(kw in name for kw in keywords)
+    for kw in keywords:
+        if kw not in name:
+            continue
+        false_positives = _KEYWORD_FALSE_POSITIVES.get(kw)
+        if false_positives and any(fp in name for fp in false_positives):
+            continue
+        return True
+    return False
 
 
 def _is_garnish(name: str) -> bool:
@@ -396,7 +430,17 @@ class AllergyRule:
 
 
 class DietaryRule:
-    """Hard rule: reject if recipe dietary_tags don't cover user's dietary constraints."""
+    """Hard rule: reject if recipe dietary_tags don't cover user's dietary constraints.
+
+    Verifies tags against ingredient list AND recipe name keywords — many
+    scraped recipes are mistagged "vegan"/"vegetarian" (e.g. a chicken
+    marinade whose ingredient list lacks the implied chicken). The name check
+    catches "Lemon Herb Chicken Orzo" even when ingredients look clean.
+
+    Promotes dietary-identity goals (vegan, vegetarian, dairy_free) to
+    filtering: notebook-style UIs only expose goals, but users selecting
+    "vegan" expect filtering, not just ranking.
+    """
 
     reason = "Recipe does not satisfy dietary restriction"
     is_hard = True
@@ -404,19 +448,51 @@ class DietaryRule:
 
     _DIETARY_TAGS = frozenset({"vegan", "vegetarian", "gluten-free", "dairy-free"})
 
+    def _active_constraints(self, profile: UserProfile) -> list[str]:
+        return [c for c in profile.hard_constraints if c in self._DIETARY_TAGS]
+
     def applies(self, recipe: Recipe, profile: UserProfile) -> bool:
-        active = [c for c in profile.hard_constraints if c in self._DIETARY_TAGS]
+        active = self._active_constraints(profile)
         if not active:
             return True
         recipe_tags = set(recipe.dietary_tags)
-        return all(c in recipe_tags for c in active)
+        name_lower = recipe.name.lower()
+        for c in active:
+            if c not in recipe_tags:
+                return False
+            if c not in _NAME_VERIFIED_CONSTRAINTS:
+                continue
+            keywords = _CONSTRAINT_KEYWORDS.get(c, frozenset())
+            if not keywords:
+                continue
+            if _name_matches_constraint_keywords(name_lower, keywords):
+                return False
+            if _ingredient_contains_keyword(recipe, keywords):
+                return False
+        return True
 
     def fail_reason(self, recipe: Recipe, profile: UserProfile) -> str:
-        active = [c for c in profile.hard_constraints if c in self._DIETARY_TAGS]
-        missing_tags = [c for c in active if c not in set(recipe.dietary_tags)]
-        return (
-            f"Recipe '{recipe.name}' eliminated: required tags {missing_tags} absent"
-        )
+        active = self._active_constraints(profile)
+        recipe_tags = set(recipe.dietary_tags)
+        missing_tags = [c for c in active if c not in recipe_tags]
+        if missing_tags:
+            return f"Recipe '{recipe.name}' eliminated: required tags {missing_tags} absent"
+        name_lower = recipe.name.lower()
+        for c in active:
+            if c not in _NAME_VERIFIED_CONSTRAINTS:
+                continue
+            keywords = _CONSTRAINT_KEYWORDS.get(c, frozenset())
+            if keywords and _name_matches_constraint_keywords(name_lower, keywords):
+                return (
+                    f"Recipe '{recipe.name}' eliminated: name conflicts with "
+                    f"'{c}' constraint despite carrying the tag"
+                )
+            if keywords and _ingredient_contains_keyword(recipe, keywords):
+                return (
+                    f"Recipe '{recipe.name}' eliminated: ingredients conflict "
+                    f"with '{c}' constraint despite carrying the tag"
+                )
+        return f"Recipe '{recipe.name}' eliminated: dietary check failed"
 
 
 class PantryCoverageRule:

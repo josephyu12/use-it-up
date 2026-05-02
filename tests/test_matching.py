@@ -216,9 +216,27 @@ class TestDietaryRule:
         assert self.rule.applies(recipe, profile) is False
 
     def test_passes_multiple_constraints(self) -> None:
-        recipe = _make_recipe(dietary_tags=["vegan", "gluten-free", "dairy-free"])
+        recipe = _make_recipe(
+            ingredients=[
+                Ingredient(name="black beans", category="protein"),
+                Ingredient(name="garlic", category="vegetable"),
+            ],
+            dietary_tags=["vegan", "gluten-free", "dairy-free"],
+        )
         profile = _make_profile(hard_constraints=["vegan", "gluten-free"])
         assert self.rule.applies(recipe, profile) is True
+
+    def test_rejects_chicken_recipe_mistagged_vegan(self) -> None:
+        recipe = _make_recipe(
+            name="Lemon Herb Chicken Orzo",
+            ingredients=[
+                Ingredient(name="chicken breast", category="protein"),
+                Ingredient(name="orzo", category="grain"),
+            ],
+            dietary_tags=["vegan", "vegetarian", "gluten-free"],
+        )
+        profile = _make_profile(hard_constraints=["vegan"])
+        assert self.rule.applies(recipe, profile) is False
 
     def test_fail_reason_lists_missing_tags(self) -> None:
         recipe = _make_recipe(dietary_tags=[])

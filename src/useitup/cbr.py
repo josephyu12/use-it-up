@@ -3,14 +3,18 @@
 from __future__ import annotations
 
 import json
+import math
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
-
-import numpy as np
 
 from useitup.matching import IngredientScorer as _IngredientScorer
 from useitup.profile import UserProfile, add_rating
 from useitup.schemas import DietaryTag, Recipe
+
+# Pure-Python vector type — feature vectors are tiny (~40 dims) and the corpus
+# fits in memory, so list[float] beats pulling in numpy for serverless deploys.
+Vector = list[float]
 
 _DATA_DIR = Path(__file__).parent.parent.parent / "data"
 _SUBSTITUTIONS_PATH = _DATA_DIR / "substitutions.json"
@@ -44,14 +48,19 @@ _METHOD_KEYWORDS: dict[str, list[str]] = {
 }
 
 # Goals → ingredient name keywords that conflict
+_MEAT_CONFLICT_KEYWORDS = [
+    "chicken", "beef", "pork", "fish", "shrimp", "lamb",
+    "turkey", "bacon", "ham", "meat", "anchovy",
+    "steak", "sirloin", "flank", "ribeye", "brisket", "tenderloin",
+    "veal", "duck", "venison", "sausage", "salmon", "tuna",
+    "cod", "tilapia", "crab", "lobster", "scallop",
+    "carne", "asada", "carnitas", "chorizo", "barbacoa",
+    "prosciutto", "pancetta", "pepperoni", "salami", "pastrami",
+]
+
 _GOAL_CONFLICTS: dict[str, list[str]] = {
-    "vegetarian": [
-        "chicken", "beef", "pork", "fish", "shrimp", "lamb",
-        "turkey", "bacon", "ham", "meat", "anchovy",
-    ],
-    "vegan": [
-        "chicken", "beef", "pork", "fish", "shrimp", "lamb", "turkey",
-        "bacon", "ham", "meat", "anchovy",
+    "vegetarian": list(_MEAT_CONFLICT_KEYWORDS),
+    "vegan": _MEAT_CONFLICT_KEYWORDS + [
         "milk", "cheese", "butter", "cream", "yogurt", "egg", "honey",
         "feta", "ghee", "parmesan", "mozzarella", "cheddar",
     ],
@@ -142,29 +151,36 @@ class AdaptedRecipe:
     adaptations: list[AdaptationEntry] = field(default_factory=list)
 
 
-def _group_cosine(a: np.ndarray, b: np.ndarray) -> float:
-    norm_a = float(np.linalg.norm(a))
-    norm_b = float(np.linalg.norm(b))
+def _norm(v: Vector) -> float:
+    return math.sqrt(sum(x * x for x in v))
+
+
+def _dot(a: Vector, b: Vector) -> float:
+    return sum(x * y for x, y in zip(a, b))
+
+
+def _group_cosine(a: Vector, b: Vector) -> float:
+    norm_a = _norm(a)
+    norm_b = _norm(b)
     if norm_a == 0.0 or norm_b == 0.0:
         return 0.0
-    return float(np.dot(a, b) / (norm_a * norm_b))
+    return _dot(a, b) / (norm_a * norm_b)
 
 
-def recipe_feature_vector(recipe: Recipe) -> np.ndarray:
+def _slice(v: Vector, s: slice) -> Vector:
+    return v[s]
+
+
+def recipe_feature_vector(recipe: Recipe) -> Vector:
     """Encode a recipe as a fixed-length feature vector."""
-    parts: list[np.ndarray] = []
-
-    # Cuisine one-hot
-    cuisine_vec = np.zeros(len(CUISINES))
+    cuisine_vec = [0.0] * len(CUISINES)
     cuisine_lower = recipe.cuisine.lower()
     for i, c in enumerate(CUISINES):
         if c.lower() in cuisine_lower or cuisine_lower in c.lower():
             cuisine_vec[i] = 1.0
             break
-    parts.append(cuisine_vec)
 
-    # Primary protein one-hot (first protein-category ingredient wins)
-    protein_vec = np.zeros(len(PROTEINS))
+    protein_vec = [0.0] * len(PROTEINS)
     protein_ings = [ing for ing in recipe.ingredients if ing.category == "protein"]
     if protein_ings:
         ing_name = protein_ings[0].name.lower()
@@ -178,42 +194,44 @@ def recipe_feature_vector(recipe: Recipe) -> np.ndarray:
             protein_vec[-1] = 1.0
     else:
         protein_vec[-1] = 1.0
-    parts.append(protein_vec)
 
-    # Cooking method multi-hot from instructions
-    method_vec = np.zeros(len(COOKING_METHODS))
+    method_vec = [0.0] * len(COOKING_METHODS)
     instructions_text = " ".join(recipe.instructions).lower()
     for i, method in enumerate(COOKING_METHODS):
         keywords = _METHOD_KEYWORDS.get(method, [method])
         if any(kw in instructions_text for kw in keywords):
             method_vec[i] = 1.0
-    if method_vec.sum() == 0.0:
+    if sum(method_vec) == 0.0:
         method_vec[COOKING_METHODS.index("raw")] = 1.0
-    parts.append(method_vec)
 
-    # Flavor multi-hot
-    flavor_vec = np.zeros(len(FLAVORS))
+    flavor_vec = [0.0] * len(FLAVORS)
     recipe_flavors = set(recipe.flavor_profile)
     for i, f in enumerate(FLAVORS):
         if f in recipe_flavors:
             flavor_vec[i] = 1.0
-    parts.append(flavor_vec)
 
-    # Difficulty normalized to [0, 1]
-    parts.append(np.array([(recipe.difficulty - 1) / 4.0]))
+    difficulty = [(recipe.difficulty - 1) / 4.0]
+    prep = [min(recipe.prep_time_min / MAX_PREP_TIME, 1.0)]
 
-    # Prep time normalized to [0, 1]
-    parts.append(np.array([min(recipe.prep_time_min / MAX_PREP_TIME, 1.0)]))
-
-    return np.concatenate(parts)
+    return cuisine_vec + protein_vec + method_vec + flavor_vec + difficulty + prep
 
 
-def _cosine_similarity(a: np.ndarray, b: np.ndarray) -> float:
-    norm_a = float(np.linalg.norm(a))
-    norm_b = float(np.linalg.norm(b))
-    if norm_a == 0.0 or norm_b == 0.0:
-        return 0.0
-    return float(np.dot(a, b) / (norm_a * norm_b))
+def _cosine_similarity(a: Vector, b: Vector) -> float:
+    return _group_cosine(a, b)
+
+
+def _weighted_centroid(vectors: list[Vector], weights: list[float]) -> Vector:
+    if not vectors:
+        return [0.0] * FEATURE_DIM
+    dim = len(vectors[0])
+    total_w = sum(weights)
+    if total_w == 0.0:
+        return [0.0] * dim
+    centroid = [0.0] * dim
+    for vec, w in zip(vectors, weights):
+        for i, x in enumerate(vec):
+            centroid[i] += x * w
+    return [c / total_w for c in centroid]
 
 
 class CBRRetriever:
@@ -229,15 +247,15 @@ class CBRRetriever:
         ]
 
         if liked_pairs:
-            vectors = np.array([recipe_feature_vector(r) for r, _ in liked_pairs])
-            weights = np.array([float(rating) for _, rating in liked_pairs])
-            self._centroid: np.ndarray = np.average(vectors, axis=0, weights=weights)
-            self._liked: list[tuple[Recipe, np.ndarray]] = [
-                (r, recipe_feature_vector(r)) for r, _ in liked_pairs
-            ]
+            vectors = [recipe_feature_vector(r) for r, _ in liked_pairs]
+            weights = [float(rating) for _, rating in liked_pairs]
+            self._centroid: Vector = _weighted_centroid(vectors, weights)
+            self._liked: list[tuple[Recipe, Vector]] = list(zip(
+                (r for r, _ in liked_pairs), vectors
+            ))
             self._cold_start = False
         else:
-            self._centroid = np.zeros(FEATURE_DIM)
+            self._centroid = [0.0] * FEATURE_DIM
             self._liked = []
             self._cold_start = True
 
@@ -356,6 +374,7 @@ class CBRAdapter:
         adapted_recipe = match.recipe
         if adaptations:
             adapted_recipe = match.recipe.model_copy(update={
+                "name": _rewrite_name(match.recipe.name, adaptations),
                 "ingredients": new_ingredients,
                 "dietary_tags": _infer_dietary_tags(match.recipe, new_ingredients),
             })
@@ -369,6 +388,62 @@ class CBRAdapter:
                 if not sub_goals or goal in sub_goals:
                     return sub
         return None
+
+
+# Recipe-title aliases. When an adaptation's `original` ingredient contains
+# any of the listed *match* keywords, also consider the *aliases* as candidate
+# tokens to replace in the recipe title. Catches cases where the ingredient is
+# "flank steak" but the title says "Carne Asada", or "cheddar cheese" → "Cheesy".
+_NAME_ALIAS_GROUPS: list[tuple[list[str], list[str]]] = [
+    (["chicken"], ["chicken"]),
+    (["beef", "steak", "sirloin", "flank", "ribeye", "brisket"],
+     ["carne asada", "carne", "asada", "steak", "sirloin", "ribeye", "beef"]),
+    (["pork"], ["carnitas", "pork"]),
+    (["bacon"], ["bacon"]),
+    (["fish", "salmon", "tuna", "cod"], ["fish", "salmon", "tuna"]),
+    (["shrimp"], ["shrimp"]),
+    (["lamb"], ["lamb"]),
+    (["turkey"], ["turkey"]),
+    (["cheese", "feta", "parmesan", "mozzarella", "cheddar"], ["cheesy", "cheese"]),
+    (["butter"], ["buttery", "butter"]),
+    (["cream"], ["creamy", "cream"]),
+    (["egg"], ["eggy", "egg"]),
+]
+
+
+def _rewrite_name(name: str, adaptations: list[AdaptationEntry]) -> str:
+    """Rewrite the recipe title to match ingredient substitutions.
+
+    "Lemon Herb Chicken Orzo" + (chicken→tofu) → "Lemon Herb Tofu Orzo".
+    "Carne Asada Tacos" + (flank steak→portobello) → "Marinated Portobello Tacos".
+    Falls back to original name if no token cleanly maps.
+    """
+    if not adaptations:
+        return name
+    rewritten = name
+    for entry in adaptations:
+        original_low = entry.original.lower()
+        replacement = entry.replacement
+        candidates: list[str] = [original_low]
+        head = original_low.split()[-1] if original_low else ""
+        if head and head not in candidates:
+            candidates.append(head)
+        for match_kws, alias_terms in _NAME_ALIAS_GROUPS:
+            if any(kw in original_low for kw in match_kws):
+                for term in alias_terms:
+                    if term not in candidates:
+                        candidates.append(term)
+        # Longest-first so multi-word phrases ("carne asada") replace before
+        # their constituent tokens ("carne") get hit individually.
+        for term in sorted(set(candidates), key=len, reverse=True):
+            if not term:
+                continue
+            pattern = re.compile(rf"\b{re.escape(term)}\b", re.IGNORECASE)
+            if pattern.search(rewritten):
+                rewritten = pattern.sub(replacement.title(), rewritten, count=1)
+                break
+    rewritten = re.sub(r"\s+", " ", rewritten).strip()
+    return rewritten or name
 
 
 def record_success(profile: UserProfile, recipe_id: str, rating: int = 5) -> UserProfile:

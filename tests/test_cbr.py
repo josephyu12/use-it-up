@@ -150,21 +150,21 @@ def substitutions_file(tmp_path: Path) -> Path:
 class TestRecipeFeatureVector:
     def test_output_length(self) -> None:
         vec = recipe_feature_vector(_italian_recipe())
-        assert vec.shape == (FEATURE_DIM,)
+        assert len(vec) == FEATURE_DIM
 
     def test_cuisine_one_hot(self) -> None:
         from useitup.cbr import CUISINES, _CUISINE_SLICE
         vec = recipe_feature_vector(_italian_recipe())
         cuisine_part = vec[_CUISINE_SLICE]
         assert cuisine_part[CUISINES.index("Italian")] == 1.0
-        assert cuisine_part.sum() == 1.0
+        assert sum(cuisine_part) == 1.0
 
     def test_protein_other_when_no_protein_ingredient(self) -> None:
         from useitup.cbr import PROTEINS, _PROTEIN_SLICE
         vec = recipe_feature_vector(_italian_recipe())  # no protein ingredient
         protein_part = vec[_PROTEIN_SLICE]
         assert protein_part[PROTEINS.index("other")] == 1.0
-        assert protein_part.sum() == 1.0
+        assert sum(protein_part) == 1.0
 
     def test_protein_chicken(self) -> None:
         from useitup.cbr import PROTEINS, _PROTEIN_SLICE

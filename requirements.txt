@@ -1,5 +1,2 @@
-numpy>=1.24
+fastapi>=0.110
 pydantic>=2.0
-# Optional — only needed for the FastAPI web UI (not required for the demo):
-# fastapi>=0.110
-# uvicorn[standard]>=0.27
