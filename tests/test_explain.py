@@ -20,10 +20,13 @@ from useitup.explain import (
     render_explanation,
 )
 from useitup.matching import (
+    AllergyRule,
     DecisionEntry,
+    DietaryRule,
     FilterEngine,
     FilterResult,
     IngredientScorer,
+    PantryCoverageRule,
     ScoredRecipe,
 )
 from useitup.pipeline import run_pipeline
@@ -205,7 +208,7 @@ def test_goal_trace_shows_adaptations() -> None:
 
 
 def test_counterfactual_with_hard_rejected(sample_recipes: list[Recipe], demo_profile: UserProfile) -> None:
-    engine = FilterEngine()
+    engine = FilterEngine(hard_rules=[AllergyRule(), DietaryRule(), PantryCoverageRule(threshold=0.35)])
     filter_result = engine.run(sample_recipes, demo_profile)
     # demo_user has gluten-free constraint; some recipes lack the tag
     adapted_recipe = AdaptedRecipe(recipe=filter_result.survivors[0].recipe, adaptations=[])
@@ -245,7 +248,7 @@ def test_counterfactual_graceful_when_none_rejected() -> None:
 
 
 def test_counterfactual_names_hard_rule_reason(sample_recipes: list[Recipe], demo_profile: UserProfile) -> None:
-    engine = FilterEngine()
+    engine = FilterEngine(hard_rules=[AllergyRule(), DietaryRule(), PantryCoverageRule(threshold=0.35)])
     filter_result = engine.run(sample_recipes, demo_profile)
     adapted = AdaptedRecipe(recipe=filter_result.survivors[0].recipe, adaptations=[])
     cf = _build_counterfactual(adapted, filter_result.decision_log, filter_result, sample_recipes, demo_profile)

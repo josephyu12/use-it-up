@@ -1,7 +1,7 @@
 # UseItUp — Project Specification
 
 ## System Overview
-UseItUp is a knowledge-based, explainable recipe recommendation system (CS 4580/5580 final project).
+UseItUp is a knowledge-based, explainable recipe recommendation system (CS 4580 final project, group submission).
 Users supply ingredients on hand plus dietary goals/constraints; the system recommends recipes
 and explains every decision in human-readable language.
 
@@ -135,7 +135,7 @@ Pantry coverage threshold: `COVERAGE_THRESHOLD = 0.50`.
 | 4 | Stage 2 CBR: `cbr.py` with `recipe_feature_vector` (cuisine/protein/method/flavor/difficulty/prep_time encoding), `CBRRetriever` (weighted centroid + cosine similarity + cold-start fallback), `CBRAdapter` (goal-based substitution from `data/substitutions.json`), `record_success`; 30 tests. |
 | 5 | Explanation engine: `explain.py` with `Explanation` dataclass + four template-driven builders; `pipeline.py` orchestrator wiring all three stages; 22 tests + snapshot fixture in `tests/fixtures/expected_explanation.md`. |
 | 6 | Pipeline integration + Jupyter notebook: `Recommendation` dataclass + `recommend()` in `pipeline.py`; `notebooks/UseItUp.ipynb` with 6 idempotent cells (ipywidgets interactive input, decision-trace bar chart, alt-scenario counterfactual buttons); 13 new tests including notebook smoke test. |
-| 7 | QA pass: `tests/test_scenarios.py` (5 end-to-end scenarios, 18 tests), `tests/test_explanation_quality.py` (4 rule-based quality checks, 13 tests); 31/31 pass; 98% line coverage overall. `docs/qa_report.md` with scenario results and 5 known edge cases. |
+| 7 | QA pass: `tests/test_scenarios.py` (5 end-to-end scenarios, 18 tests), `tests/test_explanation_quality.py` (4 rule-based quality checks, 13 tests); 31/31 pass; 96% line coverage on the recommendation pipeline. `docs/qa_report.md` with scenario results and 5 known edge cases. |
 | 8 | Write-up + presentation: `docs/writeup.md` (~6 pages, Mermaid architecture diagram, 4 real explanation examples captured from the pipeline, evaluation table, division of labor, future work). |
 | 9 | Dataset scale-up + `is_core` schema extension: new `src/useitup/enrichment.py` centralises category / dietary / flavor / `is_core` inference; added `Ingredient.is_core: bool \| None`; `matching._is_essential` prefers the field when set (heuristic remains as fallback). `scripts/build_recipes_from_datahive.py` converts the 39 447-recipe `datahiveai/recipes-with-nutrition` parquet into `data/recipes.json` (55 MB). Curated 102-recipe corpus moved to `data/recipes_curated.json` as the fallback test fixture. |
 

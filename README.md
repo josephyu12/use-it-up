@@ -2,7 +2,12 @@
 
 An explainable, three-stage recipe recommendation system. Tell it what's in your kitchen and your dietary constraints; it picks a recipe you can actually cook and explains every decision in plain language — ingredients matched, rules satisfied, counterfactuals, past-recipe CBR trace, and what to buy next.
 
-**CS 4580/5580 Final Project** — Joseph Yu, Gavin Onghai, Helen Mao.
+**CS 4580 Final Project (HW 6)** — Joseph Yu, Gavin Onghai, Helen Mao.
+
+🌐 **Live demo:** <https://use-it-up-pi.vercel.app>  
+📓 **Notebook demo:** [`notebooks/UseItUp.ipynb`](notebooks/UseItUp.ipynb) (richer, interactive)  
+🖥️ **Zoo demo:** `python3 scripts/demo.py` (zero-arg CLI, prints all four explanations)  
+📄 **Write-up:** [`docs/writeup.md`](docs/writeup.md)
 
 ---
 
@@ -25,7 +30,7 @@ The pipeline loads `data/recipes_curated.json` (102 recipes) by default. The muc
 ## Run the tests
 
 ```bash
-python3 -m pytest                       # 229 passing
+python3 -m pytest                       # 238 passing, 1 skipped
 python3 -m pytest --cov=useitup        # with coverage
 ```
 
@@ -97,7 +102,7 @@ use-it-up/
     explain.py               ← Stage 3: four-part explanation generation
     pipeline.py              ← Public API: recommend() + Recommendation
     webapp.py                ← Optional FastAPI UI (install extras: webapp)
-  tests/                     ← 229 pytest tests covering every stage
+  tests/                     ← 238 pytest tests covering every stage
   data/
     recipes_curated.json     ← 102-recipe demo corpus
     recipes.json             ← 39 447-recipe full corpus (optional)
@@ -123,6 +128,24 @@ Because each section is rule-driven, every claim is auditable against the decisi
 
 ## Further reading
 
-* **`docs/writeup.md`** — full project write-up: architecture diagram, four real end-to-end explanations, evaluation table (98% line coverage, 31 scenario tests), annotated bibliography, division of labor, future work.
+* **`docs/writeup.md`** — full project write-up: architecture diagram, four real end-to-end explanations, evaluation table (96% pipeline coverage, 238 tests), division of labor, future work.
 * **`docs/qa_report.md`** — QA scenarios pass/fail and known edge cases.
 * **`PROJECT.md`** — internal design spec with per-phase implementation log.
+
+---
+
+## Submission Checklist (CS 4580 HW 6)
+
+Group project — Joseph Yu, Gavin Onghai, Helen Mao. Submitted on Gradescope as HW 6 by the **Tuesday April 28, 11:59pm** deadline.
+
+| Requirement | Where to find it |
+|---|---|
+| Runs on the Zoo with no extra installs (`numpy`, `pydantic` only — both pre-installed) | `requirements.txt`, `scripts/demo.py` |
+| Write-up explaining what it does, how to run it, and why it's interesting | [`docs/writeup.md`](docs/writeup.md) |
+| Decision-system technique from the course | Stage 1 rule-based engine + Stage 2 case-based reasoning (R⁴ cycle) |
+| Explainable decisions (no black-box) | Four rule-grounded explanation types — see [`docs/writeup.md §3`](docs/writeup.md) |
+| Division of labor (group requirement) | [`docs/writeup.md §7`](docs/writeup.md) |
+| Why a group enables a better project | More recipes (102 curated + 39 447 stress corpus), broader QA suite (31 scenario tests, 96% pipeline coverage), and a real web UI on top of the Zoo CLI |
+| Test suite | `pytest` (238 passing, 1 skipped; runnable from project root with no flags) |
+| Web demo (optional, supplement to Zoo CLI) | <https://use-it-up-pi.vercel.app> — Vercel deployment of `src/useitup/webapp.py` |
+| Notebook demo (course preference) | [`notebooks/UseItUp.ipynb`](notebooks/UseItUp.ipynb) |

@@ -1,8 +1,10 @@
 # UseItUp — Project Write-Up
 
-**Course:** CPSC 458/5580 — Knowledge Representation and Reasoning  
+**Course:** CS 4580 — Knowledge Representation and Reasoning  
 **Team:** Joseph Yu (Lead Engineer), Gavin Onghai (Explanation Engine & UI/UX), Helen Mao (Data & QA)  
-**Date:** 2026-04-20
+**Submission:** HW 6 on Gradescope (Zoo runnable)  
+**Live demo:** <https://use-it-up-pi.vercel.app>  
+**Date:** 2026-04-28
 
 ---
 
@@ -207,7 +209,20 @@ The utilization report classifies every pantry item as ✅ used (fuzzy-matched t
 
 ## 4. How to Run It
 
-### Installation
+### Live web demo (no install)
+
+The fastest way to try the system: **<https://use-it-up-pi.vercel.app>**. The deployed FastAPI app (`src/useitup/webapp.py`) wraps the same `recommend()` pipeline used by the Zoo CLI and notebook, so every recommendation comes back with the four-part explanation rendered as a card. Source under `api/index.py` + `vercel.json`.
+
+### Zoo CLI (course requirement — no extra installs)
+
+```bash
+cd use-it-up
+python3 -m pip install --user -r requirements.txt   # numpy + pydantic only
+python3 scripts/demo.py                              # zero-arg, prints all four explanations
+python3 -m pytest                                    # 238 passing, 1 skipped
+```
+
+### Installation (local dev)
 
 ```bash
 git clone <repo>
@@ -276,22 +291,23 @@ The pipeline selects Chicken Piccata via CBR (cosine similarity 1.00 to the rate
 
 ### Test Suite
 
-| File | Tests | Coverage contribution |
-|---|---|---|
-| `test_schemas.py` | 18 | schemas.py: 100% |
-| `test_matching.py` | 40 | matching.py: 99% |
-| `test_profile.py` | 20 | profile.py: 100% |
-| `test_cbr.py` | 30 | cbr.py: 98% |
-| `test_explain.py` | 22 | explain.py: 96% |
-| `test_pipeline.py` | 13 | pipeline.py: 100% |
-| `test_data_loader.py` | 5 | data_loader.py: 100% |
-| `test_scenarios.py` | 18 | end-to-end |
-| `test_explanation_quality.py` | 13 | quality rules |
-| **Total** | **179** | **98% overall** |
+| File | Coverage contribution |
+|---|---|
+| `test_schemas.py` | schemas.py: 100% |
+| `test_matching.py` | matching.py: 97% |
+| `test_profile.py` | profile.py: 100% |
+| `test_cbr.py` | cbr.py: 94% |
+| `test_explain.py` | explain.py: 94% |
+| `test_pipeline.py` | pipeline.py: 100% |
+| `test_data_loader.py` | data_loader.py: 100% |
+| `test_scenarios.py` | end-to-end |
+| `test_explanation_quality.py` | quality rules |
+| `test_webapp.py` | webapp.py: 85% |
+| **Total** | **238 passing, 1 skipped** |
 
-`pytest --cov=useitup` reports **98% line coverage** (667 statements, 11 uncovered — all defensive guards for unreachable states).
+`pytest --cov=useitup` reports **96% line coverage on the recommendation pipeline** (`schemas`, `profile`, `data_loader`, `matching`, `cbr`, `explain`, `pipeline`); the remaining uncovered lines are defensive guards for unreachable states. `enrichment.py` is an offline dataset-build utility (used by `scripts/build_recipes_from_datahive.py`) and is intentionally excluded from runtime coverage.
 
-The full suite runs in **4.6 seconds**. The notebook smoke test (`test_notebook_executes` via `jupyter nbconvert`) runs end-to-end in under 120 seconds.
+The full suite runs in **~6 seconds**. The notebook smoke test (`test_notebook_executes` via `jupyter nbconvert`) runs end-to-end in under 120 seconds.
 
 ### Known Limitations
 
@@ -332,39 +348,3 @@ The 🛒 section of the utilization report already identifies missing ingredient
 ### Multi-day meal planning
 
 Extend `recommend()` to accept a `days: int` parameter and return a weekly plan that collectively minimizes waste — i.e., recipes whose missing ingredients overlap so that a single grocery run satisfies multiple future meals.
-
----
-
-## 9. Annotated Bibliography (CS 5580 requirement)
-
-This project draws on three lines of literature: case-based reasoning, rule/knowledge-based expert systems, and explainable recommender systems. Each entry below states the claim the source contributes and how UseItUp uses or departs from it.
-
-**Aamodt, A., & Plaza, E. (1994).** *Case-Based Reasoning: Foundational Issues, Methodological Variations, and System Approaches.* **AI Communications, 7(1), 39–59.**
-Canonical formulation of the Retrieve–Reuse–Revise–Retain (R⁴) cycle. UseItUp's `cbr.py` implements all four phases explicitly: `CBRRetriever` (Retrieve, via weighted centroid over user's ≥4-star past recipes), direct reuse of the top-similarity recipe, `CBRAdapter` (Revise, via goal-triggered substitutions in `substitutions.json`), and `record_success` (Retain, writes back to `rating_history`). The paper's warning that retrieval must be grounded in a meaningful similarity metric shaped our six-feature vector (`cuisine | primary-protein | cooking-method | flavor | difficulty | prep-time`) rather than raw ingredient-set overlap, which would conflate retrieval with Stage 1.
-
-**Kolodner, J. L. (1993).** *Case-Based Reasoning.* **Morgan Kaufmann.**
-Textbook treatment of case representation, indexing, and adaptation. Kolodner's distinction between *structural* adaptation (rewriting the solution) and *derivational* adaptation (replaying reasoning steps) informed the decision to implement substitution as structural adaptation only: UseItUp rewrites an ingredient in place and re-infers dietary tags rather than replaying a generative derivation, because the source recipes don't record the derivation steps.
-
-**Slade, S. (1991).** *Case-Based Reasoning: A Research Paradigm.* **AI Magazine, 12(1), 42–55.**
-Listed as suggested reading on the project spec. Slade argues that CBR is most effective when cases carry rich contextual features, not just inputs and outputs. This motivated including `flavor_profile` and `cooking_method` alongside cuisine and protein in the feature vector — without them, similarity collapses into "same cuisine" and the CBR trace has nothing interesting to report.
-
-**Russell, S., & Norvig, P. (2021).** *Artificial Intelligence: A Modern Approach (4th ed.), Ch. 16 (Rule-Based Systems).* **Pearson.**
-Referenced by the project spec for MYCIN/EMYCIN translation. UseItUp's rule engine follows the hard-vs-soft separation and the "every firing rule appends to an explanation trace" pattern from MYCIN, but the rules are declaratively weighted floats rather than certainty factors, because our domain (recipe filtering) does not benefit from probabilistic chaining.
-
-**Miller, T. (2019).** *Explanation in Artificial Intelligence: Insights from the Social Sciences.* **Artificial Intelligence, 267, 1–38.**
-Argues that explanations should be *contrastive* (why X rather than Y?), *selected* (a few relevant causes, not all causes), and *social* (phrased as a conversation). UseItUp's four explanation types map directly: Goal Trace = selected causes; Counterfactual = contrastive ("I did not recommend *Carne Asada Bowls* because…"); CBR Trace = social appeal to the user's own history; Utilization Report = action-oriented next steps. This paper is the justification for having four narrow explanations rather than one generic one.
-
-**Tintarev, N., & Masthoff, J. (2012).** *Evaluating the Effectiveness of Explanations for Recommender Systems.* **User Modeling and User-Adapted Interaction, 22(4–5), 399–439.**
-Empirically establishes that transparency (how was this picked?) and scrutability (can I correct it?) matter more for user trust than persuasiveness. UseItUp's explanation templates prioritize transparency by surfacing coverage percentages and hard-constraint checks verbatim; the counterfactual section supports scrutability by telling the user which threshold change would flip the decision. The notebook's "relax a constraint" slider operationalizes this.
-
-**Lundberg, S. M., & Lee, S.-I. (2017).** *A Unified Approach to Interpreting Model Predictions.* **NeurIPS.**
-The SHAP paper. Cited here as the counterexample: local feature-attribution explanations are the state of the art for black-box models. UseItUp instead chose an inherently interpretable rule-based pipeline so explanations are derivations, not post-hoc approximations. We note this because the project spec explicitly flags the black-box-plus-mimic-model pattern as less desirable than direct explanation — our design choice aligns with that guidance.
-
-**Ricci, F., Rokach, L., & Shapira, B. (eds.) (2015).** *Recommender Systems Handbook (2nd ed.), Ch. 11 (Knowledge-Based Recommender Systems).* **Springer.**
-Establishes the distinction between collaborative filtering, content-based, and knowledge-based recommenders. UseItUp is a hybrid knowledge-based + CBR system: rule-driven filtering (Stage 1) plus retrieval from user history (Stage 2). The handbook's note that knowledge-based systems avoid the cold-start problem is borne out here — cold-start users get sensible recommendations from pantry/preferences alone, and the warm path only kicks in once ≥1 rating ≥4 exists.
-
-**Leake, D. B. (1996).** *CBR in Context: The Present and Future.* In *Case-Based Reasoning: Experiences, Lessons and Future Directions*, pp. 3–30. **AAAI Press / MIT Press.**
-Emphasizes that adaptation rules are the bottleneck of a CBR system in practice. This shaped our decision to keep `substitutions.json` small (20 entries) but highly targeted at the dietary goals we actually model (vegan, vegetarian, dairy-free). Expanding the substitution catalog is explicitly flagged in §8 (Future Work).
-
-**Chen, J., Dong, H., Wang, X., Feng, F., Wang, M., & He, X. (2023).** *Bias and Debias in Recommender System: A Survey and Future Directions.* **ACM Transactions on Information Systems, 41(3).**
-Surveys selection bias, popularity bias, and feedback-loop bias in learned recommenders. Knowledge-based systems like UseItUp are largely immune to collaborative-filtering's popularity bias — but the rating-history centroid in CBR *does* risk a self-reinforcing feedback loop (user rates cuisine X → future recs trend toward cuisine X → user has less to rate elsewhere). We mitigate this only partially via the `preferred_cuisines` soft rule, which can override centroid pull when the user explicitly shifts preferences. A fuller fix would be Thompson-sampling the retrieval step, left as future work.

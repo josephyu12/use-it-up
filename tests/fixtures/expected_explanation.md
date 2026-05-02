@@ -1,21 +1,22 @@
-## Goal Trace: Why **Shakshuka**?
+## Goal Trace: Why **Black Bean Tacos**?
 
-I recommend **Shakshuka** because you have **8 of 9 ingredients** (88%) on hand, including **1 of 1 core ingredients**.
+I recommend **Black Bean Tacos** because you have **5 of 7 ingredients** (71%) on hand, including **2 of 3 core ingredients**.
 
-**Matched recipe ingredients:** eggs, canned tomatoes, onion, garlic, cumin, paprika, olive oil, feta cheese.
+**Matched recipe ingredients:** black beans, avocado, cumin, lime, cilantro.
 
-*No explicit goal tags matched — hard constraints are still respected.*
+**Still missing core ingredients:** corn tortillas.
+
+**Goals satisfied:** low cost.
 
 **Hard constraints respected:** gluten-free.
-
-*Note: 2 soft preference(s) not fully met (CuisinePreferenceRule, GoalAlignmentRule), but this was the best available match.*
 
 ---
 
 ## Counterfactual
 
-I did not recommend **Black Bean Tacos** because: _Recipe 'Black Bean Tacos' eliminated: raw coverage 71%, weighted coverage 68%, essential coverage 67% (need 50% raw and all core ingredients present); missing essentials: ['corn tortillas']_.
+I did not recommend **Spaghetti Aglio e Olio** because: _Recipe 'Spaghetti Aglio e Olio' eliminated: required tags ['gluten-free'] absent_.
 
+If you removed your **gluten-free** constraint(s), it would have remained a competitive candidate because of its **ingredient coverage** profile.
 
 ---
 
@@ -23,46 +24,50 @@ I did not recommend **Black Bean Tacos** because: _Recipe 'Black Bean Tacos' eli
 
 **Cold-start mode:** No rating history; ranked by preferred cuisines, pantry coverage, prep time.
 
-**Shakshuka** was selected in cold-start mode using pantry fit, your active preferences, and prep-time ranking because no past recipe ratings are available to guide similarity matching.
+**Black Bean Tacos** was selected in cold-start mode using pantry fit, your active preferences, and prep-time ranking because no past recipe ratings are available to guide similarity matching.
 
 ---
 
 ## Ingredient Utilization Report
 
 ### ✅ Pantry Ingredients Used
-- eggs
-- olive oil
-- garlic
-- onion
-- red onion
+- black beans
 - cumin
-- paprika
-- feta cheese
-- canned tomatoes
+- lime
+- avocado
+- cilantro
 
 ### ⚠️ Pantry Ingredients NOT Used
 - chicken breast
 - chicken thighs
-- black beans
 - chickpeas
 - brown rice
 - quinoa
+- olive oil
 - sesame oil
+- garlic
+- onion
+- red onion
 - ginger
+- paprika
 - turmeric
 - cinnamon
-- lime
 - lemon
-- avocado
 - cherry tomatoes
 - spinach
-- cilantro
 - parsley
 - greek yogurt
+- feta cheese
+- canned tomatoes
 - coconut milk
 
 ### 🛒 Missing Ingredients to Buy
-- red bell pepper
+- corn tortillas
+- salsa
+
+### 🔑 Core Ingredients Still Missing
+- corn tortillas
 
 ### 💡 Follow-Up Recipe Suggestions
-No other candidates found that would further reduce pantry waste.
+- **Lentil Dal** — would also use: garlic, onion, red onion, ginger, turmeric, cherry tomatoes, canned tomatoes
+- **Shakshuka** — would also use: olive oil, garlic, onion, red onion, paprika, feta cheese, canned tomatoes

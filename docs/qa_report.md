@@ -1,9 +1,9 @@
 # QA Report — UseItUp Phase 7
 
-**Date:** 2026-04-20  
+**Date:** 2026-04-28  
 **QA Lead:** Helen Mao  
 **Test suite:** `tests/test_scenarios.py`, `tests/test_explanation_quality.py`  
-**Coverage:** 98% line coverage across 667 statements (11 uncovered; all defensive guards)
+**Coverage:** 96% on the recommendation pipeline modules (`schemas`, `profile`, `data_loader`, `matching`, `cbr`, `explain`, `pipeline`); remaining uncovered lines are defensive guards for unreachable states. `enrichment.py` is an offline dataset-build utility and `webapp.py` is the FastAPI UI; both are exercised by their own tests but excluded from the core pipeline metric.
 
 ---
 
@@ -25,18 +25,20 @@
 
 ---
 
-## Coverage Detail
+## Coverage Detail (recommendation pipeline)
 
 | Module | Statements | Missed | Coverage |
 |---|---|---|---|
-| `schemas.py` | 41 | 0 | 100% |
+| `schemas.py` | 42 | 0 | 100% |
 | `profile.py` | 59 | 0 | 100% |
 | `data_loader.py` | 8 | 0 | 100% |
-| `pipeline.py` | 32 | 0 | 100% |
-| `matching.py` | 185 | 1 | 99% |
-| `cbr.py` | 175 | 4 | 98% |
-| `explain.py` | 167 | 6 | 96% |
-| **TOTAL** | **667** | **11** | **98%** |
+| `pipeline.py` | 44 | 0 | 100% |
+| `matching.py` | 355 | 9 | 97% |
+| `cbr.py` | 273 | 17 | 94% |
+| `explain.py` | 181 | 11 | 94% |
+| **TOTAL (pipeline)** | **962** | **37** | **96%** |
+| `webapp.py` (FastAPI UI) | 186 | 28 | 85% |
+| `enrichment.py` (offline build) | 115 | 115 | 0% (offline-only) |
 
 ### Uncovered lines
 
