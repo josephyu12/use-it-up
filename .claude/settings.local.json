@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(python -c \":*)",
-      "Bash(jupyter nbconvert:*)",
-      "Bash(python -m jupyter nbconvert --to notebook --execute notebooks/UseItUp.ipynb --output /tmp/test_out.ipynb)"
-    ]
-  }
-}
