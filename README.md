@@ -34,7 +34,7 @@ python3 -m pytest                       # 238 passing, 1 skipped
 python3 -m pytest --cov=useitup        # with coverage
 ```
 
-There are no pytest flags required; all tests are runnable from the project root as declared in `CLAUDE.md`.
+There are no pytest flags required; all tests are runnable from the project root.
 
 ---
 
