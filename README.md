@@ -136,7 +136,7 @@ Because each section is rule-driven, every claim is auditable against the decisi
 
 ## Submission Checklist (CS 4580 HW 6)
 
-Group project — Joseph Yu, Gavin Onghai, Helen Mao. Submitted on Gradescope as HW 6 by the **Tuesday April 28, 11:59pm** deadline.
+Group project — Joseph Yu, Gavin Onghai, Helen Mao. Submitted on Gradescope as HW 6 by the **Monday May 4th, 8:59 AM** deadline.
 
 | Requirement | Where to find it |
 |---|---|

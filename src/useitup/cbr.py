@@ -259,9 +259,14 @@ class CBRRetriever:
             self._liked = []
             self._cold_start = True
 
-    def retrieve(self, candidates: list[Recipe], k: int = 5) -> list[CBRMatch]:
+    def retrieve(
+        self,
+        candidates: list[Recipe],
+        k: int = 5,
+        soft_scores: dict[str, float] | None = None,
+    ) -> list[CBRMatch]:
         if self._cold_start:
-            return self._cold_start_retrieve(candidates, k)
+            return self._cold_start_retrieve(candidates, k, soft_scores)
 
         results: list[CBRMatch] = []
         preferred = set(self._profile.soft_preferences.preferred_cuisines)
@@ -295,26 +300,33 @@ class CBRRetriever:
                 similarity_breakdown=breakdown,
             ))
 
-        def _rank(match: CBRMatch) -> tuple[float, float, float]:
+        def _rank(match: CBRMatch) -> tuple[float, float, float, float]:
             cuisine_score = 1.0 if preferred and match.recipe.cuisine in preferred else 0.0
+            soft = soft_scores.get(match.recipe.id, 0.0) if soft_scores else 0.0
             coverage = scorer.score(match.recipe, pantry).weighted_coverage if pantry else 0.0
-            return (cuisine_score, match.similarity_score, coverage)
+            return (cuisine_score, match.similarity_score, soft, coverage)
 
         results.sort(key=_rank, reverse=True)
         return results[:k]
 
-    def _cold_start_retrieve(self, candidates: list[Recipe], k: int) -> list[CBRMatch]:
+    def _cold_start_retrieve(
+        self,
+        candidates: list[Recipe],
+        k: int,
+        soft_scores: dict[str, float] | None = None,
+    ) -> list[CBRMatch]:
         preferred = set(self._profile.soft_preferences.preferred_cuisines)
         pantry = self._profile.pantry
         scorer = _IngredientScorer()
 
         # Primary: cuisine match when the user has expressed a preference.
-        # Secondary: pantry coverage. Tertiary: shorter prep time.
-        def _rank(r: Recipe) -> tuple[float, float, float]:
+        # Secondary: pantry coverage. Tertiary: soft rule score. Quaternary: shorter prep time.
+        def _rank(r: Recipe) -> tuple[float, float, float, float]:
             cuisine_score = 1.0 if r.cuisine in preferred else 0.0
             coverage = scorer.score(r, pantry).weighted_coverage if pantry else 0.0
+            soft = soft_scores.get(r.id, 0.0) if soft_scores else 0.0
             time_score = 1.0 - min(r.prep_time_min / MAX_PREP_TIME, 1.0)
-            return (cuisine_score, coverage, time_score) if preferred else (coverage, time_score, cuisine_score)
+            return (cuisine_score, coverage, soft, time_score) if preferred else (coverage, soft, time_score, cuisine_score)
 
         sorted_candidates = sorted(candidates, key=_rank, reverse=True)
         fallback_msg = (

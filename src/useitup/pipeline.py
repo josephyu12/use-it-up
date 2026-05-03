@@ -53,10 +53,12 @@ def recommend(
         )
 
     survivor_recipes = [sr.recipe for sr in filter_result.survivors]
+    soft_scores = {sr.recipe.id: sr.soft_score for sr in filter_result.survivors}
     retriever = CBRRetriever(recipes, profile)
     cbr_matches: list[CBRMatch] = retriever.retrieve(
         survivor_recipes,
         k=min(len(survivor_recipes), max(top_k * 2, 12)),
+        soft_scores=soft_scores,
     )
 
     adapter = CBRAdapter()
